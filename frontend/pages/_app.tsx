@@ -1,10 +1,11 @@
 import { useState } from 'react';
+import styled, { css } from 'styled-components';
 import Head from 'next/head'
 import 'styles/globals.css'
 
 // Components
 import Navigation from 'components/Navigation'
-// import Sidebar from '../components/Sidebar'
+import Sidebar from 'components/Sidebar'
 // import Footer from '../components/Footer'
 
 export default function App({ Component, pageProps }): JSX.Element {
@@ -32,8 +33,8 @@ const Layout = ({ children, setSidebar, sidebar }) => {
   return(
     <>
       <Navigation setSidebar={setSidebar} />
-      {/* <Backdrop onClick={() => setSidebar(false)} open={sidebar} />
-      <Sidebar sidebar={sidebar} setSidebar={setSidebar} /> */}
+      <Backdrop onClick={() => setSidebar(false)} open={sidebar} />
+      <Sidebar sidebar={sidebar} setSidebar={setSidebar} />
       {children}
       Footer
       {/* <Footer /> */}
@@ -41,18 +42,22 @@ const Layout = ({ children, setSidebar, sidebar }) => {
   )
 }
 
-// const Backdrop = styled.div`
-// 	position: fixed;
-// 	top: 0;
-// 	left: 0;
-// 	height: 100vh;
-// 	width: 100%;
-// 	background: #000;
-// 	z-index: -1;
-// 	opacity: 0;
-// 	transition: all .5s ease;
-// 	${props => props.open && css`
-// 		z-index: 999;
-// 		opacity: .8;
-// 	`}
-// `
+interface IBackdrop {
+  open: boolean;
+}
+
+const Backdrop = styled.div<IBackdrop>`
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 100vh;
+	width: 100%;
+	background: #000;
+	z-index: -1;
+	opacity: 0;
+	transition: all .5s ease;
+	${props => props.open && css`
+		z-index: 999;
+		opacity: .8;
+	`}
+`

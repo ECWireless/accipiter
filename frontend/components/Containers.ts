@@ -29,7 +29,7 @@ interface IFlex {
   align?: 'flex-start' | 'center' | 'flex-end';
   direction?: string;
   full?: boolean;
-  justify?: 'flex-start' | 'center' | 'flex-end' | 'space-between';
+  justify?: 'flex-start' | 'center' | 'flex-end' | 'space-around' | 'space-between';
 }
 
 export const Flex = styled.div<IFlex>`

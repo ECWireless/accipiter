@@ -1,10 +1,10 @@
 export const colors = {
-    green: '#99C43C',
-    grey: '#868B8C',
-    red: '#8C1821',
-    yellow: '#F3B12E',
-    yellowLight: '#FCCB28',
-    white: '#fff',
-  };
+  black: '#121212',
+  blue: '#3FA4BE',
+  green: '#A7D129',
+  grey: '#1E1E1E',
+  red: '#8C1821',
+  white: '#fff',
+};
   
-  export const GU = 4;
+export const GU = 4;

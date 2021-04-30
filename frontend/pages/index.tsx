@@ -9,7 +9,7 @@ export default function Home(): JSX.Element {
 
       <main>
         <h1>
-          Accipiter Systems
+          Home
         </h1>
       </main>
     </div>

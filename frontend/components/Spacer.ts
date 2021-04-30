@@ -3,10 +3,18 @@ import { media } from 'components/breakpoints';
 import { GU } from 'components/theme';
 
 interface ISpacer {
-  size: 'xs' | 'sm' | 'md' | 'lg';
+  size: 'xxs' | 'xs' | 'sm' | 'md' | 'lg';
 }
 
 const Spacer = styled.div<ISpacer>`
+  ${(props) =>
+    props.size === 'xxs' &&
+    css`
+      height: ${1.5 * GU}px;
+      ${media.xs`
+        height: ${2 * GU}px;
+      `}
+    `}
   ${(props) =>
     props.size === 'xs' &&
     css`

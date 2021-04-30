@@ -1,12 +1,9 @@
 import { useState } from 'react';
 import Head from 'next/head'
-import type { AppInitialProps, AppProps } from 'next/app'
-import styled, { css } from 'styled-components'
-import '../styles/globals.css'
-
+import 'styles/globals.css'
 
 // Components
-// import Navigation from '../components/Navigation'
+import Navigation from 'components/Navigation'
 // import Sidebar from '../components/Sidebar'
 // import Footer from '../components/Footer'
 
@@ -34,8 +31,7 @@ export default function App({ Component, pageProps }): JSX.Element {
 const Layout = ({ children, setSidebar, sidebar }) => {
   return(
     <>
-      {/* <Navigation setSidebar={setSidebar} /> */}
-      Navigation
+      <Navigation setSidebar={setSidebar} />
       {/* <Backdrop onClick={() => setSidebar(false)} open={sidebar} />
       <Sidebar sidebar={sidebar} setSidebar={setSidebar} /> */}
       {children}

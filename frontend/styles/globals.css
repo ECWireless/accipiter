@@ -141,7 +141,8 @@ table {
 }
 
 body {
-  background: #FFF;
+  background: #121212;
+  color: #FFF;
   font-family: 'Nunito Sans', sans-serif;
   font-style: normal;
   -webkit-font-smoothing: antialiased;

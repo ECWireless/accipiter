@@ -6,7 +6,7 @@ import 'styles/globals.css'
 // Components
 import Navigation from 'components/Navigation'
 import Sidebar from 'components/Sidebar'
-// import Footer from '../components/Footer'
+import Footer from 'components/Footer'
 
 export default function App({ Component, pageProps }): JSX.Element {
 	const [sidebar, setSidebar] = useState(false)
@@ -36,8 +36,7 @@ const Layout = ({ children, setSidebar, sidebar }) => {
       <Backdrop onClick={() => setSidebar(false)} open={sidebar} />
       <Sidebar sidebar={sidebar} setSidebar={setSidebar} />
       {children}
-      Footer
-      {/* <Footer /> */}
+      <Footer />
     </>
   )
 }

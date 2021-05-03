@@ -6,7 +6,7 @@ import { colors, GU } from 'components/theme'
 import { media } from 'components/breakpoints'
 
 // Components
-import { Container, Flex } from 'components/Containers'
+import { Flex } from 'components/Containers'
 import { SandwichMenu } from 'components/SandwichMenu'
 
 export default function Navigation({ setSidebar }) {

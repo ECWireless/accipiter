@@ -2,8 +2,8 @@ import styled, { css } from 'styled-components'
 import { media } from 'components/breakpoints'
 
 interface ITypograhpy {
+	align?: 'left' | 'center' | 'right';
 	bold?: boolean;
-	center?: boolean;
 	uppercase?: boolean;
 }
 
@@ -30,8 +30,8 @@ export const H1 = styled.h1<ITypograhpy>`
 	${media.xl`
 		font-size: 7rem;
 	`}
-	${props => props.center && css`
-		text-align: center;
+	${props => props.align && css`
+		text-align: ${props.align};
 	`}
 	${props => props.uppercase && css`
 		text-transform: uppercase;
@@ -69,8 +69,8 @@ export const H2 = styled.h2<ITypograhpy>`
 	${media.xl`
 		font-size: 6.5rem;
 	`}
-	${props => props.center && css`
-		text-align: center;
+	${props => props.align && css`
+		text-align: ${props.align};
 	`}
 	${props => props.uppercase && css`
 		text-transform: uppercase;
@@ -106,8 +106,8 @@ export const H3 = styled.h3<ITypograhpy>`
 	${media.xl`
 		font-size: 4rem;
 	`}
-	${props => props.center && css`
-		text-align: center;
+	${props => props.align && css`
+		text-align: ${props.align};
 	`}
 	${props => props.uppercase && css`
 		text-transform: uppercase;
@@ -139,8 +139,8 @@ export const H4 = styled.h4<ITypograhpy>`
 		font-size: 3.6rem;
 		line-height: 40px;
 	`}
-	${props => props.center && css`
-		text-align: center;
+	${props => props.align && css`
+		text-align: ${props.align};
 	`}
 	${props => props.uppercase && css`
 		text-transform: uppercase;
@@ -177,8 +177,8 @@ export const P1 = styled.p<ITypograhpy>`
 	${props => props.uppercase && css`
 		text-transform: uppercase;
 	`}
-	${props => props.center && css`
-		text-align: center;
+	${props => props.align && css`
+		text-align: ${props.align};
 	`}
 	${props => props.bold && css`
 		font-weight: bold;
@@ -209,8 +209,8 @@ export const P2 = styled.p<ITypograhpy>`
 	${props => props.uppercase && css`
 		text-transform: uppercase;
 	`}
-	${props => props.center && css`
-		text-align: center;
+	${props => props.align && css`
+		text-align: ${props.align};
 	`}
 	${props => props.bold && css`
 		font-weight: bold;
@@ -241,8 +241,8 @@ export const P3 = styled.p<ITypograhpy>`
 	${props => props.uppercase && css`
 		text-transform: uppercase;
 	`}
-	${props => props.center && css`
-		text-align: center;
+	${props => props.align && css`
+		text-align: ${props.align};
 	`}
 	${props => props.bold && css`
 		font-weight: 600;
@@ -273,8 +273,8 @@ export const P4 = styled.p<ITypograhpy>`
 	${props => props.uppercase && css`
 		text-transform: uppercase;
 	`}
-	${props => props.center && css`
-		text-align: center;
+	${props => props.align && css`
+		text-align: ${props.align};
 	`}
 	${props => css`
 		color: ${props.color}
@@ -285,6 +285,7 @@ export const P5 = styled.p<ITypograhpy>`
 	font-size: 1.2rem;
 	font-family: 'Montserrat', sans-serif;
 	font-weight: regular;
+	line-height: 0px;
 	${media.xs`
 	`}
 	${media.sm`
@@ -299,8 +300,8 @@ export const P5 = styled.p<ITypograhpy>`
 	${props => props.uppercase && css`
 		text-transform: uppercase;
 	`}
-	${props => props.center && css`
-		text-align: center;
+	${props => props.align && css`
+		text-align: ${props.align};
 	`}
 	${props => props.bold && css`
 		font-weight: bold;
@@ -332,8 +333,8 @@ export const P2Block = styled.div<ITypograhpy>`
 	${props => props.uppercase && css`
 		text-transform: uppercase;
 	`}
-	${props => props.center && css`
-		text-align: center;
+	${props => props.align && css`
+		text-align: ${props.align};
 	`}
 	${props => props.bold && css`
 		font-weight: bold;
@@ -365,8 +366,8 @@ export const P4Block = styled.div<ITypograhpy>`
 	${props => props.uppercase && css`
 		text-transform: uppercase;
 	`}
-	${props => props.center && css`
-		text-align: center;
+	${props => props.align && css`
+		text-align: ${props.align};
 	`}
 	${props => css`
 		color: ${props.color}

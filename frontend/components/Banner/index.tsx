@@ -26,7 +26,7 @@ const Banner: React.FC<IBanner> = ({
         </Fade>
         <Flex align={'center'} direction={'column'}>
           <Fade bottom ssrFadeout>
-            <H3 uppercase>{heading}</H3>
+            <H3 bold={true} uppercase>{heading}</H3>
           </Fade>
           {subheading && <Fade delay={200} bottom ssrFadeout>
             <Spacer size={'sm'} />
@@ -37,7 +37,8 @@ const Banner: React.FC<IBanner> = ({
           <StyledLine />
         </Fade>
       </Flex>
-      <Spacer size={'lg'} />
+      <Spacer size={'md'} />
+      <Spacer size={'md'} />
     </StyledBannerContainer>
   )
 }
@@ -46,7 +47,15 @@ export default Banner;
 
 const StyledBannerContainer = styled.div`
   margin: 0 auto;
-  width: 400px;
+  width: ${GU * 60}px;
+
+  ${media.xs`
+    width: ${GU * 80}px;
+  `}
+
+  ${media.sm`
+    width: ${GU * 100}px;
+  `}
 `
 
 const StyledLeftContainer = styled.div`

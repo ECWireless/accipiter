@@ -183,6 +183,7 @@ export const P2 = styled.p<ITypograhpy>`
 	font-family: 'Nunito Sans', sans-serif;
 	font-weight: regular;
 	padding: 0;
+	line-height: 20px;
 	margin: 0;
 	${media.sm`
 		font-size: 1.8rem;

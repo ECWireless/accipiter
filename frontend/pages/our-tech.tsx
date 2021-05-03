@@ -7,4 +7,4 @@ const OurTech: React.FC = () => {
 }
   
 export default OurTech
-  
+    

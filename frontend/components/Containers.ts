@@ -27,7 +27,7 @@ export const Container = styled.div`
 
 interface IFlex {
   align?: 'flex-start' | 'center' | 'flex-end';
-  direction?: string;
+  direction?: 'row' | 'column';
   full?: boolean;
   justify?: 'flex-start' | 'center' | 'flex-end' | 'space-around' | 'space-between';
 }

@@ -1,6 +1,14 @@
 import Head from 'next/head'
 
-export default function Home(): JSX.Element {
+import {
+  Hero,
+  OurTech,
+  Products,
+  Partners,
+  Contact,
+} from './components';
+
+const  Home: React.FC = () => {
   return (
     <div>
       <Head>
@@ -8,10 +16,14 @@ export default function Home(): JSX.Element {
       </Head>
 
       <main>
-        <h1>
-          Home
-        </h1>
+        <Hero />
+        <OurTech />
+        <Products />
+        <Partners />
+        <Contact />
       </main>
     </div>
   )
 }
+
+export default Home

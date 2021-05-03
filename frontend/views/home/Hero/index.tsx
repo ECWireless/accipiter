@@ -9,19 +9,19 @@ import Spacer from 'components/Spacer'
 import { H3 } from 'components/Typography'
 
 interface IHero {
-  subheading: string;
-  subheadingExtraText1: string;
-  subheadingExtraText2: string;
-  subheadingExtraText3: string;
-  subheadingExtraText4: string;
+  heroSubheading: string;
+  heroAnimatedText1: string;
+  heroAnimatedText2: string;
+  heroAnimatedText3: string;
+  heroAnimatedText4: string;
 }
 
 export const Hero: React.FC<IHero> = ({
-  subheading,
-  subheadingExtraText1,
-  subheadingExtraText2,
-  subheadingExtraText3,
-  subheadingExtraText4,
+  heroSubheading,
+  heroAnimatedText1,
+  heroAnimatedText2,
+  heroAnimatedText3,
+  heroAnimatedText4,
 }) => {
   return (
     <StyledHeroContainer>
@@ -33,10 +33,10 @@ export const Hero: React.FC<IHero> = ({
           <StyledLogo src="/AccipiterLogo2.png" alt="Coratives Logo"/>
           <Spacer size={'md'} />
           <Container>
-            <H3 align={'center'} bold={true} color={colors.white}>{subheading}</H3>
+            <H3 align={'center'} bold={true} color={colors.white}>{heroSubheading}</H3>
             <Spacer size={'xs'} />
             <H3 align={'center'} bold={true} color={colors.blue}><ReactRotatingText
-                items={[subheadingExtraText1, subheadingExtraText2, subheadingExtraText3, subheadingExtraText4]}
+                items={[heroAnimatedText1, heroAnimatedText2, heroAnimatedText3, heroAnimatedText4]}
             /></H3>
           </Container>
         </StyledTextContainer>

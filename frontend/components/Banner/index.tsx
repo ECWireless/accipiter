@@ -47,7 +47,7 @@ export default Banner;
 
 const StyledBannerContainer = styled.div`
   margin: 0 auto;
-  width: ${GU * 60}px;
+  width: ${GU * 65}px;
 
   ${media.xs`
     width: ${GU * 80}px;
@@ -55,6 +55,10 @@ const StyledBannerContainer = styled.div`
 
   ${media.sm`
     width: ${GU * 100}px;
+  `}
+
+  ${media.xl`
+    width: ${GU * 140}px;
   `}
 `
 

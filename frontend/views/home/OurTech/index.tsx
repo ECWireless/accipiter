@@ -7,29 +7,53 @@ import { Container } from 'components/Containers';
 import { H4, P2 } from 'components/Typography';
 import Spacer from 'components/Spacer';
 
-export const OurTech: React.FC = () => {
+interface IOurTech {
+  techHeading: string;
+  techSubheading: string;
+  techCard1Title: string;
+  techCard1Paragraph: string;
+  techCard2Title: string;
+  techCard2Paragraph: string;
+  techCard3Title: string;
+  techCard3Paragraph: string;
+  techCard4Title: string;
+  techCard4Paragraph: string;
+}
+
+export const OurTech: React.FC<IOurTech> = ({
+  techHeading,
+  techSubheading,
+  techCard1Title,
+  techCard1Paragraph,
+  techCard2Title,
+  techCard2Paragraph,
+  techCard3Title,
+  techCard3Paragraph,
+  techCard4Title,
+  techCard4Paragraph,
+}) => {
   return (
     <div style={{ borderTop: `1px solid ${colors.green}`}}>
-      <Banner heading={'Our Tech'} />
+      <Banner heading={techHeading} subheading={techSubheading} />
       <Container>
         <TechCard
-        heading={'Research'}
-        subheading={'Differentiate your research & enable collaboration'}
+        heading={techCard1Title}
+        subheading={techCard1Paragraph}
         />
         <Spacer size={'md'} />
         <TechCard
-        heading={'HPC'}
-        subheading={'Enable the latest in high performance computing'}
+        heading={techCard2Title}
+        subheading={techCard2Paragraph}
         />
         <Spacer size={'md'} />
         <TechCard
-        heading={'Visualization'}
-        subheading={'Speed the visualization of your data'}
+        heading={techCard3Title}
+        subheading={techCard3Paragraph}
         />
         <Spacer size={'md'} />
         <TechCard
-        heading={'Storage'}
-        subheading={'Move petabyte sized files faster with less latency'}
+        heading={techCard4Title}
+        subheading={techCard4Paragraph}
         />
       </Container>
     </div>

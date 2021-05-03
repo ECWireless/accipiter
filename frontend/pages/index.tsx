@@ -12,11 +12,21 @@ import {
 
 const Home: React.FC = ({ homeProps }: { [key: string]: any} ) => {
   const {
-    subheading,
-    subheadingExtraText1,
-    subheadingExtraText2,
-    subheadingExtraText3,
-    subheadingExtraText4,
+		heroSubheading,
+    heroAnimatedText1,
+    heroAnimatedText2,
+    heroAnimatedText3,
+    heroAnimatedText4,
+    techHeading,
+    techSubheading,
+    techCard1Title,
+    techCard1Paragraph,
+    techCard2Title,
+    techCard2Paragraph,
+    techCard3Title,
+    techCard3Paragraph,
+    techCard4Title,
+    techCard4Paragraph,
    } = homeProps
 
   return (
@@ -27,13 +37,24 @@ const Home: React.FC = ({ homeProps }: { [key: string]: any} ) => {
 
       <main>
         <Hero
-          subheading={subheading}
-          subheadingExtraText1={subheadingExtraText1}
-          subheadingExtraText2={subheadingExtraText2}
-          subheadingExtraText3={subheadingExtraText3}
-          subheadingExtraText4={subheadingExtraText4}
+          heroSubheading={heroSubheading}
+          heroAnimatedText1={heroAnimatedText1}
+          heroAnimatedText2={heroAnimatedText2}
+          heroAnimatedText3={heroAnimatedText3}
+          heroAnimatedText4={heroAnimatedText4}
         />
-        <OurTech />
+        <OurTech
+          techHeading={techHeading}
+          techSubheading={techSubheading}
+          techCard1Title={techCard1Title}
+          techCard1Paragraph={techCard1Paragraph}
+          techCard2Title={techCard2Title}
+          techCard2Paragraph={techCard2Paragraph}
+          techCard3Title={techCard3Title}
+          techCard3Paragraph={techCard3Paragraph}
+          techCard4Title={techCard4Title}
+          techCard4Paragraph={techCard4Paragraph}
+        />
         <Products />
         <Partners />
         <Contact />
@@ -44,11 +65,21 @@ const Home: React.FC = ({ homeProps }: { [key: string]: any} ) => {
 
 export const getServerSideProps: GetServerSideProps = async () => {
   const homeProps = await client.fetch(`*[_type == "home" && slug.current == "v1"][0] {
-		subheading,
-    subheadingExtraText1,
-    subheadingExtraText2,
-    subheadingExtraText3,
-    subheadingExtraText4,
+		heroSubheading,
+    heroAnimatedText1,
+    heroAnimatedText2,
+    heroAnimatedText3,
+    heroAnimatedText4,
+    techHeading,
+    techSubheading,
+    techCard1Title,
+    techCard1Paragraph,
+    techCard2Title,
+    techCard2Paragraph,
+    techCard3Title,
+    techCard3Paragraph,
+    techCard4Title,
+    techCard4Paragraph,
 	}`)
 	return {
 	  props: { homeProps },

@@ -97,6 +97,7 @@ export const H3 = styled.h3<ITypograhpy>`
 	`}
 	${media.xl`
 		font-size: 4rem;
+		line-height: 30px;
 	`}
 	${props => props.align && css`
 		text-align: ${props.align};

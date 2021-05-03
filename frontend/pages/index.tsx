@@ -1,4 +1,6 @@
 import Head from 'next/head'
+import { GetServerSideProps } from 'next'
+import client from 'client';
 
 import {
   Hero,
@@ -6,9 +8,17 @@ import {
   Products,
   Partners,
   Contact
- } from 'views/home';
+} from 'views/home';
 
-const Home: React.FC = () => {
+const Home: React.FC = ({ homeProps }: { [key: string]: any} ) => {
+  const {
+    subheading,
+    subheadingExtraText1,
+    subheadingExtraText2,
+    subheadingExtraText3,
+    subheadingExtraText4,
+   } = homeProps
+
   return (
     <div>
       <Head>
@@ -16,7 +26,13 @@ const Home: React.FC = () => {
       </Head>
 
       <main>
-        <Hero />
+        <Hero
+          subheading={subheading}
+          subheadingExtraText1={subheadingExtraText1}
+          subheadingExtraText2={subheadingExtraText2}
+          subheadingExtraText3={subheadingExtraText3}
+          subheadingExtraText4={subheadingExtraText4}
+        />
         <OurTech />
         <Products />
         <Partners />
@@ -24,6 +40,19 @@ const Home: React.FC = () => {
       </main>
     </div>
   )
+}
+
+export const getServerSideProps: GetServerSideProps = async () => {
+  const homeProps = await client.fetch(`*[_type == "home" && slug.current == "v1"][0] {
+		subheading,
+    subheadingExtraText1,
+    subheadingExtraText2,
+    subheadingExtraText3,
+    subheadingExtraText4,
+	}`)
+	return {
+	  props: { homeProps },
+	}
 }
 
 export default Home

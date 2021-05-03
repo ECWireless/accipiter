@@ -8,7 +8,21 @@ import { Container, Flex } from 'components/Containers'
 import Spacer from 'components/Spacer'
 import { H3 } from 'components/Typography'
 
-export const Hero: React.FC = () => {
+interface IHero {
+  subheading: string;
+  subheadingExtraText1: string;
+  subheadingExtraText2: string;
+  subheadingExtraText3: string;
+  subheadingExtraText4: string;
+}
+
+export const Hero: React.FC<IHero> = ({
+  subheading,
+  subheadingExtraText1,
+  subheadingExtraText2,
+  subheadingExtraText3,
+  subheadingExtraText4,
+}) => {
   return (
     <StyledHeroContainer>
       <StyledHeroVideo autoPlay loop muted playsInline>
@@ -19,10 +33,10 @@ export const Hero: React.FC = () => {
           <StyledLogo src="/AccipiterLogo2.png" alt="Coratives Logo"/>
           <Spacer size={'md'} />
           <Container>
-            <H3 align={'center'} bold={true} color={colors.white}>A New Direction in Computer Networking for...</H3>
+            <H3 align={'center'} bold={true} color={colors.white}>{subheading}</H3>
             <Spacer size={'xs'} />
             <H3 align={'center'} bold={true} color={colors.blue}><ReactRotatingText
-                items={['Machine Learning', 'Artificial Intelligence', 'Entertainment', 'HPC']}
+                items={[subheadingExtraText1, subheadingExtraText2, subheadingExtraText3, subheadingExtraText4]}
             /></H3>
           </Container>
         </StyledTextContainer>

@@ -64,7 +64,7 @@ export default function Navigation({ setSidebar }) {
 
 const StyledMenuContainer = styled.div`
   right: ${GU * 4}px;
-  position: absolute;
+  position: fixed;
   top: ${GU * 4}px;
   z-index: 103;
 
@@ -82,10 +82,14 @@ const StyledHeader = styled.header`
   box-sizing: border-box;
   height: ${GU * 20}px;
   left: 50%;
-  position: sticky;
+  position: fixed;
   top: 0;
   transition: all .3s ease;
   z-index: 100;
+  
+  ${media.sm`
+    transform: translateX(-50%);
+  `}
 `
 
 const StyledNav = styled.nav`

@@ -8,7 +8,7 @@ import {
   Contact,
 } from './components';
 
-const  Home: React.FC = () => {
+const Home: React.FC = () => {
   return (
     <div>
       <Head>

@@ -1,5 +1,4 @@
-
-const Careers = (): JSX.Element => {
+const Careers: React.FC = () => {
   return (
     <div>
       Careers

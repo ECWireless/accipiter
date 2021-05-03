@@ -1,4 +1,4 @@
-const OurTech = (): JSX.Element => {
+const OurTech: React.FC = () => {
   return (
     <div>
       Our Tech

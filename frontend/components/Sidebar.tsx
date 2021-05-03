@@ -58,12 +58,12 @@ interface IStyledSidebarContainer {
 const StyledSidebarContainer = styled.div<IStyledSidebarContainer>`
 	position: fixed;
 	top: 0;
-	left: 0;
+	right: 0;
 	width: ${GU * 63}px;
 	height: 100%;
 	background: ${colors.white};
 	z-index: 1000;
-	transform: translateX(-30rem);
+	transform: translateX(30rem);
   transition: all .5s ease;
 
   ${media.md`
@@ -153,10 +153,10 @@ const StyledSidebarOption = styled.div<IStyledSidebarOption>`
   transition: all .3s ease;
 
   ${media.md`
-  height: ${GU * 18}px;
+    height: ${GU * 18}px;
   `}
   ${media.xl`
-  height: ${GU * 19}px;
+    height: ${GU * 19}px;
   `}
   
   &:hover {

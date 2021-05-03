@@ -1,4 +1,3 @@
-
 const Login = (): JSX.Element => {
   return (
     <div>
@@ -6,6 +5,6 @@ const Login = (): JSX.Element => {
     </div>
   )
 }
-
-export default Login
   
+export default Login
+    

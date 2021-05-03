@@ -1,4 +1,3 @@
-
 const OurTech = (): JSX.Element => {
   return (
     <div>
@@ -6,5 +5,6 @@ const OurTech = (): JSX.Element => {
     </div>
   )
 }
-
+  
 export default OurTech
+  

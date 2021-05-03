@@ -6,6 +6,6 @@ const Careers = (): JSX.Element => {
     </div>
   )
 }
-  
+    
 export default Careers
-  
+    

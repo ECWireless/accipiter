@@ -1,5 +1,5 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
 import { colors, GU } from 'components/theme'
@@ -10,15 +10,15 @@ import { Flex } from 'components/Containers'
 import { SandwichMenu } from 'components/SandwichMenu'
 
 export default function Navigation({ setSidebar }) {
-  const [shadow, setShadow] = React.useState(false)
+  const [background, setBackground] = React.useState(false)
   const router = useRouter()
 
   React.useEffect(() => {
     window.addEventListener('scroll', function() {
       if (window.pageYOffset === 0) {
-        setShadow(false)
+        setBackground(false)
       } else {
-        setShadow(true)
+        setBackground(true)
       }
     });
   }, [])
@@ -26,7 +26,7 @@ export default function Navigation({ setSidebar }) {
 
       
   return (
-    <StyledHeader>
+    <StyledHeader background={background}>
       <StyledMenuContainer>
         <SandwichMenu setSidebar={setSidebar} />
       </StyledMenuContainer>
@@ -78,17 +78,27 @@ const StyledMenuContainer = styled.div`
   `}
 `
 
-const StyledHeader = styled.header`
+interface IStyledHeader {
+  background: boolean;
+}
+
+const StyledHeader = styled.header<IStyledHeader>`
+  background: transparent;
   box-sizing: border-box;
   height: ${GU * 20}px;
   left: 50%;
   position: fixed;
   top: 0;
   transition: all .3s ease;
+  width: 100%;
   z-index: 100;
   
   ${media.sm`
     transform: translateX(-50%);
+  `}
+
+  ${props => props.background && css`
+    background: ${colors.grey};
   `}
 `
 

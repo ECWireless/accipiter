@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { Fade } from 'react-reveal'
 import ReactRotatingText from 'react-rotating-text'
 
 import { media } from 'components/breakpoints'
@@ -30,7 +31,9 @@ export const Hero: React.FC<IHero> = ({
       </StyledHeroVideo>
       <StyledInnerContainer>
         <StyledTextContainer>
-          <StyledLogo src="/AccipiterLogo2.png" alt="Coratives Logo"/>
+          <Fade ssrFadeout>
+            <StyledLogo src="/AccipiterLogo2.png" alt="Coratives Logo"/>
+          </Fade>
           <Spacer size={'md'} />
           <Container>
             <H3 align={'center'} bold={true} color={colors.white}>{heroSubheading}</H3>

@@ -92,6 +92,88 @@ export default {
       title: 'Tech Card 4 Paragraph',
       type: 'string',
     },
+    {
+      name: 'productsHeading',
+      title: 'Products Heading',
+      type: 'string',
+    },
+    {
+      name: 'productsSubheading',
+      title: 'Products Subheading',
+      type: 'string',
+    },
+    {
+      name: 'products1Image',
+      title: 'Product 1 Image',
+      type: 'image',
+      options: {
+        hotspot: true,
+      },
+    },
+    {
+      name: 'products1Name',
+      title: 'Products 1 Name',
+      type: 'string',
+    },
+    {
+      name: 'products1Description',
+      title: 'Products 1 Description',
+      type: 'string',
+    },
+    {
+      name: 'products2Image',
+      title: 'Product 2 Image',
+      type: 'image',
+      options: {
+        hotspot: true,
+      },
+    },
+    {
+      name: 'products2Name',
+      title: 'Products 2 Name',
+      type: 'string',
+    },
+    {
+      name: 'products2Description',
+      title: 'Products 2 Description',
+      type: 'string',
+    },
+    {
+      name: 'products3Image',
+      title: 'Product 3 Image',
+      type: 'image',
+      options: {
+        hotspot: true,
+      },
+    },
+    {
+      name: 'products3Name',
+      title: 'Products 3 Name',
+      type: 'string',
+    },
+    {
+      name: 'products3Description',
+      title: 'Products 3 Description',
+      type: 'string',
+    },
+    {
+      name: 'products4Image',
+      title: 'Product 4 Image',
+      type: 'image',
+      options: {
+        hotspot: true,
+      },
+    },
+    {
+      name: 'products4Name',
+      title: 'Products 4 Name',
+      type: 'string',
+    },
+    {
+      name: 'products4Description',
+      title: 'Products 4 Description',
+      type: 'string',
+    },
   ],
 
   preview: {

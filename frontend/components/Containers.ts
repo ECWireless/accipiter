@@ -30,6 +30,7 @@ interface IFlex {
   direction?: 'row' | 'column';
   full?: boolean;
   justify?: 'flex-start' | 'center' | 'flex-end' | 'space-around' | 'space-between';
+  wrap?: 'true';
 }
 
 export const Flex = styled.div<IFlex>`
@@ -54,5 +55,11 @@ export const Flex = styled.div<IFlex>`
     props.justify &&
     css`
       justify-content: ${props.justify};
+    `}
+
+  ${(props) =>
+    props.wrap === 'true' &&
+    css`
+      flex-wrap: wrap;
     `}
 `;

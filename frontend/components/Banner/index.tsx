@@ -62,36 +62,6 @@ const StyledBannerContainer = styled.div`
   `}
 `
 
-const StyledLeftContainer = styled.div`
-  grid-column: 1 / 3;
-  ${media.xs`
-    grid-column: 1 / 2;
-  `}
-`
-
-const StyledMidContainer = styled.div`
-  grid-column: 2 / 3;
-  text-align: center;
-  height: 15rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  ${media.xs`
-    height: auto;
-  `}
-`
-
-const StyledRightContainer = styled.div`
-  grid-column: 2 / 4;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  justify-content: flex-end;
-  ${media.xs`
-    grid-column: 3 / 4;
-  `}
-`
-
 const StyledLine = styled.div`
   background: ${colors.green};
   height: ${GU * 15}px;

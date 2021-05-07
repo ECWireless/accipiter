@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import { GetServerSideProps } from 'next'
+import imageUrlBuilder from '@sanity/image-url'
 import client from 'client';
 
 import {
@@ -27,6 +28,20 @@ const Home: React.FC = ({ homeProps }: { [key: string]: any} ) => {
     techCard3Paragraph,
     techCard4Title,
     techCard4Paragraph,
+    productsHeading,
+    productsSubheading,
+    products1Image,
+    products1Name,
+    products1Description,
+    products2Image,
+    products2Name,
+    products2Description,
+    products3Image,
+    products3Name,
+    products3Description,
+    products4Image,
+    products4Name,
+    products4Description,
    } = homeProps
 
   return (
@@ -55,12 +70,31 @@ const Home: React.FC = ({ homeProps }: { [key: string]: any} ) => {
           techCard4Title={techCard4Title}
           techCard4Paragraph={techCard4Paragraph}
         />
-        <Products />
+        <Products
+          productsHeading={productsHeading}
+          productsSubheading={productsSubheading}
+          products1Image={urlFor(products1Image)}
+          products1Name={products1Name}
+          products1Description={products1Description}
+          products2Image={urlFor(products2Image)}
+          products2Name={products2Name}
+          products2Description={products2Description}
+          products3Image={urlFor(products3Image)}
+          products3Name={products3Name}
+          products3Description={products3Description}
+          products4Image={urlFor(products4Image)}
+          products4Name={products4Name}
+          products4Description={products4Description}
+        />
         <Partners />
         <Contact />
       </main>
     </div>
   )
+}
+
+function urlFor(source) {
+  return imageUrlBuilder(client).image(source)
 }
 
 export const getServerSideProps: GetServerSideProps = async () => {
@@ -80,6 +114,20 @@ export const getServerSideProps: GetServerSideProps = async () => {
     techCard3Paragraph,
     techCard4Title,
     techCard4Paragraph,
+    productsHeading,
+    productsSubheading,
+    products1Image,
+    products1Name,
+    products1Description,
+    products2Image,
+    products2Name,
+    products2Description,
+    products3Image,
+    products3Name,
+    products3Description,
+    products4Image,
+    products4Name,
+    products4Description,
 	}`)
 	return {
 	  props: { homeProps },

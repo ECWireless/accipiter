@@ -64,6 +64,7 @@ export const OurTech: React.FC<IOurTech> = ({
             subheading={techCard4Paragraph}
             />
         </Fade>
+        <Spacer size={'lg'} />
       </Container>
     </div>
   )

@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import { media } from 'components/breakpoints'
 import { colors, GU } from 'components/theme'
 
-import { Container, Flex } from 'components/Containers'
+import { Container } from 'components/Containers'
 import Spacer from 'components/Spacer'
 import { P5 } from 'components/Typography'
 

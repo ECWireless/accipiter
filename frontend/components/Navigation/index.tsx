@@ -83,7 +83,6 @@ interface IStyledHeader {
 }
 
 const StyledHeader = styled.header<IStyledHeader>`
-  background: transparent;
   box-sizing: border-box;
   height: ${GU * 20}px;
   left: 50%;
@@ -94,11 +93,14 @@ const StyledHeader = styled.header<IStyledHeader>`
   z-index: 100;
   
   ${media.sm`
+    background: transparent;
     transform: translateX(-50%);
   `}
 
   ${props => props.background && css`
-    background: ${colors.grey};
+    ${media.sm`
+      background: ${colors.grey};
+    `}
   `}
 `
 

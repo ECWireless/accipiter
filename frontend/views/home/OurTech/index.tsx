@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Fade } from 'react-reveal'
+import { Fade } from 'react-reveal';
 import { media } from 'components/breakpoints';
 import { colors, GU } from 'components/theme';
 
@@ -37,28 +37,28 @@ export const OurTech: React.FC<IOurTech> = ({
     <div style={{ borderTop: `1px solid ${colors.green}`}}>
       <Banner heading={techHeading} subheading={techSubheading} />
       <Container>
-        <Fade bottom ssrFadeout delay={100} >
+        <Fade bottom ssrFadeout>
           <TechCard
           heading={techCard1Title}
           subheading={techCard1Paragraph}
           />
         </Fade>
         <Spacer size={'md'} />
-        <Fade bottom ssrFadeout delay={200} >
+        <Fade bottom ssrFadeout delay={100}>
           <TechCard
             heading={techCard2Title}
             subheading={techCard2Paragraph}
           />
         </Fade>
         <Spacer size={'md'} />
-        <Fade bottom ssrFadeout delay={300} >
+        <Fade bottom ssrFadeout delay={200}>
           <TechCard
             heading={techCard3Title}
             subheading={techCard3Paragraph}
           />
         </Fade>
         <Spacer size={'md'} />
-        <Fade bottom ssrFadeout delay={400} >
+        <Fade bottom ssrFadeout delay={300}>
           <TechCard
             heading={techCard4Title}
             subheading={techCard4Paragraph}

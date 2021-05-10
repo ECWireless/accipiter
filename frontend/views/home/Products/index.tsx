@@ -46,28 +46,36 @@ export const Products: React.FC<IProducts> = ({
       <Banner heading={productsHeading} subheading={productsSubheading} />
       <Container>
         <Flex align={'center'} justify={'space-between'} wrap={'true'}>
-          <ProductCard
-            image={products1Image}
-            heading={products1Name}
-            subheading={products1Description}
-          />
-          <ProductCard
-            image={products2Image}
-            heading={products2Name}
-            subheading={products2Description}
-          />
+          <Fade bottom ssrFadeout>
+            <ProductCard
+              image={products1Image}
+              heading={products1Name}
+              subheading={products1Description}
+            />
+          </Fade>
+          <Fade bottom ssrFadeout delay={100}>
+            <ProductCard
+              image={products2Image}
+              heading={products2Name}
+              subheading={products2Description}
+            />
+          </Fade>
         </Flex>
         <Flex align={'center'} justify={'space-between'} wrap={'true'}>
-          <ProductCard
-            image={products3Image}
-            heading={products3Name}
-            subheading={products3Description}
-          />
-          <ProductCard
-            image={products4Image}
-            heading={products4Name}
-            subheading={products4Description}
-          />
+          <Fade bottom ssrFadeout delay={200}>
+            <ProductCard
+              image={products3Image}
+              heading={products3Name}
+              subheading={products3Description}
+            />
+          </Fade>
+          <Fade bottom ssrFadeout delay={300}>
+            <ProductCard
+              image={products4Image}
+              heading={products4Name}
+              subheading={products4Description}
+            />
+          </Fade>
         </Flex>
       </Container>
     </div>

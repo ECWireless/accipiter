@@ -174,6 +174,91 @@ export default {
       title: 'Products 4 Description',
       type: 'string',
     },
+    {
+      name: 'partnersHeading',
+      title: 'Partners Heading',
+      type: 'string',
+    },
+    {
+      name: 'partnersLogo1',
+      title: 'Partners Logo 1',
+      type: 'image',
+      options: {
+        hotspot: true,
+      },
+    },
+    {
+      name: 'partnersLogo2',
+      title: 'Partners Logo 2',
+      type: 'image',
+      options: {
+        hotspot: true,
+      },
+    },
+    {
+      name: 'partnersLogo3',
+      title: 'Partners Logo 3',
+      type: 'image',
+      options: {
+        hotspot: true,
+      },
+    },
+    {
+      name: 'partnersLogo4',
+      title: 'Partners Logo 4',
+      type: 'image',
+      options: {
+        hotspot: true,
+      },
+    },
+    {
+      name: 'partnersLogo5',
+      title: 'Partners Logo 5',
+      type: 'image',
+      options: {
+        hotspot: true,
+      },
+    },
+    {
+      name: 'partnersLogo6',
+      title: 'Partners Logo 6',
+      type: 'image',
+      options: {
+        hotspot: true,
+      },
+    },
+    {
+      name: 'partnersLogo7',
+      title: 'Partners Logo 7',
+      type: 'image',
+      options: {
+        hotspot: true,
+      },
+    },
+    {
+      name: 'partnersLogo8',
+      title: 'Partners Logo 8',
+      type: 'image',
+      options: {
+        hotspot: true,
+      },
+    },
+    {
+      name: 'partnersLogo9',
+      title: 'Partners Logo 9',
+      type: 'image',
+      options: {
+        hotspot: true,
+      },
+    },
+    {
+      name: 'partnersLogo10',
+      title: 'Partners Logo 10',
+      type: 'image',
+      options: {
+        hotspot: true,
+      },
+    },
   ],
 
   preview: {

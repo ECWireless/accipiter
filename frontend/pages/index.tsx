@@ -42,6 +42,17 @@ const Home: React.FC = ({ homeProps }: { [key: string]: any} ) => {
     products4Image,
     products4Name,
     products4Description,
+    partnersHeading,
+    partnersLogo1,
+    partnersLogo2,
+    partnersLogo3,
+    partnersLogo4,
+    partnersLogo5,
+    partnersLogo6,
+    partnersLogo7,
+    partnersLogo8,
+    partnersLogo9,
+    partnersLogo10,
    } = homeProps
 
   return (
@@ -86,7 +97,19 @@ const Home: React.FC = ({ homeProps }: { [key: string]: any} ) => {
           products4Name={products4Name}
           products4Description={products4Description}
         />
-        <Partners />
+        <Partners
+          partnersHeading={partnersHeading}
+          partnersLogo1={urlFor(partnersLogo1)}
+          partnersLogo2={urlFor(partnersLogo2)}
+          partnersLogo3={urlFor(partnersLogo3)}
+          partnersLogo4={urlFor(partnersLogo4)}
+          partnersLogo5={urlFor(partnersLogo5)}
+          partnersLogo6={urlFor(partnersLogo6)}
+          partnersLogo7={urlFor(partnersLogo7)}
+          partnersLogo8={urlFor(partnersLogo8)}
+          partnersLogo9={urlFor(partnersLogo9)}
+          partnersLogo10={urlFor(partnersLogo10)}
+        />
         <Contact />
       </main>
     </div>
@@ -128,6 +151,17 @@ export const getServerSideProps: GetServerSideProps = async () => {
     products4Image,
     products4Name,
     products4Description,
+    partnersHeading,
+    partnersLogo1,
+    partnersLogo2,
+    partnersLogo3,
+    partnersLogo4,
+    partnersLogo5,
+    partnersLogo6,
+    partnersLogo7,
+    partnersLogo8,
+    partnersLogo9,
+    partnersLogo10,
 	}`)
 	return {
 	  props: { homeProps },

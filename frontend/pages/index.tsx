@@ -53,6 +53,8 @@ const Home: React.FC = ({ homeProps }: { [key: string]: any} ) => {
     partnersLogo8,
     partnersLogo9,
     partnersLogo10,
+    contactHeading,
+    contactSubheading,
    } = homeProps
 
   return (
@@ -110,7 +112,10 @@ const Home: React.FC = ({ homeProps }: { [key: string]: any} ) => {
           partnersLogo9={urlFor(partnersLogo9)}
           partnersLogo10={urlFor(partnersLogo10)}
         />
-        <Contact />
+        <Contact
+          contactHeading={contactHeading}
+          contactSubheading={contactSubheading}
+        />
       </main>
     </div>
   )
@@ -162,6 +167,8 @@ export const getServerSideProps: GetServerSideProps = async () => {
     partnersLogo8,
     partnersLogo9,
     partnersLogo10,
+    contactHeading,
+    contactSubheading,
 	}`)
 	return {
 	  props: { homeProps },

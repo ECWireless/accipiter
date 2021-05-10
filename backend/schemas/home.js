@@ -259,6 +259,16 @@ export default {
         hotspot: true,
       },
     },
+    {
+      name: 'contactHeading',
+      title: 'Contact Heading',
+      type: 'string',
+    },
+    {
+      name: 'contactSubheading',
+      title: 'Contact Subheading',
+      type: 'string',
+    },
   ],
 
   preview: {

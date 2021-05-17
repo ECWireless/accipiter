@@ -9,6 +9,7 @@ import { H4, P2 } from 'components/Typography';
 import Spacer from 'components/Spacer';
 
 interface IOurTech {
+  topLine: boolean;
   techHeading: string;
   techSubheading: string;
   techCard1Title: string;
@@ -22,6 +23,7 @@ interface IOurTech {
 }
 
 export const OurTech: React.FC<IOurTech> = ({
+  topLine,
   techHeading,
   techSubheading,
   techCard1Title,
@@ -34,7 +36,7 @@ export const OurTech: React.FC<IOurTech> = ({
   techCard4Paragraph,
 }) => {
   return (
-    <div style={{ borderTop: `1px solid ${colors.green}`}}>
+    <div style={{ borderTop: topLine ? `1px solid ${colors.green}` : 'none'}}>
       <Banner heading={techHeading} subheading={techSubheading} />
       <Container>
         <Fade bottom ssrFadeout>

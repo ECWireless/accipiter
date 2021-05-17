@@ -1,13 +1,13 @@
 import styled from 'styled-components'
 import { Fade } from 'react-reveal'
-import ReactRotatingText from 'react-rotating-text'
+import TextLoop from "react-text-loop";
 
 import { media } from 'components/breakpoints'
 import { colors, GU } from 'components/theme'
 
 import { Container, Flex } from 'components/Containers'
 import Spacer from 'components/Spacer'
-import { H3 } from 'components/Typography'
+import { H3, H4 } from 'components/Typography'
 
 interface IHero {
   heroSubheading: string;
@@ -37,10 +37,51 @@ export const Hero: React.FC<IHero> = ({
           <Spacer size={'md'} />
           <Container>
             <H3 align={'center'} bold={true} color={colors.white}>{heroSubheading}</H3>
-            <Spacer size={'xs'} />
-            <H3 align={'center'} bold={true} color={colors.blue}><ReactRotatingText
-                items={[heroAnimatedText1, heroAnimatedText2, heroAnimatedText3, heroAnimatedText4]}
-            /></H3>
+            <Spacer size={'sm'} />
+            <Flex justify={'center'}>
+              <TextLoop interval={2000} fade={true}>
+                <H3
+                  style={{
+                    width: `${GU * 75}px`,
+                    textAlign: 'center'
+                  }}
+                  bold={true}
+                  color={colors.blue}
+                >
+                  {heroAnimatedText1}
+                </H3>
+                <H4
+                  style={{
+                    width: `${GU * 75}px`,
+                    textAlign: 'center'
+                  }}
+                  bold={true}
+                  color={colors.blue}
+                >
+                  {heroAnimatedText2}
+                </H4>
+                <H3
+                  style={{
+                    width: `${GU * 75}px`,
+                    textAlign: 'center'
+                  }}
+                  bold={true}
+                  color={colors.blue}
+                >
+                  {heroAnimatedText3}
+                </H3>
+                <H3
+                  style={{
+                    width: `${GU * 75}px`,
+                    textAlign: 'center'
+                  }}
+                  bold={true}
+                  color={colors.blue}
+                >
+                  {heroAnimatedText4}
+                </H3>
+              </TextLoop>
+            </Flex>
           </Container>
         </StyledTextContainer>
       </StyledInnerContainer>

@@ -5,22 +5,44 @@ import client from 'client';
 import { JobSpecification } from 'views/careers'
 import Spacer from 'components/Spacer'
 
-const Careers: React.FC = () => {
+const Careers: React.FC = ({ careersProps }: { [key: string]: any} ) => {
+  const {
+    heading,
+		subheading,
+    positionTitle,
+    positionDescription,
+   } = careersProps
+
   return (
     <div>
       <Head>
-        <title>Accipiter Systems | United States</title>
+        <title>Careers | Accipiter Systems</title>
       </Head>
       <main>
         <Spacer size={'md'} />
         <JobSpecification
-          jobSpecificationHeading={'Careers'}
-          jobSpecificationSubheading={'Apply for a position'}
+          heading={heading}
+          subheading={subheading}
+          positionTitle={positionTitle}
+          positionDescription={positionDescription}
         />
         <Spacer size={'md'} />
       </main>
     </div>
   )
+}
+
+
+export const getServerSideProps: GetServerSideProps = async () => {
+  const careersProps = await client.fetch(`*[_type == "careers" && slug.current == "v1"][0] {
+    heading,
+		subheading,
+    positionTitle,
+    positionDescription,
+	}`)
+	return {
+	  props: { careersProps },
+	}
 }
     
 export default Careers

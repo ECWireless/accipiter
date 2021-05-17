@@ -72,6 +72,7 @@ const Home: React.FC = ({ homeProps }: { [key: string]: any} ) => {
           heroAnimatedText4={heroAnimatedText4}
         />
         <OurTech
+          topLine={false}
           techHeading={techHeading}
           techSubheading={techSubheading}
           techCard1Title={techCard1Title}

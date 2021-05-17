@@ -27,7 +27,7 @@ export const Hero: React.FC<IHero> = ({
   return (
     <StyledHeroContainer>
       <StyledHeroVideo autoPlay loop muted playsInline>
-        <source src='/videos/hero_option_2.mp4' type="video/mp4" />
+        <source src='/videos/hero.mp4' type="video/mp4" />
       </StyledHeroVideo>
       <StyledInnerContainer>
         <StyledTextContainer>

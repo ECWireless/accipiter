@@ -5,7 +5,7 @@ import { GU } from 'components/theme';
 
 import Banner from 'components/Banner';
 import { Container } from 'components/Containers';
-import { H3, P2, P2Block } from 'components/Typography';
+import { H3, P2Block } from 'components/Typography';
 import Spacer from 'components/Spacer';
 
 interface IJobSpecification {

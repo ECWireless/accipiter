@@ -1,6 +1,6 @@
-import styled from 'styled-components'
+import React from 'react';
+import styled, { keyframes } from 'styled-components'
 import { Fade } from 'react-reveal'
-import TextLoop from "react-text-loop";
 
 import { media } from 'components/breakpoints'
 import { colors, GU } from 'components/theme'
@@ -17,6 +17,8 @@ interface IHero {
   heroAnimatedText4: string;
 }
 
+const words = ['words1', 'words2', 'words3']
+
 export const Hero: React.FC<IHero> = ({
   heroSubheading,
   heroAnimatedText1,
@@ -24,6 +26,15 @@ export const Hero: React.FC<IHero> = ({
   heroAnimatedText3,
   heroAnimatedText4,
 }) => {
+  const [index, setIndex] = React.useState<number>(0);
+
+  React.useEffect(() => {
+    const interval = setInterval(() => {
+      setIndex((state) => (state + 1) % 4);
+    }, 4000);
+    return () => clearInterval(interval);
+  }, [])
+
   return (
     <StyledHeroContainer>
       <StyledHeroVideo autoPlay loop muted playsInline>
@@ -36,51 +47,15 @@ export const Hero: React.FC<IHero> = ({
           </Fade>
           <Spacer size={'md'} />
           <Container>
-            <H3 align={'center'} bold={true} color={colors.white}>{heroSubheading}</H3>
+            <Flex justify={'center'}>
+              <H3 align={'center'} bold={true} color={colors.white}>{heroSubheading}</H3>
+            </Flex>
             <Spacer size={'sm'} />
             <Flex justify={'center'}>
-              <TextLoop interval={2000} fade={true}>
-                <H3
-                  style={{
-                    width: `${GU * 75}px`,
-                    textAlign: 'center'
-                  }}
-                  bold={true}
-                  color={colors.blue}
-                >
-                  {heroAnimatedText1}
-                </H3>
-                <H4
-                  style={{
-                    width: `${GU * 75}px`,
-                    textAlign: 'center'
-                  }}
-                  bold={true}
-                  color={colors.blue}
-                >
-                  {heroAnimatedText2}
-                </H4>
-                <H3
-                  style={{
-                    width: `${GU * 75}px`,
-                    textAlign: 'center'
-                  }}
-                  bold={true}
-                  color={colors.blue}
-                >
-                  {heroAnimatedText3}
-                </H3>
-                <H3
-                  style={{
-                    width: `${GU * 75}px`,
-                    textAlign: 'center'
-                  }}
-                  bold={true}
-                  color={colors.blue}
-                >
-                  {heroAnimatedText4}
-                </H3>
-              </TextLoop>
+              {index == 0 && <WordLoop bold={true} color={colors.blue}>{heroAnimatedText1}</WordLoop>}
+              {index == 1 && <WordLoop bold={true} color={colors.blue}>{heroAnimatedText2}</WordLoop>}
+              {index == 2 && <WordLoop bold={true} color={colors.blue}>{heroAnimatedText3}</WordLoop>}
+              {index == 3 && <WordLoop bold={true} color={colors.blue}>{heroAnimatedText4}</WordLoop>}
             </Flex>
           </Container>
         </StyledTextContainer>
@@ -88,6 +63,25 @@ export const Hero: React.FC<IHero> = ({
     </StyledHeroContainer>
   )
 }
+
+const fadeinAnimation = keyframes`
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+`;
+
+const WordLoop = styled(H3)`
+  opacity: 0;
+  animation-name: ${fadeinAnimation};
+  animation-iteration-count: infinite;
+  animation-duration: 4s;
+`;
 
 const StyledHeroContainer = styled.div`
   width: 100%;

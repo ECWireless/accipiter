@@ -12,7 +12,8 @@ export const Button = styled.button<IButton>`
   border: none;
   color: ${colors.black};
   font-family: 'Nunito Sans', sans-serif;
-  padding: ${GU * 2}px ${GU * 5}px;
+  font-size: 1.8rem;
+  padding: ${GU * 2}px ${GU * 6}px;
   transition: all 0.3s ease;
 
   &:hover {
@@ -22,8 +23,8 @@ export const Button = styled.button<IButton>`
   }
 
   ${media.xl`
-    font-size: 2rem;
-    padding: ${GU * 2}px ${GU * 8}px;
+    font-size: 2.2rem;
+    padding: ${GU * 2}px ${GU * 10}px;
   `}
 
   ${props => props.uppercase === 'true' && css`

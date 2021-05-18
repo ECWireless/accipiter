@@ -1,4 +1,5 @@
 import React from 'react';
+import { colors } from 'components/theme';
 
 import {
   StyledContactForm,
@@ -139,7 +140,9 @@ const ContactCard: React.FC = () => {
           please email:
         </P4>
         <Spacer size={'xs'} />
-        <P5 bold>INFORMATION@ACCIPITERSYSTEMS.COM</P5>
+        <a style={{ textDecoration: 'none'}} href="mailto:information@accipitersystems.com">
+          <P5 color={colors.white} bold>INFORMATION@ACCIPITERSYSTEMS.COM</P5>
+        </a>
         <Spacer size={'xs'} />
         <StyledLine />
         <Spacer size={'sm'} />

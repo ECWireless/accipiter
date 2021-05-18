@@ -107,7 +107,7 @@ const StyledHeroVideo = styled.video`
   width: auto;
   position: absolute;
   top: 0;
-  filter: brightness(.5);
+  filter: brightness(.7);
   animation-name: fade;
   animation-duration: 2s;
   animation-iteration-count: 1;

@@ -2,10 +2,25 @@ import styled from 'styled-components';
 import { media } from 'components/breakpoints';
 import { colors, GU } from 'components/theme';
 
+
+import { Flex } from 'components/Containers';
+
 export const StyledColumn = styled.div`
   display: flex;
   flex-direction: column;
-  width: 50%;
+  width: 100%;
+
+  ${media.sm`
+    width: 50%;
+  `}
+`;
+
+export const StyledColumnContainer = styled(Flex)`
+  flex-direction: column;
+
+  ${media.sm`
+    flex-direction: row;
+  `}
 `;
 
 export const StyledContactForm = styled.form`
@@ -54,7 +69,7 @@ export const StyledTextArea = styled.textarea`
   font-family: 'Nunito Sans', sans-serif;
   max-width: 90%;
   margin-top: ${GU * 4}px;
-  min-height: ${GU * 60}px;
+  min-height: ${GU * 55}px;
   outline: none;
   padding: ${GU * 2}px;
   transition: all 0.3s ease;

@@ -3,6 +3,7 @@ import { colors } from 'components/theme';
 
 import {
   StyledColumn,
+  StyledColumnContainer,
   StyledContactForm,
   StyledInput,
   StyledTextArea,
@@ -89,7 +90,7 @@ export const ApplicationForm: React.FC = () => {
   return (
     <Container>
       <StyledContactForm onSubmit={handleOnSubmit}>
-        <Flex style={{ width: '100% '}}>
+        <StyledColumnContainer style={{ width: '100% '}}>
           <StyledColumn>
             <label htmlFor={'name'}>Your Name:</label>
             <StyledInput
@@ -118,6 +119,7 @@ export const ApplicationForm: React.FC = () => {
               value={inputs.phone}
             />
           </StyledColumn>
+          <Spacer size={'md'} />
           <StyledColumn>
             <label htmlFor={'name'}>Introduction:</label>
             <StyledTextArea
@@ -128,23 +130,27 @@ export const ApplicationForm: React.FC = () => {
             />
             <Spacer size={'md'} />
           </StyledColumn>
+        </StyledColumnContainer>
+        <Spacer size={'md'} />
+        <Flex align={'center'} style={{ width: '100%' }}>
+          <Button
+            style={{
+              margin: '0 auto',
+              width: '50%'
+            }}
+            uppercase={'true'}
+            weight={700}
+            type={'submit'}
+            disabled={status.submitting}
+          >
+            {!status.submitting
+              ? !status.submitted
+              ? 'Submit'
+              : 'Submitted'
+              : <Spinner color={colors.grey} />
+            }
+          </Button>
         </Flex>
-        <Spacer size={'lg'} />
-          <div>
-            <Button
-              uppercase={'true'}
-              weight={700}
-              type={'submit'}
-              disabled={status.submitting}
-            >
-              {!status.submitting
-                ? !status.submitted
-                ? 'Submit'
-                : 'Submitted'
-                : <Spinner color={colors.grey} />
-              }
-            </Button>
-          </div>
       </StyledContactForm>
       { snackbar && <Snackbar success={!status.info.error} onCloseSnackbar={onCloseSnackbar} /> }
     </Container>

@@ -2,7 +2,7 @@ import Head from 'next/head'
 import { GetServerSideProps } from 'next'
 import client from 'client';
 
-import { JobSpecification } from 'views/careers'
+import { ApplicationForm, JobSpecification } from 'views/careers'
 import Spacer from 'components/Spacer'
 
 const Careers: React.FC = ({ careersProps }: { [key: string]: any} ) => {
@@ -27,6 +27,8 @@ const Careers: React.FC = ({ careersProps }: { [key: string]: any} ) => {
           positionDescription={positionDescription}
         />
         <Spacer size={'md'} />
+        <ApplicationForm />
+        <Spacer size={'lg'} />
       </main>
     </div>
   )

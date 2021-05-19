@@ -42,6 +42,7 @@ export default Footer;
 const StyledFooterContainer = styled.div`
   background: ${colors.grey};
   position: relative;
+  z-index: -1;
 `;
 
 const StyledLine = styled.div`

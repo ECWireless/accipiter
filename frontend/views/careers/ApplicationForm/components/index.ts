@@ -1,0 +1,48 @@
+import styled from 'styled-components';
+import { media } from 'components/breakpoints';
+import { colors, GU } from 'components/theme';
+
+export const StyledColumn = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+`;
+
+export const StyledContactForm = styled.form`
+  align-items: center;
+  background: ${colors.grey};
+  border: 1px solid ${colors.blue};
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 auto;
+  padding: ${GU * 8}px;
+  width: 100%;
+
+  ${media.sm`
+    padding: ${GU * 15}px;
+  `}
+`;
+
+export const StyledInput = styled.input`
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid ${colors.white};
+  color: ${colors.white};
+  font-family: 'Nunito Sans', sans-serif;
+  height: ${GU * 8}px;
+  margin-top: ${GU}px;
+  outline: none;
+  transition: all 0.3s ease;
+  width: 90%;
+
+  &:hover {
+    border-bottom: 2px solid ${colors.green};
+  }
+
+  &:active,
+  &:focus {
+    border-bottom: 2px solid ${colors.blue};
+  }
+`;

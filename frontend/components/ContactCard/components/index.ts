@@ -107,7 +107,6 @@ export const StyledTextArea = styled.textarea`
   border: 2px solid ${colors.white};
   color: ${colors.white};
   font-family: 'Nunito Sans', sans-serif;
-  height: ${GU * 8}px;
   max-width: 100%;
   margin-top: ${GU * 4}px;
   min-height: ${GU * 20}px;

@@ -1,10 +1,17 @@
 import React from 'react';
 import { colors } from 'components/theme';
 
-import { StyledColumn, StyledContactForm, StyledInput } from './components'
+import {
+  StyledColumn,
+  StyledContactForm,
+  StyledInput,
+  StyledTextArea,
+} from './components'
+import { Button } from 'components/Buttons';
 import { Container, Flex } from 'components/Containers';
+import Snackbar from 'components/Snackbar';
 import Spacer from 'components/Spacer';
-import { H3 } from 'components/Typography';
+import Spinner from 'components/Spinner';
 
 export const ApplicationForm: React.FC = () => {
   const [status, setStatus] = React.useState({
@@ -20,6 +27,33 @@ export const ApplicationForm: React.FC = () => {
     message: '',
   })
 
+  const [snackbar, setSnackbar] = React.useState(false)
+
+  const handleResponse = (status, msg) => {
+    if (status === 200) {
+      setStatus(prev => ({
+        ...prev,
+        submitted: true,
+        submitting: false,
+        info: { error: false, msg: msg }
+      }))
+      setInputs(prev => ({
+        ...prev,
+        name: '',
+        email: '',
+        phone: '',
+        message: '',
+      }))
+      setSnackbar(true)
+    } else {
+      setStatus(prev => ({
+        ...prev,
+        info: { error: true, msg: msg }
+      }))
+      setSnackbar(true)
+    }
+  }
+
   const handleOnChange = e => {
     e.persist()
     setInputs(prev => ({
@@ -34,9 +68,27 @@ export const ApplicationForm: React.FC = () => {
     }))
   }
 
+  const handleOnSubmit = async e => {
+    e.preventDefault()
+    setStatus(prevStatus => ({ ...prevStatus, submitting: true }))
+    const res = await fetch('/api/careers', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(inputs)
+    })
+    const text = await res.text()
+    handleResponse(res.status, text)
+  }
+
+  const onCloseSnackbar = () => {
+    setSnackbar(false)
+  }
+
   return (
     <Container>
-      <StyledContactForm>
+      <StyledContactForm onSubmit={handleOnSubmit}>
         <Flex style={{ width: '100% '}}>
           <StyledColumn>
             <label htmlFor={'name'}>Your Name:</label>
@@ -67,18 +119,34 @@ export const ApplicationForm: React.FC = () => {
             />
           </StyledColumn>
           <StyledColumn>
-            <label htmlFor={'name'}>Your Name:</label>
-            <StyledInput
-              id={'name'}
-              type={'text'}
+            <label htmlFor={'name'}>Introduction:</label>
+            <StyledTextArea
+              id={'message'}
               onChange={handleOnChange}
               required
-              value={inputs.name}
+              value={inputs.message}
             />
             <Spacer size={'md'} />
           </StyledColumn>
         </Flex>
+        <Spacer size={'lg'} />
+          <div>
+            <Button
+              uppercase={'true'}
+              weight={700}
+              type={'submit'}
+              disabled={status.submitting}
+            >
+              {!status.submitting
+                ? !status.submitted
+                ? 'Submit'
+                : 'Submitted'
+                : <Spinner color={colors.grey} />
+              }
+            </Button>
+          </div>
       </StyledContactForm>
+      { snackbar && <Snackbar success={!status.info.error} onCloseSnackbar={onCloseSnackbar} /> }
     </Container>
   )
 }

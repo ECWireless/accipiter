@@ -46,3 +46,26 @@ export const StyledInput = styled.input`
     border-bottom: 2px solid ${colors.blue};
   }
 `;
+
+export const StyledTextArea = styled.textarea`
+  background: transparent;
+  border: 2px solid ${colors.white};
+  color: ${colors.white};
+  font-family: 'Nunito Sans', sans-serif;
+  max-width: 90%;
+  margin-top: ${GU * 4}px;
+  min-height: ${GU * 60}px;
+  outline: none;
+  padding: ${GU * 2}px;
+  transition: all 0.3s ease;
+  width: 90%;
+
+  &:hover {
+    border: 2px solid ${colors.green};
+  }
+
+  &:active,
+  &:focus {
+    border: 2px solid ${colors.blue};
+  }
+`;

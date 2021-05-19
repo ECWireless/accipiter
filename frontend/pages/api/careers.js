@@ -3,7 +3,8 @@ const sgMail = require('@sendgrid/mail')
 export default async function(req, res) {
   sgMail.setApiKey(process.env.SENDGRID_API_KEY)
 
-  const { name, email, phone } = req.body
+  const { name, email, phone, message, file } = req.body
+
 
   const confirmationEmail = {
     to: email,
@@ -16,7 +17,16 @@ export default async function(req, res) {
       <p>Name: ${name}</p>
       <p>Email: ${email}</p>
       <p>Phone: ${phone}</p>
-    `
+      <p>Message: ${message}</p>
+    `,
+    attachments: [
+      {
+        content: file,
+        filename: "attachment.pdf",
+        type: "application/pdf",
+        disposition: "attachment"
+      }
+    ]
   }
 
   const notificationEmail = {
@@ -29,7 +39,16 @@ export default async function(req, res) {
       <p>Name: ${name}</p>
       <p>Email: ${email}</p>
       <p>Phone: ${phone}</p>
-    `
+      <p>Message: ${message}</p>
+    `,
+    attachments: [
+      {
+        content: file,
+        filename: "attachment.pdf",
+        type: "application/pdf",
+        disposition: "attachment"
+      }
+    ]
   }
 
   try {

@@ -40,6 +40,12 @@ export const StyledContactForm = styled.form`
   `}
 `;
 
+export const StyledFileInput = styled.input`
+  &:hover {
+    cursor: pointer;
+  }
+`;
+
 export const StyledInput = styled.input`
   background: transparent;
   border: none;

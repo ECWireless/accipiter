@@ -5,6 +5,7 @@ import {
   StyledColumn,
   StyledColumnContainer,
   StyledContactForm,
+  StyledFileInput,
   StyledInput,
   StyledTextArea,
 } from './components'
@@ -20,13 +21,47 @@ export const ApplicationForm: React.FC = () => {
     submitting: false,
     info: { error: false, msg: null }
   })
+  // const [selectedFile, setSelectedFile] = React.useState<File>();
+	// const [isFilePicked, setIsFilePicked] = React.useState<boolean>(false);
 
   const [inputs, setInputs] = React.useState({
     name: '',
     email: '',
     phone: '',
     message: '',
+    file: null,
   })
+
+  function getBase64(file) {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => {
+        let encoded = reader.result.toString().replace(/^data:(.*,)?/, '');
+        if ((encoded.length % 4) > 0) {
+          encoded += '='.repeat(4 - (encoded.length % 4));
+        }
+        resolve(encoded);
+      };
+      reader.onerror = error => reject(error);
+    });
+  }
+
+  const onHandleFileUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (!event.target.files[0]) {
+      return;
+    }
+
+		// setSelectedFile(event.target.files[0]);
+    const convertedFile = await getBase64(event.target.files[0]);
+    
+    setInputs(prev => ({
+      ...prev,
+      file: convertedFile
+    }))
+		// setIsFilePicked(true);
+    console.log(event.target.files[0])
+	};
 
   const [snackbar, setSnackbar] = React.useState(false)
 
@@ -44,6 +79,7 @@ export const ApplicationForm: React.FC = () => {
         email: '',
         phone: '',
         message: '',
+        file: null,
       }))
       setSnackbar(true)
     } else {
@@ -117,6 +153,15 @@ export const ApplicationForm: React.FC = () => {
               onChange={handleOnChange}
               required
               value={inputs.phone}
+            />
+            <Spacer size={'md'} />
+            <label htmlFor={'email'}>Upload Resume (only PDFs accepted):</label>
+            <Spacer size={'sm'} />
+            <StyledFileInput
+              type={'file'}
+              name={'file'}
+              accept={'application/pdf'}
+              onChange={onHandleFileUpload}
             />
           </StyledColumn>
           <Spacer size={'md'} />

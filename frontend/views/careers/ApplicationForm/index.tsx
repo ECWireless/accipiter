@@ -190,8 +190,8 @@ export const ApplicationForm: React.FC = () => {
           >
             {!status.submitting
               ? !status.submitted
-              ? 'Submit'
-              : 'Submitted'
+              ? 'Apply'
+              : 'Applied'
               : <Spinner color={colors.grey} />
             }
           </Button>

@@ -8,12 +8,22 @@ function fetcher(route) {
 }
 
 export default function useAuth() {
-  const { data: user, error, mutate } = useSWR("/api/user", fetcher);
-  const loading = user === undefined;
-
-  return {
-    user,
-    loading,
-    error,
-  };
+  try {
+    const { data: user, error, mutate } = useSWR("/api/user", fetcher);
+    const loading = user === undefined;
+  
+    return {
+      user,
+      loading,
+      error,
+    };
+  } catch (err) {
+    let user, loading = undefined;
+    let error = err;
+    return {
+      user,
+      loading,
+      error,
+    };
+  }
 }

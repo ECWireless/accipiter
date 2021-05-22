@@ -1,4 +1,6 @@
+import React from 'react';
 import { useRouter } from 'next/router';
+import Head from 'next/head';
 
 import useAuth from 'hooks/useAuth';
 
@@ -25,13 +27,33 @@ const Portal: React.FC = () => {
   }
 
   return (
-    <div>
-      <Spacer size={'lg'} />
-      <h1>Portal</h1>
-      {loading ? "Loading..." : user.email}
-      <Spacer size={'md'} />
-      <button onClick={onLogout}>Logout</button>
-    </div>
+    <>
+      <Head>
+        <script dangerouslySetInnerHTML={{ __html: `
+          if (!document.cookie.includes('authed')) {
+            window.location.href = "/"
+          }
+        ` }} />
+      </Head>
+      {user ? <div>
+        <Spacer size={'lg'} />
+        <h1>Portal</h1>
+        {loading ? "Loading..." : user.email}
+        <Spacer size={'md'} />
+        <button onClick={onLogout}>Logout</button>
+      </div> : (
+        <div>
+          <Spacer size={'lg'} />
+          <Spacer size={'lg'} />
+          <Spacer size={'lg'} />
+          <Spacer size={'lg'} />
+          <Spacer size={'lg'} />
+          <Spacer size={'lg'} />
+          <Spacer size={'lg'} />
+          <Spacer size={'lg'} />
+        </div>
+      )}
+    </>
   )
 }
   

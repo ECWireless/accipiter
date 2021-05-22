@@ -4,7 +4,11 @@ import CookieService from 'lib/cookie'
 export default async (req, res) => {
   let user;
   try {
-    user = await Iron.unseal(CookieService.getAuthToken(req.cookies), process.env.ENCRYPTION_SECRET, Iron.defaults)
+    if (CookieService.getAuthToken(req.cookies)) {
+      user = await Iron.unseal(CookieService.getAuthToken(req.cookies), process.env.ENCRYPTION_SECRET, Iron.defaults)
+    } else {
+      user = undefined;
+    }
   } catch (error) {
     res.status(401).end()
   }

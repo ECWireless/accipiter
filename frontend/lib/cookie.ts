@@ -27,12 +27,16 @@ function getAuthToken(cookies) {
 }
 
 function removeTokenCookie(res) {
-  const cookie = serialize(TOKEN_NAME, '', {
+  const data = serialize(TOKEN_NAME, '', {
+    maxAge: -1,
+    path: '/',
+  })
+  const isAuthed = serialize("authed", '', {
     maxAge: -1,
     path: '/',
   })
 
-  res.setHeader('Set-Cookie', cookie)
+  res.setHeader('Set-Cookie', [data, isAuthed])
 }
 
 export default { setTokenCookie, getAuthToken, removeTokenCookie }

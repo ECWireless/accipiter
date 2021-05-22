@@ -5,11 +5,14 @@ import Link from 'next/link'
 import { colors, GU } from 'components/theme'
 import { media } from 'components/breakpoints'
 
+import useAuth from 'hooks/useAuth';
+
 // Components
 import { Flex } from 'components/Containers'
 import { SandwichMenu } from 'components/SandwichMenu'
 
 export default function Navigation({ setSidebar }) {
+  const { user } = useAuth();
   const [background, setBackground] = React.useState(false)
   const router = useRouter()
 
@@ -22,8 +25,6 @@ export default function Navigation({ setSidebar }) {
       }
     });
   }, [])
-    
-
       
   return (
     <StyledHeader background={background}>
@@ -50,10 +51,10 @@ export default function Navigation({ setSidebar }) {
               : <StyledNavButton>Careers</StyledNavButton>
             }
           </Link>
-          <Link href='/login'>
-            {router.pathname === '/login'
-              ? <StyledLoginActive>Login</StyledLoginActive>
-              : <StyledLogin>Login</StyledLogin>
+          <Link href={user ? '/portal' : '/login'}>
+            {router.pathname === '/portal'
+              ? <StyledLoginActive>{user ? 'Portal' : 'Login'}</StyledLoginActive>
+              : <StyledLogin>{user ? 'Portal' : 'Login'}</StyledLogin>
             }
           </Link>
         </StyledNav>

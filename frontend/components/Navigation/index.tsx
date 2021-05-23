@@ -52,7 +52,7 @@ export default function Navigation({ setSidebar }) {
             }
           </Link>
           <Link href={user ? '/portal' : '/login'}>
-            {router.pathname === '/portal'
+            {router.pathname === '/portal' || router.pathname === '/login'
               ? <StyledLoginActive>{user ? 'Portal' : 'Login'}</StyledLoginActive>
               : <StyledLogin>{user ? 'Portal' : 'Login'}</StyledLogin>
             }

@@ -1,5 +1,4 @@
 import { Fade } from 'react-reveal';
-import { colors } from 'components/theme';
 
 import Banner from 'components/Banner';
 import ContactCard from 'components/ContactCard';

@@ -149,7 +149,7 @@ const ContactCard: React.FC = () => {
         </P4>
         <Spacer size={'xs'} />
         <a style={{ textDecoration: 'none'}} href="mailto:information@accipitersystems.com">
-          <P5 color={colors.white} bold>INFORMATION@ACCIPITERSYSTEMS.COM</P5>
+          <P5 color={colors.white} uppercase={true} bold>info@accipitersystems.com</P5>
         </a>
         <Spacer size={'xs'} />
         <StyledLine />

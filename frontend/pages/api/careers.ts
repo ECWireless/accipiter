@@ -8,7 +8,7 @@ export default async function(req, res) {
 
   const confirmationEmail = {
     to: email,
-    from: 'Elliott@valtechcreative.com',
+    from: 'info@accipitersystems.com',
     subject: `Application was successful!`,
     html: `
       <p>Thank you for applying! View your application details below.</p>
@@ -30,8 +30,8 @@ export default async function(req, res) {
   }
 
   const notificationEmail = {
-    to: 'Elliott@valtechcreative.com',
-    from: 'Elliott@valtechcreative.com',
+    to: 'info@accipitersystems.com',
+    from: 'info@accipitersystems.com',
     subject: `New Application Form Submission - ${email}`,
     html: `
       <p>New application form submission from ${name}.</p>

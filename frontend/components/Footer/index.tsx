@@ -9,6 +9,7 @@ import { P5 } from 'components/Typography'
 const Footer: React.FC = () => {
   return (
     <StyledFooterContainer>
+      <StyledBackground />
       <Spacer size={'md'} />
       <Container>
         <StyledInnerContainer>
@@ -39,10 +40,17 @@ const Footer: React.FC = () => {
 
 export default Footer;
 
-const StyledFooterContainer = styled.div`
+const StyledBackground = styled.div`
   background: ${colors.grey};
-  position: relative;
+  height: 100%;
+  position: absolute;
+  width: 100%;
   z-index: -1;
+`;
+
+const StyledFooterContainer = styled.div`
+  position: relative;
+  width: 100%;
 `;
 
 const StyledLine = styled.div`
@@ -68,10 +76,8 @@ const StyledInnerContainer = styled.div`
 const StyledLogo = styled.img`
   height: ${GU * 20}px;
   width: ${GU * 46}px;
-
-  &:hover {
-    cursor: pointer;
-  }
+  position: absolute;
+  z-index: -1;
 `
 
 const StyledSvg = styled.svg`

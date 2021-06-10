@@ -76,7 +76,7 @@ const StyledInnerContainer = styled.div`
 const StyledLogo = styled.img`
   height: ${GU * 20}px;
   width: ${GU * 46}px;
-  position: absolute;
+  position: relative;
   z-index: -1;
 `
 

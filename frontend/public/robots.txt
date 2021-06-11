@@ -1,0 +1,3 @@
+# https://www.robotstxt.org/robotstxt.html
+Sitemap: https://accipitersystems.com/sitemap.xml
+User-agent: *

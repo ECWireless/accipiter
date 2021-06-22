@@ -101,12 +101,7 @@ const StyledCardContainer = styled.div`
   border-radius: 10px;
   margin: 0 auto;
   padding: ${GU * 6}px;
-  transition: all .3s ease;
   width: 100%;
-
-  &:hover {
-    border: 1px solid ${colors.green};
-  }
 
   ${media.sm`
     padding: ${GU * 8}px;

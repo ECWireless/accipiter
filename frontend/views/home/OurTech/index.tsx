@@ -36,8 +36,8 @@ export const OurTech: React.FC<IOurTech> = ({
   techCard4Paragraph,
 }) => {
   return (
-    <div style={{ borderTop: topLine ? `1px solid ${colors.green}` : 'none', background: '#fff'}}>
-      <Banner color={'#121212'} heading={techHeading} subheading={techSubheading} />
+    <div style={{ borderTop: topLine ? `1px solid ${colors.green}` : 'none'}}>
+      <Banner heading={techHeading} subheading={techSubheading} />
       <Container>
         <Fade bottom ssrFadeout>
           <TechCard
@@ -83,12 +83,12 @@ const TechCard: React.FC<ITechCard> = ({
 }) => {
   return (
     <StyledCardContainer>
-      <H4 align={'center'} bold={true} color={colors.black}>
+      <H4 align={'center'} bold={true} color={colors.white}>
         {heading}
       </H4>
       <Spacer size={'xs'} />
       <Spacer size={'xs'} />
-      <P2 align={'center'} color={colors.black}>
+      <P2 align={'center'} color={colors.white}>
         {subheading}
       </P2>
     </StyledCardContainer>
@@ -96,7 +96,7 @@ const TechCard: React.FC<ITechCard> = ({
 }
 
 const StyledCardContainer = styled.div`
-  background: #F1F3F4;
+  background: ${colors.grey};
   border: 1px solid ${colors.blue};
   border-radius: 10px;
   margin: 0 auto;

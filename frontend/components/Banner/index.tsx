@@ -9,11 +9,13 @@ import Spacer from 'components/Spacer'
 import { H3, P1 } from 'components/Typography'
 
 interface IBanner {
+  color?: string;
   heading: string;
   subheading?: string;
 }
 
 const Banner: React.FC<IBanner> = ({
+  color,
   heading,
   subheading,
 }) => {
@@ -26,11 +28,11 @@ const Banner: React.FC<IBanner> = ({
         </Fade>
         <Flex align={'center'} direction={'column'}>
           <Fade bottom ssrFadeout>
-            <H3 bold={true} uppercase>{heading}</H3>
+            <H3 color={color ? color : '#fff'} bold={true} uppercase>{heading}</H3>
           </Fade>
           {subheading && <Fade delay={200} bottom ssrFadeout>
             <Spacer size={'sm'} />
-            <P1>{subheading}</P1>
+            <P1 color={color ? color : '#fff'}>{subheading}</P1>
           </Fade>}
         </Flex>
         <Fade ssrFadeout top>

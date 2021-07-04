@@ -94,7 +94,7 @@ const PDFsMapping = ({
       {url.pdfFile !== undefined && title !== undefined &&
         <>
           <PDFIcon />
-          <a style={{ alignSelf: 'flex-end'}} href={`https://cdn.sanity.io/files/sdx0q0pg/production/${url.pdfFile.asset._ref.substring(5, (url.pdfFile.asset._ref.length - 4))}.pdf?dl=`}>
+          <a style={{ alignSelf: 'flex-end'}} href={`https://cdn.sanity.io/files/${process.env.SANITY_PROJECT_ID}/production/${url.pdfFile.asset._ref.substring(5, (url.pdfFile.asset._ref.length - 4))}.pdf?dl=`}>
             <P1 style={{ textDecoration: 'underline', marginLeft: '1rem' }} color={colors.white}>
               {title}
             </P1>

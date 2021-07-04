@@ -49,7 +49,8 @@ export const Portal: React.FC<IPortal> = ({
       <Container>
         <Fade bottom ssrFadeout>
           <div>
-            <H3>Available PDFs:</H3>
+            <H3>PDFs will be available soon.</H3>
+            {/* <H3>Available PDFs:</H3>
             <Spacer size={'md'} />
             <div>
               {portalProps.map((pdf, index) => (
@@ -59,7 +60,7 @@ export const Portal: React.FC<IPortal> = ({
                   url={pdf}
                 />
               ))}
-            </div>
+            </div> */}
             <Spacer size={'lg'} />
             <P1>Username: {loading ? "Loading..." : user.email}</P1>
             <Spacer size={'sm'} />

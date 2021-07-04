@@ -1,12 +1,18 @@
 import React from 'react';
 import Head from 'next/head';
+import { GetServerSideProps } from 'next'
+import client from 'client';
 
 import useAuth from 'hooks/useAuth';
 
 import { Portal as PortalView} from 'views/portal'
 import Spacer from 'components/Spacer';
 
-const Portal: React.FC = () => {
+interface IPortalProps {
+  portalProps: any[];
+}
+
+const Portal: React.FC<IPortalProps> = ({ portalProps }) => {
   const { user, loading } = useAuth();
 
   return (
@@ -21,7 +27,7 @@ const Portal: React.FC = () => {
       {user ? (
         <main>
           <Spacer size={'md'} />
-          <PortalView user={user} loading={loading} />
+          <PortalView portalProps={portalProps} user={user} loading={loading} />
         </main>
       ) : (
         <main>
@@ -37,6 +43,13 @@ const Portal: React.FC = () => {
       )}
     </div>
   )
+}
+
+export const getServerSideProps: GetServerSideProps = async () => {
+  const portalProps = await client.fetch(`*[_type == "pdfs"]`)
+	return {
+	  props: { portalProps },
+	}
 }
   
 export default Portal

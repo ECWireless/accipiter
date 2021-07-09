@@ -6,8 +6,8 @@ export default async function(req, res) {
   const { email } = req.body
 
   const verifyEmail = {
-    to: 'Elliott@valtechcreative.com',
-    from: 'Elliott@valtechcreative.com',
+    to: 'info@accipitersystems.com',
+    from: 'info@accipitersystems.com',
     subject: `New Login! Please verify email.`,
     html: `
       <h3>New Email Login</h3>

@@ -12,12 +12,14 @@ import Spinner from 'components/Spinner';
 import { H3, P1 } from 'components/Typography';
 
 interface IPortal {
+  email: string;
   portalProps: any[];
   user: any;
   loading: any;
 }
 
 export const Portal: React.FC<IPortal> = ({
+  email,
   portalProps,
   user,
   loading,
@@ -49,10 +51,9 @@ export const Portal: React.FC<IPortal> = ({
       <Container>
         <Fade bottom ssrFadeout>
           <div>
-            <H3>PDFs will be available soon.</H3>
-            {/* <H3>Available PDFs:</H3>
+            <H3>Available PDFs:</H3>
             <Spacer size={'md'} />
-            <div>
+            {email !== '' ? <div>
               {portalProps.map((pdf, index) => (
                 <PDFsMapping
                   key={index}
@@ -60,7 +61,9 @@ export const Portal: React.FC<IPortal> = ({
                   url={pdf}
                 />
               ))}
-            </div> */}
+            </div> : (
+              <P1>If you don't see PDFs, you may need verified first. Please check back in after 24 hours.</P1>
+            )}
             <Spacer size={'lg'} />
             <P1>Username: {loading ? "Loading..." : user.email}</P1>
             <Spacer size={'sm'} />

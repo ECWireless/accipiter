@@ -12,7 +12,11 @@ import { Container } from 'components/Containers';
 import Spacer from 'components/Spacer';
 import Spinner from 'components/Spinner';
 
-export const Login: React.FC = () => {
+interface LoginProps {
+  emails: string[];
+}
+
+export const Login: React.FC<LoginProps> = ({ emails }) => {
   const router = useRouter();
   const [loggingIn, setLoggingIn] = React.useState<boolean>(false);
 
@@ -38,6 +42,23 @@ export const Login: React.FC = () => {
       // We successfully logged in, our API
       // set authorization cookies and now we
       // can redirect to the dashboard!
+      const matchingEmails = emails.filter(email => {
+        if (email.toLowerCase() === elements.email.value.toLowerCase()) {
+          return email;
+        }
+      })
+
+      if (matchingEmails.length === 0) {
+        console.log(matchingEmails);
+        const res = await fetch('/api/verify', {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ email: elements.email.value.trim() })
+        })
+        console.log(res);
+      }
       router.push('/portal')
     } else {
       setLoggingIn(false);

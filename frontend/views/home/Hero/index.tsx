@@ -7,7 +7,7 @@ import { colors, GU } from 'components/theme'
 
 import { Container, Flex } from 'components/Containers'
 import Spacer from 'components/Spacer'
-import { H3, H4 } from 'components/Typography'
+import { H3, P1 } from 'components/Typography'
 
 interface IHero {
   heroSubheading: string;
@@ -45,17 +45,10 @@ export const Hero: React.FC<IHero> = ({
           <Fade ssrFadeout>
             <StyledLogo src="/AccipiterWhite2.png" alt="Coratives Logo"/>
           </Fade>
-          <Spacer size={'md'} />
+          <Spacer size={'lg'} />
           <Container>
             <Flex justify={'center'}>
-              <H3 align={'center'} bold={true} color={colors.white}>{heroSubheading}</H3>
-            </Flex>
-            <Spacer size={'sm'} />
-            <Flex justify={'center'}>
-              {index == 0 && <WordLoop bold={true} color={colors.blue}>{heroAnimatedText1}</WordLoop>}
-              {index == 1 && <WordLoop bold={true} color={colors.blue}>{heroAnimatedText2}</WordLoop>}
-              {index == 2 && <WordLoop bold={true} color={colors.blue}>{heroAnimatedText3}</WordLoop>}
-              {index == 3 && <WordLoop bold={true} color={colors.blue}>{heroAnimatedText4}</WordLoop>}
+              <H3 align={'center'} color={colors.white}>{heroSubheading}</H3>
             </Flex>
           </Container>
         </StyledTextContainer>
@@ -107,7 +100,6 @@ const StyledHeroVideo = styled.video`
   width: auto;
   position: absolute;
   top: 0;
-  filter: brightness(.8);
   animation-name: fade;
   animation-duration: 2s;
   animation-iteration-count: 1;

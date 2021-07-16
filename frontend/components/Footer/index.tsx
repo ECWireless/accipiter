@@ -41,7 +41,7 @@ const Footer: React.FC = () => {
 export default Footer;
 
 const StyledBackground = styled.div`
-  background: ${colors.grey};
+  background: ${colors.greyDark};
   height: 100%;
   position: absolute;
   width: 100%;

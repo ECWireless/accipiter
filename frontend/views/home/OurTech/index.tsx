@@ -36,7 +36,7 @@ export const OurTech: React.FC<IOurTech> = ({
   techCard4Paragraph,
 }) => {
   return (
-    <div style={{ borderTop: topLine ? `1px solid ${colors.green}` : 'none'}}>
+    <div style={{ borderTop: topLine ? `1px solid ${colors.blue}` : 'none'}}>
       <Banner heading={techHeading} subheading={techSubheading} />
       <Container>
         <Fade bottom ssrFadeout>

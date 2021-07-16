@@ -79,6 +79,7 @@ export const StyledLoginForm = styled.form`
   background: ${colors.grey};
   border: 1px solid ${colors.blue};
   border-radius: 10px;
+  color: ${colors.white};
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -114,7 +115,7 @@ export const StyledInput = styled.input`
   width: 100%;
 
   &:hover {
-    border-bottom: 2px solid ${colors.green};
+    border-bottom: 2px solid ${colors.blue};
   }
 
   &:active,

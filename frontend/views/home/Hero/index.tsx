@@ -43,7 +43,7 @@ export const Hero: React.FC<IHero> = ({
       <StyledInnerContainer>
         <StyledTextContainer>
           <Fade ssrFadeout>
-            <StyledLogo src="/AccipiterLogo2.png" alt="Coratives Logo"/>
+            <StyledLogo src="/AccipiterWhite2.png" alt="Coratives Logo"/>
           </Fade>
           <Spacer size={'md'} />
           <Container>

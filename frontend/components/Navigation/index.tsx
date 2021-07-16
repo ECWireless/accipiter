@@ -94,13 +94,13 @@ const StyledHeader = styled.header<IStyledHeader>`
   z-index: 100;
   
   ${media.sm`
-    background: transparent;
+    background: rgba(30, 30, 30, 1);
     transform: translateX(-50%);
   `}
 
   ${props => props.background && css`
     ${media.sm`
-      background: ${colors.grey};
+      background: rgba(30, 30, 30, 1);
     `}
   `}
 `

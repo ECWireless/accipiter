@@ -42,7 +42,7 @@ export const Products: React.FC<IProducts> = ({
   products4Description,
 }) => {
   return (
-    <div style={{ borderTop: `1px solid ${colors.green}`}}>
+    <div style={{ borderTop: `1px solid ${colors.blue}`}}>
       <Banner heading={productsHeading} subheading={productsSubheading} />
       <Container>
         <Flex align={'center'} justify={'space-between'} wrap={'true'}>
@@ -78,6 +78,7 @@ export const Products: React.FC<IProducts> = ({
           </Fade>
         </Flex>
       </Container>
+      <Spacer size={'lg'} />
     </div>
   )
 }
@@ -98,9 +99,9 @@ const ProductCard: React.FC<IProductCard> = ({
       <StyledCardContainer>
         <StyledPhoto style={{ backgroundImage: `url(${image})` }} />
         <Spacer size={'sm'} />
-        <H4 align={'center'}>{heading}</H4>
+        <H4 align={'center'} color={colors.white}>{heading}</H4>
         <Spacer size={'sm'} />
-        <P2 align={'center'}>{subheading}</P2>
+        <P2 align={'center'} color={colors.white}>{subheading}</P2>
       </StyledCardContainer>
       <Spacer size={'md'} />
     </div>
@@ -115,10 +116,6 @@ const StyledCardContainer = styled.div`
   padding: ${GU * 6}px;
   transition: all .3s ease;
   width: ${GU * 75}px;
-
-  &:hover {
-    border: 1px solid ${colors.green};
-  }
 
   ${media.xs`
     width: ${GU * 100}px;

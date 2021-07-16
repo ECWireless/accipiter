@@ -7,6 +7,7 @@ export const StyledContactForm = styled.form`
   background: ${colors.grey};
   border: 1px solid ${colors.blue};
   border-radius: 10px;
+  color: ${colors.white};
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -54,7 +55,7 @@ export const StyledInput = styled.input`
   width: 100%;
 
   &:hover {
-    border-bottom: 2px solid ${colors.green};
+    border-bottom: 2px solid ${colors.blue};
   }
 
   &:active,
@@ -86,7 +87,7 @@ export const StyledInputContainer = styled.div`
 `;
 
 export const StyledLine = styled.div`
-  background: ${colors.green};
+  background: ${colors.blue};
   height: 2px;
   width: ${GU * 20}px;
 `;
@@ -116,7 +117,7 @@ export const StyledTextArea = styled.textarea`
   width: 100%;
 
   &:hover {
-    border: 2px solid ${colors.green};
+    border: 2px solid ${colors.blue};
   }
 
   &:active,

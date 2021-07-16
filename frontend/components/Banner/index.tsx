@@ -28,11 +28,11 @@ const Banner: React.FC<IBanner> = ({
         </Fade>
         <Flex align={'center'} direction={'column'}>
           <Fade bottom ssrFadeout>
-            <H3 color={color ? color : '#fff'} bold={true} uppercase>{heading}</H3>
+            <H3 color={color ? color : colors.grey} bold={true} uppercase>{heading}</H3>
           </Fade>
           {subheading && <Fade delay={200} bottom ssrFadeout>
             <Spacer size={'sm'} />
-            <P1 color={color ? color : '#fff'}>{subheading}</P1>
+            <P1 color={color ? color : colors.grey}>{subheading}</P1>
           </Fade>}
         </Flex>
         <Fade ssrFadeout top>
@@ -65,7 +65,7 @@ const StyledBannerContainer = styled.div`
 `
 
 const StyledLine = styled.div`
-  background: ${colors.green};
+  background: ${colors.blue};
   height: ${GU * 15}px;
   width: 2px;
 `

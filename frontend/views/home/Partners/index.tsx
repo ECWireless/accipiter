@@ -38,7 +38,7 @@ export const Partners: React.FC<IPartners> = ({
     <StyledPartnersBackground>
       <Spacer size={'md'} />
       <Fade bottom ssrFadeout>
-        <H3 align={'center'} bold={true} uppercase>
+        <H3 align={'center'} bold={true} color={colors.white} uppercase>
           {partnersHeading}
         </H3>
       </Fade>
@@ -91,17 +91,17 @@ export const Partners: React.FC<IPartners> = ({
           <div style={{ backgroundImage: `url(${partnersLogo10})`}} />
         </StyledLogoContainerSmall>
       </Fade>
-      <Spacer size={'md'} />
+      <Spacer size={'lg'} />
     </StyledPartnersBackground>
   )
 }
 
 const StyledPartnersBackground = styled.div`
-  background: ${colors.grey};
+  background: ${colors.greyDark};
 `
 
 const StyledLogoContainerLarge = styled.div`
-  background: ${colors.black};
+  background: ${colors.white};
   display: none;
 
   ${media.lg`
@@ -128,7 +128,7 @@ const StyledLogoContainerLarge = styled.div`
 `
 
 const StyledLogoContainerSmall = styled.div`
-  background: ${colors.black};
+  background: ${colors.white};
   display: flex;
 
   ${media.lg`

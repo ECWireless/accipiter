@@ -43,12 +43,19 @@ export const Hero: React.FC<IHero> = ({
       <StyledInnerContainer>
         <StyledTextContainer>
           <Fade ssrFadeout>
-            <StyledLogo src="/AccipiterWhite2.png" alt="Coratives Logo"/>
+            <StyledLogo src="/AccipiterWhite.png" alt="Coratives Logo"/>
           </Fade>
-          <Spacer size={'lg'} />
+          <Spacer size={'md'} />
           <Container>
             <Flex justify={'center'}>
-              <H3 align={'center'} color={colors.white}>{heroSubheading}</H3>
+              <H3 align={'center'} bold={true} color={colors.white}>{heroSubheading}</H3>
+            </Flex>
+            <Spacer size={'sm'} />
+            <Flex justify={'center'}>
+              {index == 0 && <WordLoop bold={true} color={colors.blue}>{heroAnimatedText1}</WordLoop>}
+              {index == 1 && <WordLoop bold={true} color={colors.blue}>{heroAnimatedText2}</WordLoop>}
+              {index == 2 && <WordLoop bold={true} color={colors.blue}>{heroAnimatedText3}</WordLoop>}
+              {index == 3 && <WordLoop bold={true} color={colors.blue}>{heroAnimatedText4}</WordLoop>}
             </Flex>
           </Container>
         </StyledTextContainer>

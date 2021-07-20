@@ -8,7 +8,7 @@ interface IButton {
 }
 
 export const Button = styled.button<IButton>`
-  background: ${colors.green};
+  background: ${colors.blue};
   border: none;
   color: ${colors.black};
   font-family: 'Nunito Sans', sans-serif;

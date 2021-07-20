@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components'
-import { colors, GU } from 'components/theme'
+import { colors, GU, shadows } from 'components/theme'
 import { media } from 'components/breakpoints'
 import { Flex } from 'components/Containers'
 import Spacer from 'components/Spacer'
@@ -21,6 +21,7 @@ export const SandwichMenu = ({ setSidebar }): JSX.Element => {
 }
 
 const ButtonContainer = styled.div`
+  box-shadow: ${shadows.buttonHover};
   width: ${GU * 12}px;
   height: ${GU * 12}px;
   background: ${colors.white};

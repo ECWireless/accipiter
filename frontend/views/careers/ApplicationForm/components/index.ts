@@ -28,6 +28,7 @@ export const StyledContactForm = styled.form`
   background: ${colors.grey};
   border: 1px solid ${colors.blue};
   border-radius: 10px;
+  color: ${colors.white};
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -59,7 +60,7 @@ export const StyledInput = styled.input`
   width: 90%;
 
   &:hover {
-    border-bottom: 2px solid ${colors.green};
+    border-bottom: 2px solid ${colors.blue};
   }
 
   &:active,
@@ -82,7 +83,7 @@ export const StyledTextArea = styled.textarea`
   width: 90%;
 
   &:hover {
-    border: 2px solid ${colors.green};
+    border: 2px solid ${colors.blue};
   }
 
   &:active,

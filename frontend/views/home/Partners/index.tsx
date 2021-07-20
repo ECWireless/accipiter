@@ -35,7 +35,7 @@ export const Partners: React.FC<IPartners> = ({
 
 }) => {
   return (
-    <StyledPartnersBackground>
+    <StyledPartnersBackground style={{ borderTop: `1px solid ${colors.blue}`}}>
       <Spacer size={'md'} />
       <Fade bottom ssrFadeout>
         <H3 align={'center'} bold={true} uppercase>
@@ -97,11 +97,11 @@ export const Partners: React.FC<IPartners> = ({
 }
 
 const StyledPartnersBackground = styled.div`
-  background: ${colors.grey};
+  background: ${colors.white};
 `
 
 const StyledLogoContainerLarge = styled.div`
-  background: ${colors.black};
+  background: ${colors.white};
   display: none;
 
   ${media.lg`
@@ -128,7 +128,7 @@ const StyledLogoContainerLarge = styled.div`
 `
 
 const StyledLogoContainerSmall = styled.div`
-  background: ${colors.black};
+  background: ${colors.white};
   display: flex;
 
   ${media.lg`

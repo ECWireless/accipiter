@@ -7,7 +7,7 @@ import { colors, GU } from 'components/theme'
 
 import { Container, Flex } from 'components/Containers'
 import Spacer from 'components/Spacer'
-import { H3, H4 } from 'components/Typography'
+import { H3, P1 } from 'components/Typography'
 
 interface IHero {
   heroSubheading: string;
@@ -43,7 +43,7 @@ export const Hero: React.FC<IHero> = ({
       <StyledInnerContainer>
         <StyledTextContainer>
           <Fade ssrFadeout>
-            <StyledLogo src="/AccipiterLogo2.png" alt="Coratives Logo"/>
+            <StyledLogo src="/AccipiterWhite.png" alt="Coratives Logo"/>
           </Fade>
           <Spacer size={'md'} />
           <Container>
@@ -107,7 +107,6 @@ const StyledHeroVideo = styled.video`
   width: auto;
   position: absolute;
   top: 0;
-  filter: brightness(.8);
   animation-name: fade;
   animation-duration: 2s;
   animation-iteration-count: 1;

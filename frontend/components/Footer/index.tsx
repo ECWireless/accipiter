@@ -13,7 +13,7 @@ const Footer: React.FC = () => {
       <Spacer size={'md'} />
       <Container>
         <StyledInnerContainer>
-          <StyledLogo src="/AccipiterLogo.png" alt="Coratives Logo"/>
+          <StyledLogo src="/AccipiterWhite.png" alt="Coratives Logo"/>
           <Spacer size={'md'} />
           <a
             rel={'noreferrer noopener'} target={'_blank'}
@@ -26,10 +26,10 @@ const Footer: React.FC = () => {
           </a>
           <Spacer size={'md'} />
           <StyledTextContainer>
-            <P5>(724) 816-8386</P5>
+            <P5 color={colors.white}>(724) 816-8386</P5>
             <StyledLine />
-            <P5>12330 PERRY HWY, SUITE #106</P5>
-            <P5>WEXFORD, PA 15090</P5>
+            <P5 color={colors.white}>12330 PERRY HWY, SUITE #106</P5>
+            <P5 color={colors.white}>WEXFORD, PA 15090</P5>
           </StyledTextContainer>
         </StyledInnerContainer>
       </Container>
@@ -41,7 +41,7 @@ const Footer: React.FC = () => {
 export default Footer;
 
 const StyledBackground = styled.div`
-  background: ${colors.grey};
+  background: ${colors.greyDark};
   height: 100%;
   position: absolute;
   width: 100%;
@@ -54,7 +54,7 @@ const StyledFooterContainer = styled.div`
 `;
 
 const StyledLine = styled.div`
-  background: ${colors.green};
+  background: ${colors.blue};
   height: 2px;
   margin: ${GU * 4}px 0;
   width: ${GU * 20}px

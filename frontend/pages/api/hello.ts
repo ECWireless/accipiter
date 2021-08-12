@@ -21,7 +21,7 @@ export default async function(req, res) {
   }
 
   const notificationEmail = {
-    to: 'info@accipitersystems.com',
+    to: ['info@accipitersystems.com', 'mflynn@accipitersystems.com'],
     from: 'info@accipitersystems.com',
     subject: `New Contact Form Submission - ${email}`,
     html: `

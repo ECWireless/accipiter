@@ -36,6 +36,7 @@ const Portal: React.FC<IPortalProps> = ({ portalProps, loginProps }) => {
   return (
     <div>
       <Head>
+        <title>Portal | Accipiter Systems</title>
         <script dangerouslySetInnerHTML={{ __html: `
           if (!document.cookie.includes('authed')) {
             window.location.href = "/"

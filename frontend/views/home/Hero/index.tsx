@@ -5,6 +5,7 @@ import { media } from 'components/breakpoints'
 import { colors, GU, shadows } from 'components/theme'
 
 interface IHero {
+  setModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
   heroSubheading: string;
   heroAnimatedText1: string;
   heroAnimatedText2: string;
@@ -15,6 +16,7 @@ interface IHero {
 const words = ['words1', 'words2', 'words3']
 
 export const Hero: React.FC<IHero> = ({
+  setModalOpen,
   // heroSubheading,
   // heroAnimatedText1,
   // heroAnimatedText2,
@@ -35,7 +37,7 @@ export const Hero: React.FC<IHero> = ({
       <StyledHeroVideo autoPlay loop muted playsInline>
         <source src='https://arweave.net/tAO_BpHTcGu8QoSXfa67edQKmhfIKXeAeheC6D3ZfGI' type="video/mp4" />
       </StyledHeroVideo>
-      <StyledButton>
+      <StyledButton onClick={() => setModalOpen(true)}>
         <svg version="1.1" fill={'#121212'} xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
           <title>play2</title>
           <path d="M16 0c-8.837 0-16 7.163-16 16s7.163 16 16 16 16-7.163 16-16-7.163-16-16-16zM16 29c-7.18 0-13-5.82-13-13s5.82-13 13-13 13 5.82 13 13-5.82 13-13 13zM12 9l12 7-12 7z"></path>

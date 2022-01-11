@@ -127,7 +127,7 @@ const Home: React.FC = ({ homeProps }: { [key: string]: any} ) => {
         />
       </main>
       <Modal open={modalOpen} onClose={() => setModalOpen(false)}>
-        <StyledIFrame src="https://player.vimeo.com/video/486986897?h=dbf0d01a15&title=0&byline=0&portrait=0" frameBorder="0" allow="autoplay; fullscreen; picture-in-picture" allowFullScreen />
+        <StyledIFrame src="https://www.youtube.com/embed/sbjk_4B3kKk" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen />
       </Modal>
     </div>
   )

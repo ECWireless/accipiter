@@ -1,13 +1,8 @@
 import React from 'react';
-import styled, { keyframes } from 'styled-components'
-import { Fade } from 'react-reveal'
+import styled from 'styled-components';
 
 import { media } from 'components/breakpoints'
-import { colors, GU } from 'components/theme'
-
-import { Container, Flex } from 'components/Containers'
-import Spacer from 'components/Spacer'
-import { H3, P1 } from 'components/Typography'
+import { colors, GU, shadows } from 'components/theme'
 
 interface IHero {
   heroSubheading: string;
@@ -20,11 +15,11 @@ interface IHero {
 const words = ['words1', 'words2', 'words3']
 
 export const Hero: React.FC<IHero> = ({
-  heroSubheading,
-  heroAnimatedText1,
-  heroAnimatedText2,
-  heroAnimatedText3,
-  heroAnimatedText4,
+  // heroSubheading,
+  // heroAnimatedText1,
+  // heroAnimatedText2,
+  // heroAnimatedText3,
+  // heroAnimatedText4,
 }) => {
   const [index, setIndex] = React.useState<number>(0);
 
@@ -38,50 +33,17 @@ export const Hero: React.FC<IHero> = ({
   return (
     <StyledHeroContainer>
       <StyledHeroVideo autoPlay loop muted playsInline>
-        <source src='/videos/hero.mp4' type="video/mp4" />
+        <source src='https://arweave.net/tAO_BpHTcGu8QoSXfa67edQKmhfIKXeAeheC6D3ZfGI' type="video/mp4" />
       </StyledHeroVideo>
-      <StyledInnerContainer>
-        <StyledTextContainer>
-          <Fade ssrFadeout>
-            <StyledLogo src="/AccipiterWhite.png" alt="Coratives Logo"/>
-          </Fade>
-          <Spacer size={'md'} />
-          <Container>
-            <Flex justify={'center'}>
-              <H3 align={'center'} bold={true} color={colors.white}>{heroSubheading}</H3>
-            </Flex>
-            <Spacer size={'sm'} />
-            <Flex justify={'center'}>
-              {index == 0 && <WordLoop bold={true} color={colors.blue}>{heroAnimatedText1}</WordLoop>}
-              {index == 1 && <WordLoop bold={true} color={colors.blue}>{heroAnimatedText2}</WordLoop>}
-              {index == 2 && <WordLoop bold={true} color={colors.blue}>{heroAnimatedText3}</WordLoop>}
-              {index == 3 && <WordLoop bold={true} color={colors.blue}>{heroAnimatedText4}</WordLoop>}
-            </Flex>
-          </Container>
-        </StyledTextContainer>
-      </StyledInnerContainer>
+      <StyledButton>
+        <svg version="1.1" fill={'#121212'} xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+          <title>play2</title>
+          <path d="M16 0c-8.837 0-16 7.163-16 16s7.163 16 16 16 16-7.163 16-16-7.163-16-16-16zM16 29c-7.18 0-13-5.82-13-13s5.82-13 13-13 13 5.82 13 13-5.82 13-13 13zM12 9l12 7-12 7z"></path>
+        </svg>
+      </StyledButton>
     </StyledHeroContainer>
   )
 }
-
-const fadeinAnimation = keyframes`
-  0% {
-    opacity: 0;
-  }
-  50% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
-`;
-
-const WordLoop = styled(H3)`
-  opacity: 0;
-  animation-name: ${fadeinAnimation};
-  animation-iteration-count: infinite;
-  animation-duration: 4s;
-`;
 
 const StyledHeroContainer = styled.div`
   width: 100%;
@@ -110,6 +72,7 @@ const StyledHeroVideo = styled.video`
   animation-name: fade;
   animation-duration: 2s;
   animation-iteration-count: 1;
+  z-index: -1;
 
   @keyframes fade {
     0% {
@@ -126,62 +89,24 @@ const StyledHeroVideo = styled.video`
   `}
 `
 
-const StyledInnerContainer = styled(Flex)`
-  position: relative;
-  top: 0;
-  height: 100%;
-  flex-direction: column;
-  justify-content: flex-start;
+const StyledButton = styled.div`
   align-items: center;
-`
-
-const StyledLogo = styled.img`
-  height: ${GU * 30}px;
-  width: ${GU * 76}px;
-
-  ${media.xs`
-    height: ${GU * 45}px;
-    width: ${GU * 100}px;
-  `}
-
-  ${media.sm`
-    height: ${GU * 55}px;
-    width: ${GU * 140}px;
-  `}
-
-  ${media.md`
-    height: ${GU * 65}px;
-    width: ${GU * 170}px;
-  `}
-
-  ${media.lg`
-    height: ${GU * 73}px;
-    width: ${GU * 200}px;
-  `}
-
-  ${media.xl`
-    height: ${GU * 100}px;
-    width: ${GU * 230}px;
-  `}
-`
-
-const StyledTextContainer = styled.div`
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  background: ${colors.white};
+  border-radius: 50%;
+  box-shadow: ${shadows.button};
   display: flex;
-  margin-top: ${GU * 30}px;
+  height: ${GU * 16}px;
+  justify-content: center;
+  left: 50%;
+  position: relative;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  transition: all .3s ease;
+  width: ${GU * 16}px;
+  z-index: 1;
 
-  ${media.xs`
-    margin-top: ${GU * 25}px;
-  `}
-  ${media.sm`
-    margin-top: ${GU * 28}px;
-  `}
-  ${media.lg`
-    margin-top: ${GU * 34}px;
-  `}
-  ${media.xl`
-    margin-top: ${GU * 40}px;
-  `}
-`
+  &:hover {
+    box-shadow: ${shadows.buttonHover};
+    cursor: pointer;
+  }
+`;

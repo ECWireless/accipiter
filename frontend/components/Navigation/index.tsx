@@ -7,12 +7,10 @@ import { media } from 'components/breakpoints'
 
 import useAuth from 'hooks/useAuth';
 
-// Components
 import { Flex } from 'components/Containers'
 import { SandwichMenu } from 'components/SandwichMenu'
 
 export default function Navigation({ setSidebar }) {
-  console.log('Test')
   const { user } = useAuth();
   const [background, setBackground] = React.useState(false)
   const router = useRouter()
@@ -29,6 +27,7 @@ export default function Navigation({ setSidebar }) {
       
   return (
     <StyledHeader background={background}>
+      <StyledLogoMobile background={background} src="/AccipiterWhite.png" alt="Coratives Logo"/>
       <StyledMenuContainer>
         <SandwichMenu setSidebar={setSidebar} />
       </StyledMenuContainer>
@@ -74,6 +73,29 @@ const StyledLogo = styled.img`
 
   ${media.md`
     display: block;
+  `}
+`;
+
+interface IStyledLogoMobile {
+  background: boolean;
+}
+
+const StyledLogoMobile = styled.img<IStyledLogoMobile>`
+  height: ${GU * 10}px;
+  left: 0;
+  opacity: 1;
+  position: absolute;
+  top: ${GU * 6}px;
+  transform: translateX(-50%);
+  transition: opacity 0.3s ease;
+  width: ${GU * 24}px;
+
+  ${props => props.background && css`
+    opacity: 0;
+  `}
+
+  ${media.sm`
+    display: none;
   `}
 `;
 

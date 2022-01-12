@@ -82,11 +82,10 @@ interface IStyledLogoMobile {
 
 const StyledLogoMobile = styled.img<IStyledLogoMobile>`
   height: ${GU * 10}px;
-  left: 0;
+  left: -45%;
   opacity: 1;
   position: absolute;
   top: ${GU * 6}px;
-  transform: translateX(-50%);
   transition: opacity 0.3s ease;
   width: ${GU * 24}px;
 

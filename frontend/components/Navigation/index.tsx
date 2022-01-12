@@ -12,6 +12,7 @@ import { Flex } from 'components/Containers'
 import { SandwichMenu } from 'components/SandwichMenu'
 
 export default function Navigation({ setSidebar }) {
+  console.log('Test')
   const { user } = useAuth();
   const [background, setBackground] = React.useState(false)
   const router = useRouter()

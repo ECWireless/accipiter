@@ -31,7 +31,7 @@ export default function Navigation({ setSidebar }) {
       <StyledMenuContainer>
         <SandwichMenu setSidebar={setSidebar} />
       </StyledMenuContainer>
-      <Flex style={{ height: '100%' }} align={'center'} justify={'space-between'}>
+      <Flex style={{ height: '100%' }} align={'center'}>
         <StyledNav>
           <Link href='/'>
             {router.pathname === '/'
@@ -58,10 +58,23 @@ export default function Navigation({ setSidebar }) {
             }
           </Link>
         </StyledNav>
+        <StyledLogo src="/AccipiterWhite.png" alt="Coratives Logo"/>
       </Flex>
     </StyledHeader>
   )
 }
+
+const StyledLogo = styled.img`
+  display: none;
+  height: ${GU * 10}px;
+  left: ${GU * 10}px;
+  position: absolute;
+  width: ${GU * 24}px;
+
+  ${media.md`
+    display: block;
+  `}
+`;
 
 const StyledMenuContainer = styled.div`
   right: ${GU * 4}px;

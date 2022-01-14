@@ -2,11 +2,15 @@ import Head from 'next/head'
 import { GetServerSideProps } from 'next'
 import React from 'react';
 import styled from 'styled-components';
+import { Fade } from 'react-reveal';
 import imageUrlBuilder from '@sanity/image-url'
 import client from 'client';
 import { media } from 'components/breakpoints';
+import { colors, GU } from 'components/theme';
 
+import { Container } from 'components/Containers';
 import Modal from 'components/Modal';
+import { H4 } from 'components/Typography';
 
 import {
   Hero,
@@ -79,6 +83,13 @@ const Home: React.FC = ({ homeProps }: { [key: string]: any} ) => {
           heroAnimatedText3={heroAnimatedText3}
           heroAnimatedText4={heroAnimatedText4}
         />
+        <StyledBanner>
+          <Container>
+            <Fade bottom ssrFadeout>
+              <H4 align={'center'} color={colors.white}>{heroSubheading}</H4>
+            </Fade>
+          </Container>
+        </StyledBanner>
         <OurTech
           topLine={false}
           techHeading={techHeading}
@@ -217,4 +228,13 @@ const StyledIFrame = styled.iframe`
     width: 1280px;
     height: 720px;
   `}
+`;
+
+const StyledBanner = styled.div`
+  background: ${colors.grey};
+  padding: ${GU * 14}px 0;
+
+  h4 {
+    font-weight: 700;
+  }
 `;

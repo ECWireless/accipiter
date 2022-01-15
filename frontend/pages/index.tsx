@@ -1,7 +1,16 @@
 import Head from 'next/head'
 import { GetServerSideProps } from 'next'
+import React from 'react';
+import styled from 'styled-components';
+import { Fade } from 'react-reveal';
 import imageUrlBuilder from '@sanity/image-url'
 import client from 'client';
+import { media } from 'components/breakpoints';
+import { colors, GU } from 'components/theme';
+
+import { Container } from 'components/Containers';
+import Modal from 'components/Modal';
+import { H4 } from 'components/Typography';
 
 import {
   Hero,
@@ -55,7 +64,9 @@ const Home: React.FC = ({ homeProps }: { [key: string]: any} ) => {
     partnersLogo10,
     contactHeading,
     contactSubheading,
-   } = homeProps
+   } = homeProps;
+
+   const [modalOpen, setModalOpen] = React.useState(false);
 
   return (
     <div>
@@ -65,12 +76,20 @@ const Home: React.FC = ({ homeProps }: { [key: string]: any} ) => {
 
       <main>
         <Hero
+          setModalOpen={setModalOpen}
           heroSubheading={heroSubheading}
           heroAnimatedText1={heroAnimatedText1}
           heroAnimatedText2={heroAnimatedText2}
           heroAnimatedText3={heroAnimatedText3}
           heroAnimatedText4={heroAnimatedText4}
         />
+        <StyledBanner>
+          <Container>
+            <Fade bottom ssrFadeout>
+              <H4 align={'center'} color={colors.white}>{heroSubheading}</H4>
+            </Fade>
+          </Container>
+        </StyledBanner>
         <OurTech
           topLine={false}
           techHeading={techHeading}
@@ -118,6 +137,9 @@ const Home: React.FC = ({ homeProps }: { [key: string]: any} ) => {
           contactSubheading={contactSubheading}
         />
       </main>
+      <Modal open={modalOpen} onClose={() => setModalOpen(false)}>
+        <StyledIFrame src="https://www.youtube.com/embed/sbjk_4B3kKk" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen />
+      </Modal>
     </div>
   )
 }
@@ -176,4 +198,43 @@ export const getServerSideProps: GetServerSideProps = async () => {
 	}
 }
 
-export default Home
+export default Home;
+
+const StyledIFrame = styled.iframe`
+  width: 256px;
+  height: 144px;
+
+  ${media.xs`
+    width: 320px;
+    height: 180px;
+  `}
+
+  ${media.sm`
+    width: 640px;
+    height: 360px;
+  `}
+
+  ${media.md`
+    width: 640px;
+    height: 360px;
+  `}
+
+  ${media.lg`
+    width: 960px;
+    height: 540px;
+  `}
+
+  ${media.xl`
+    width: 1280px;
+    height: 720px;
+  `}
+`;
+
+const StyledBanner = styled.div`
+  background: ${colors.grey};
+  padding: ${GU * 14}px 0;
+
+  h4 {
+    font-weight: 700;
+  }
+`;

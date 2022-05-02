@@ -18,7 +18,7 @@ export default async function(req, res) {
       <br/>
       <p>On that page, just click the "Create new emails" button on the top-right, add the new email to the title, click "generate" for the slug, then hit "publish".</p>
       <br/>
-      <p>If you are having trouble whitelisting emails, please contact <a href="mailto:Elliott@valtechcreative.com">Elliott@valtechcreative.com</a>.</p>
+      <p>If you are having trouble whitelisting emails, please contact <a href="mailto:Elliott@coopallc.com">Elliott@coopallc.com</a>.</p>
     `
   }
 

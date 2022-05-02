@@ -7,7 +7,6 @@ import { media } from 'components/breakpoints'
 
 import useAuth from 'hooks/useAuth';
 
-// Components
 import { Flex } from 'components/Containers'
 import { SandwichMenu } from 'components/SandwichMenu'
 
@@ -28,10 +27,11 @@ export default function Navigation({ setSidebar }) {
       
   return (
     <StyledHeader background={background}>
+      <StyledLogoMobile background={background} src="/AccipiterWhite.png" alt="Coratives Logo"/>
       <StyledMenuContainer>
         <SandwichMenu setSidebar={setSidebar} />
       </StyledMenuContainer>
-      <Flex style={{ height: '100%' }} align={'center'} justify={'space-between'}>
+      <Flex style={{ height: '100%' }} align={'center'}>
         <StyledNav>
           <Link href='/'>
             {router.pathname === '/'
@@ -58,10 +58,45 @@ export default function Navigation({ setSidebar }) {
             }
           </Link>
         </StyledNav>
+        <StyledLogo src="/AccipiterWhite.png" alt="Coratives Logo"/>
       </Flex>
     </StyledHeader>
   )
 }
+
+const StyledLogo = styled.img`
+  display: none;
+  height: ${GU * 10}px;
+  left: ${GU * 10}px;
+  position: absolute;
+  width: ${GU * 24}px;
+
+  ${media.md`
+    display: block;
+  `}
+`;
+
+interface IStyledLogoMobile {
+  background: boolean;
+}
+
+const StyledLogoMobile = styled.img<IStyledLogoMobile>`
+  height: ${GU * 10}px;
+  left: -45%;
+  opacity: 1;
+  position: absolute;
+  top: ${GU * 6}px;
+  transition: opacity 0.3s ease;
+  width: ${GU * 24}px;
+
+  ${props => props.background && css`
+    opacity: 0;
+  `}
+
+  ${media.sm`
+    display: none;
+  `}
+`;
 
 const StyledMenuContainer = styled.div`
   right: ${GU * 4}px;

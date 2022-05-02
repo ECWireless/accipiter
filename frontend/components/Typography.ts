@@ -117,6 +117,7 @@ export const H4 = styled.h4<ITypograhpy>`
 	font-size: 1.8rem;
 	font-family: 'Nunito Sans', sans-serif;
 	font-weight: 300;
+	line-height: 25px;
 	${media.sm`
 		font-size: 2rem;
 	`}

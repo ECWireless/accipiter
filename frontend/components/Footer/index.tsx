@@ -26,7 +26,7 @@ const Footer: React.FC = () => {
           </a>
           <Spacer size={'md'} />
           <StyledTextContainer>
-            <P5 color={colors.white}>(724) 816-8386</P5>
+            <P5 color={colors.white}>(724) 933-8895</P5>
             <StyledLine />
             <P5 color={colors.white}>12330 PERRY HWY, SUITE #106</P5>
             <P5 color={colors.white}>WEXFORD, PA 15090</P5>

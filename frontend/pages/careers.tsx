@@ -9,8 +9,10 @@ const Careers: React.FC = ({ careersProps }: { [key: string]: any} ) => {
   const {
     heading,
 		subheading,
-    positionTitle,
-    positionDescription,
+    position1Title,
+    position1Description,
+    position2Title,
+    position2Description,
    } = careersProps
 
   return (
@@ -23,8 +25,10 @@ const Careers: React.FC = ({ careersProps }: { [key: string]: any} ) => {
         <JobSpecification
           heading={heading}
           subheading={subheading}
-          positionTitle={positionTitle}
-          positionDescription={positionDescription}
+          position1Title={position1Title}
+          position1Description={position1Description}
+          position2Title={position2Title}
+          position2Description={position2Description}
         />
         <Spacer size={'md'} />
         <ApplicationForm />
@@ -39,8 +43,10 @@ export const getServerSideProps: GetServerSideProps = async () => {
   const careersProps = await client.fetch(`*[_type == "careers" && slug.current == "v1"][0] {
     heading,
 		subheading,
-    positionTitle,
-    positionDescription,
+    position1Title,
+    position1Description,
+    position2Title,
+    position2Description,
 	}`)
 	return {
 	  props: { careersProps },

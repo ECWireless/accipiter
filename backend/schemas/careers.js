@@ -28,13 +28,23 @@ export default {
       type: 'string',
     },
     {
-      name: 'positionTitle',
-      title: 'Position Title',
+      name: 'position1Title',
+      title: 'Position 1 Title',
       type: 'string',
     },
     {
-      name: 'positionDescription',
-      title: 'Position Description',
+      name: 'position1Description',
+      title: 'Position 1 Description',
+      type: 'blockContent'
+    },
+    {
+      name: 'position2Title',
+      title: 'Position 2 Title',
+      type: 'string',
+    },
+    {
+      name: 'position2Description',
+      title: 'Position 2 Description',
       type: 'blockContent'
     }
   ],

@@ -46,6 +46,16 @@ export default {
       name: 'position2Description',
       title: 'Position 2 Description',
       type: 'blockContent'
+    },
+    {
+      name: 'position3Title',
+      title: 'Position 3 Title',
+      type: 'string',
+    },
+    {
+      name: 'position3Description',
+      title: 'Position 3 Description',
+      type: 'blockContent'
     }
   ],
 

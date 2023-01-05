@@ -15,6 +15,8 @@ interface IJobSpecification {
   position1Description: string;
   position2Title: string;
   position2Description: string;
+  position3Title: string;
+  position3Description: string;
 }
 
 export const JobSpecification: React.FC<IJobSpecification> = ({
@@ -24,6 +26,8 @@ export const JobSpecification: React.FC<IJobSpecification> = ({
   position1Description,
   position2Title,
   position2Description,
+  position3Title,
+  position3Description,
 }) => {
   return (
     <div>
@@ -51,6 +55,20 @@ export const JobSpecification: React.FC<IJobSpecification> = ({
           <P2Block>
             <BlockContent
               blocks={position2Description}
+            />
+          </P2Block>
+        </Fade>
+        <Spacer size={'md'} />
+        <StyledLine />
+        <Spacer size={'md'} />
+        <Fade bottom ssrFadeout>
+          <H3 bold={true}>{position3Title}</H3>
+        </Fade>
+        <Spacer size={'md'} />
+        <Fade bottom delay={100} ssrFadeout>
+          <P2Block>
+            <BlockContent
+              blocks={position3Description}
             />
           </P2Block>
         </Fade>

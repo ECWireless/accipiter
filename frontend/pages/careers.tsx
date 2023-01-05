@@ -13,6 +13,8 @@ const Careers: React.FC = ({ careersProps }: { [key: string]: any} ) => {
     position1Description,
     position2Title,
     position2Description,
+    position3Title,
+    position3Description,
    } = careersProps
 
   return (
@@ -29,6 +31,8 @@ const Careers: React.FC = ({ careersProps }: { [key: string]: any} ) => {
           position1Description={position1Description}
           position2Title={position2Title}
           position2Description={position2Description}
+          position3Title={position3Title}
+          position3Description={position3Description}
         />
         <Spacer size={'md'} />
         <ApplicationForm />
@@ -47,6 +51,8 @@ export const getServerSideProps: GetServerSideProps = async () => {
     position1Description,
     position2Title,
     position2Description,
+    position3Title,
+    position3Description,
 	}`)
 	return {
 	  props: { careersProps },

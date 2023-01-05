@@ -27,7 +27,7 @@ export default function Navigation({ setSidebar }) {
       
   return (
     <StyledHeader background={background}>
-      <StyledLogoMobile background={background} src="/AccipiterWhite.png" alt="Coratives Logo"/>
+      <StyledLogoMobile background={background} onClick={() => router.push('/')} src="/AccipiterWhite.png" alt="Coratives Logo"/>
       <StyledMenuContainer>
         <SandwichMenu setSidebar={setSidebar} />
       </StyledMenuContainer>
@@ -58,13 +58,14 @@ export default function Navigation({ setSidebar }) {
             }
           </Link>
         </StyledNav>
-        <StyledLogo src="/AccipiterWhite.png" alt="Coratives Logo"/>
+        <StyledLogo onClick={() => router.push('/')} src="/AccipiterWhite.png" alt="Coratives Logo"/>
       </Flex>
     </StyledHeader>
   )
 }
 
 const StyledLogo = styled.img`
+  cursor: pointer;
   display: none;
   height: ${GU * 10}px;
   left: ${GU * 10}px;

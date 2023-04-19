@@ -1,6 +1,6 @@
 import { createClient } from 'next-sanity';
 
-const { SANITY_TOKEN: token } = process.env;
+const token = process.env.SANITY_TOKEN;
 
 export default createClient({
   projectId: process.env.SANITY_PROJECT_ID,

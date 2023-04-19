@@ -10,12 +10,12 @@ export default async (req, res) => {
       user = undefined;
     }
   } catch (error) {
-    res.status(401).end()
+    return res.status(401).end()
   }
 
   // now we have access to the data inside of user
   // and we could make database calls or just send back what we have
   // in the token.
 
-  res.json(user)
+  return res.json(user)
 }

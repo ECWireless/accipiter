@@ -1,14 +1,11 @@
-import Head from 'next/head'
-import { GetServerSideProps } from 'next'
-import client from 'client';
+import Head from "next/head";
+import client from "client";
 
-import Spacer from 'components/Spacer'
+import Spacer from "components/Spacer";
 
-import {
-  OurTech as OurTechSection,
-} from 'views/home';
+import { OurTech as OurTechSection } from "views/home";
 
-const OurTech: React.FC = ({ ourTechProps }: { [key: string]: any} ) => {
+const OurTech: React.FC = ({ ourTechProps }: { [key: string]: any }) => {
   const {
     techHeading,
     techSubheading,
@@ -20,7 +17,7 @@ const OurTech: React.FC = ({ ourTechProps }: { [key: string]: any} ) => {
     techCard3Paragraph,
     techCard4Title,
     techCard4Paragraph,
-  } = ourTechProps
+  } = ourTechProps;
 
   return (
     <div>
@@ -29,7 +26,7 @@ const OurTech: React.FC = ({ ourTechProps }: { [key: string]: any} ) => {
       </Head>
 
       <main>
-        <Spacer size={'md'} />
+        <Spacer size={"md"} />
         <OurTechSection
           topLine={false}
           techHeading={techHeading}
@@ -45,11 +42,12 @@ const OurTech: React.FC = ({ ourTechProps }: { [key: string]: any} ) => {
         />
       </main>
     </div>
-  )
-}
+  );
+};
 
-export const getServerSideProps: GetServerSideProps = async () => {
-  const ourTechProps = await client.fetch(`*[_type == "home" && slug.current == "v1"][0] {
+export const getStaticProps = async () => {
+  const ourTechProps =
+    await client.fetch(`*[_type == "home" && slug.current == "v1"][0] {
     techHeading,
     techSubheading,
     techCard1Title,
@@ -60,11 +58,10 @@ export const getServerSideProps: GetServerSideProps = async () => {
     techCard3Paragraph,
     techCard4Title,
     techCard4Paragraph,
-	}`)
-	return {
-	  props: { ourTechProps },
-	}
-}
-  
-export default OurTech
-    
+	}`);
+  return {
+    props: { ourTechProps, revalidate: 10 },
+  };
+};
+
+export default OurTech;

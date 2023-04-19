@@ -55,7 +55,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
     position3Description,
 	}`);
   return {
-    props: { careersProps },
+    props: { careersProps, revalidate: 10 },
   };
 };
 

@@ -1,28 +1,21 @@
-import Head from 'next/head'
-import { GetServerSideProps } from 'next'
-import React from 'react';
-import styled from 'styled-components';
-import { Fade } from 'react-reveal';
-import imageUrlBuilder from '@sanity/image-url'
-import client from 'client';
-import { media } from 'components/breakpoints';
-import { colors, GU } from 'components/theme';
+import Head from "next/head";
+import React from "react";
+import styled from "styled-components";
+import { Fade } from "react-reveal";
+import imageUrlBuilder from "@sanity/image-url";
+import client from "client";
+import { media } from "components/breakpoints";
+import { colors, GU } from "components/theme";
 
-import { Container } from 'components/Containers';
-import Modal from 'components/Modal';
-import { H4 } from 'components/Typography';
+import { Container } from "components/Containers";
+import Modal from "components/Modal";
+import { H4 } from "components/Typography";
 
-import {
-  Hero,
-  OurTech,
-  Products,
-  Partners,
-  Contact
-} from 'views/home';
+import { Hero, OurTech, Products, Partners, Contact } from "views/home";
 
-const Home: React.FC = ({ homeProps }: { [key: string]: any} ) => {
+const Home: React.FC = ({ homeProps }: { [key: string]: any }) => {
   const {
-		heroSubheading,
+    heroSubheading,
     heroAnimatedText1,
     heroAnimatedText2,
     heroAnimatedText3,
@@ -64,14 +57,16 @@ const Home: React.FC = ({ homeProps }: { [key: string]: any} ) => {
     partnersLogo10,
     contactHeading,
     contactSubheading,
-   } = homeProps;
+  } = homeProps;
 
-   const [modalOpen, setModalOpen] = React.useState(false);
+  const [modalOpen, setModalOpen] = React.useState(false);
 
   return (
     <div>
       <Head>
-        <title>PCIe Switches and High Performance Networking | Accipiter Systems</title>
+        <title>
+          PCIe Switches and High Performance Networking | Accipiter Systems
+        </title>
       </Head>
 
       <main>
@@ -86,7 +81,9 @@ const Home: React.FC = ({ homeProps }: { [key: string]: any} ) => {
         <StyledBanner>
           <Container>
             <Fade bottom ssrFadeout>
-              <H4 align={'center'} color={colors.white}>{heroSubheading}</H4>
+              <H4 align={"center"} color={colors.white}>
+                {heroSubheading}
+              </H4>
             </Fade>
           </Container>
         </StyledBanner>
@@ -138,18 +135,25 @@ const Home: React.FC = ({ homeProps }: { [key: string]: any} ) => {
         />
       </main>
       <Modal open={modalOpen} onClose={() => setModalOpen(false)}>
-        <StyledIFrame src="https://www.youtube.com/embed/sbjk_4B3kKk" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen />
+        <StyledIFrame
+          src="https://www.youtube.com/embed/sbjk_4B3kKk"
+          title="YouTube video player"
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+        />
       </Modal>
     </div>
-  )
-}
+  );
+};
 
 function urlFor(source) {
-  return imageUrlBuilder(client).image(source)
+  return imageUrlBuilder(client).image(source);
 }
 
-export const getServerSideProps: GetServerSideProps = async () => {
-  const homeProps = await client.fetch(`*[_type == "home" && slug.current == "v1"][0] {
+export const getStaticProps = async () => {
+  const homeProps =
+    await client.fetch(`*[_type == "home" && slug.current == "v1"][0] {
 		heroSubheading,
     heroAnimatedText1,
     heroAnimatedText2,
@@ -192,11 +196,11 @@ export const getServerSideProps: GetServerSideProps = async () => {
     partnersLogo10,
     contactHeading,
     contactSubheading,
-	}`)
-	return {
-	  props: { homeProps },
-	}
-}
+	}`);
+  return {
+    props: { homeProps, revalidate: 10 },
+  };
+};
 
 export default Home;
 

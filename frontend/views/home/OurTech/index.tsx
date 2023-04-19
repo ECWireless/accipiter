@@ -1,12 +1,12 @@
-import styled from 'styled-components';
-import { Fade } from 'react-reveal';
-import { media } from 'components/breakpoints';
-import { colors, GU } from 'components/theme';
+import styled from "styled-components";
+import { Fade } from "react-reveal";
+import { media } from "components/breakpoints";
+import { colors, GU } from "components/theme";
 
-import Banner from 'components/Banner';
-import { Container } from 'components/Containers';
-import { H4, P2 } from 'components/Typography';
-import Spacer from 'components/Spacer';
+import Banner from "components/Banner";
+import { Container } from "components/Containers";
+import { H4, P2 } from "components/Typography";
+import Spacer from "components/Spacer";
 
 interface IOurTech {
   topLine: boolean;
@@ -36,64 +36,49 @@ export const OurTech: React.FC<IOurTech> = ({
   techCard4Paragraph,
 }) => {
   return (
-    <div style={{ borderTop: topLine ? `1px solid ${colors.blue}` : 'none'}}>
+    <div style={{ borderTop: topLine ? `1px solid ${colors.blue}` : "none" }}>
       <Banner heading={techHeading} subheading={techSubheading} />
       <Container>
         <Fade bottom ssrFadeout>
-          <TechCard
-          heading={techCard1Title}
-          subheading={techCard1Paragraph}
-          />
+          <TechCard heading={techCard1Title} subheading={techCard1Paragraph} />
         </Fade>
-        <Spacer size={'md'} />
+        <Spacer size={"md"} />
         <Fade bottom ssrFadeout delay={100}>
-          <TechCard
-            heading={techCard2Title}
-            subheading={techCard2Paragraph}
-          />
+          <TechCard heading={techCard2Title} subheading={techCard2Paragraph} />
         </Fade>
-        <Spacer size={'md'} />
+        <Spacer size={"md"} />
         <Fade bottom ssrFadeout delay={200}>
-          <TechCard
-            heading={techCard3Title}
-            subheading={techCard3Paragraph}
-          />
+          <TechCard heading={techCard3Title} subheading={techCard3Paragraph} />
         </Fade>
-        <Spacer size={'md'} />
+        <Spacer size={"md"} />
         <Fade bottom ssrFadeout delay={300}>
-          <TechCard
-            heading={techCard4Title}
-            subheading={techCard4Paragraph}
-            />
+          <TechCard heading={techCard4Title} subheading={techCard4Paragraph} />
         </Fade>
-        <Spacer size={'lg'} />
+        <Spacer size={"lg"} />
       </Container>
     </div>
-  )
-}
+  );
+};
 
 interface ITechCard {
   heading: string;
   subheading: string;
 }
 
-const TechCard: React.FC<ITechCard> = ({
-  heading,
-  subheading,
-}) => {
+const TechCard: React.FC<ITechCard> = ({ heading, subheading }) => {
   return (
     <StyledCardContainer>
-      <H4 align={'center'} bold={true} color={colors.white}>
+      <H4 align={"center"} bold={true} color={colors.white}>
         {heading}
       </H4>
-      <Spacer size={'xs'} />
-      <Spacer size={'xs'} />
-      <P2 align={'center'} color={colors.white}>
+      <Spacer size={"xs"} />
+      <Spacer size={"xs"} />
+      <P2 align={"center"} color={colors.white}>
         {subheading}
       </P2>
     </StyledCardContainer>
-  )
-}
+  );
+};
 
 const StyledCardContainer = styled.div`
   background: ${colors.grey};
@@ -114,4 +99,4 @@ const StyledCardContainer = styled.div`
   ${media.xl`
     width: ${GU * 250}px;
   `}
-`
+`;

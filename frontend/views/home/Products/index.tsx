@@ -60,7 +60,7 @@ export const Products: React.FC<IProducts> = ({
               image={products2Image}
               heading={products2Name}
               subheading={products2Description}
-              link={"/products/pcie-gen-4-six-port-switch"}
+              link={"/products/pcie-gen-4-network-interface-card"}
             />
           </Fade>
         </Flex>
@@ -70,7 +70,7 @@ export const Products: React.FC<IProducts> = ({
               image={products3Image}
               heading={products3Name}
               subheading={products3Description}
-              link={"/products/pcie-gen-4-six-port-switch"}
+              link={"/products/pcie-gen-3-twelve-port-switch"}
             />
           </Fade>
           <Fade bottom ssrFadeout delay={300}>
@@ -78,7 +78,7 @@ export const Products: React.FC<IProducts> = ({
               image={products4Image}
               heading={products4Name}
               subheading={products4Description}
-              link={"/products/pcie-gen-4-six-port-switch"}
+              link={"/products/pcie-gen-3-network-interface-card"}
             />
           </Fade>
         </Flex>
@@ -119,7 +119,7 @@ const ProductCard: React.FC<IProductCard> = ({
 
 const StyledCardContainer = styled.div`
   background: ${colors.grey};
-  border: 1px solid ${colors.white};
+  border: 2px solid ${colors.blue};
   border-radius: 10px;
   margin: 0 auto ${GU * 8}px;
   padding: ${GU * 6}px;
@@ -127,7 +127,6 @@ const StyledCardContainer = styled.div`
   width: ${GU * 75}px;
 
   &:hover {
-    border: 1px solid ${colors.blue};
     box-shadow: 0px 0px 10px 0px ${colors.black};
     cursor: pointer;
   }

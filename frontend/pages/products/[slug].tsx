@@ -3,13 +3,15 @@ import { PortableText } from "@portabletext/react";
 import { useRouter } from "next/router";
 import styled from "styled-components";
 import client from "client";
-import { colors } from "components/theme";
+import { colors, GU } from "components/theme";
+import Spacer from "components/Spacer";
+import { VStack } from "@chakra-ui/react";
 
 import { urlFor } from "lib/helpers";
 
 import { media } from "components/breakpoints";
 import { Container, Flex } from "components/Containers";
-import { H3 } from "components/Typography";
+import { H2, P1 } from "components/Typography";
 import Spinner from "components/Spinner";
 
 const ptComponents = {
@@ -42,33 +44,56 @@ const Product = ({ product }) => {
 
   const {
     title = "Missing title",
-    productName,
+    productName = "Missing product name",
     productImage,
     productCapabilities = [],
+    productSummary = "No summary",
+    productDescription = [],
   } = product;
 
   return (
     <article>
+      <Spacer size={"lg"} />
+      <Spacer size={"md"} />
       <Container>
-        <Flex align={"center"}>
+        <VStack>
+          <H2 style={{ textAlign: "center", fontWeight: 600 }}>
+            {productName}
+          </H2>
+          <Spacer size={"sm"} />
+          <StyledDivider />
           {productImage && (
-            <StyledCoverPhoto
-              src={urlFor(productImage).url()}
-              alt={`${title} cover photo`}
-            />
+            <div style={{ position: "relative" }}>
+              <StyledSkewedBackground />
+              <StyledProductImage
+                src={urlFor(productImage).url()}
+                alt={`${title} cover photo`}
+              />
+            </div>
           )}
-          <Flex justify={"center"} full>
-            <H3>{productName}</H3>
-          </Flex>
-        </Flex>
-        <StyledContentBackground>
-          <StyledContentContainer>
+        </VStack>
+        <Spacer size={"md"} />
+        <StyledColumnsContainer justify="space-between">
+          <StyledLeftContainer>
+            <P1 color={colors.blue} style={{ fontWeight: 600 }}>
+              {productSummary}
+            </P1>
+            <Spacer size={"sm"} />
+            <StyledDescriptionContainer>
+              <PortableText
+                value={productDescription}
+                components={ptComponents}
+              />
+            </StyledDescriptionContainer>
+          </StyledLeftContainer>
+          <StyledCapabilitiesContainer>
             <PortableText
               value={productCapabilities}
               components={ptComponents}
             />
-          </StyledContentContainer>
-        </StyledContentBackground>
+          </StyledCapabilitiesContainer>
+        </StyledColumnsContainer>
+        <Spacer size={"lg"} />
       </Container>
     </article>
   );
@@ -79,6 +104,8 @@ const query = groq`*[_type == "product" && slug.current == $slug][0]{
   productName,
   productImage,
   productCapabilities,
+  productSummary,
+  productDescription,
 }`;
 
 export async function getStaticPaths() {
@@ -96,8 +123,6 @@ export async function getStaticProps(context) {
   // It's important to default the slug so that it doesn't return "undefined"
   const { slug = "" } = context.params;
   const product = await client.fetch(query, { slug });
-
-  console.log(product);
 
   if (!product) {
     return {
@@ -122,22 +147,15 @@ const StyledSpinnerContainer = styled.div`
   width: 100%;
 `;
 
-const StyledCoverPhoto = styled.img`
-  height: 300px;
+const StyledProductImage = styled.img`
+  height: 220px;
   margin-top: 20px;
-  object-fit: cover;
-  min-width: 100%;
+  object-fit: contain;
+  width: 100%;
 
-  ${media.sm`
-    margin-top: 40px;
-  `}
-
-  ${media.lg`
-    min-width: 50%;
-  `}
-
-  ${media.xl`
-    height: 400px;
+  ${media.xs`
+    height: 300px;
+    width: ${GU * 80}px;
   `}
 `;
 
@@ -145,36 +163,122 @@ const StyledContentImage = styled.img`
   width: 100%;
 `;
 
-const StyledContentBackground = styled.div`
-  background: transparent;
+const StyledDivider = styled.div`
+  height: 2px;
+  background: ${colors.blue};
+  margin: 0 auto;
+  width: ${GU * 60}px;
+`;
 
-  ${media.lg`
-    background: rgba(167, 176, 188, 0.2);
+const StyledSkewedBackground = styled.div`
+  background: ${colors.blue};
+  transform: skewX(-32deg) rotate(60deg) translate(50%, -32%);
+  opacity: 0.1;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  width: 40%;
+  z-index: -1;
+
+  ${media.sm`
+    transform: skewX(-32deg) rotate(60deg) translate(50%, -25%);
   `}
 `;
 
-const StyledContentContainer = styled.div`
+const StyledColumnsContainer = styled(Flex)`
+  flex-direction: column;
+
+  ${media.md`
+    flex-direction: row;
+  `}
+`;
+
+const StyledLeftContainer = styled.div`
+  margin-bottom: ${GU * 10}px;
+  width: 100%%;
+
+  ${media.md`
+    margin-bottom: 0px;
+    width: 55%;
+  `}
+`;
+
+const StyledDescriptionContainer = styled.div`
+  p {
+    font-size: 1.4rem;
+
+    &:not(:last-child) {
+      margin-bottom: 20px;
+    }
+
+    ${media.md`
+      font-size: 1.6rem;
+    `}
+  }
+`;
+
+const StyledCapabilitiesContainer = styled.div`
   background: ${colors.grey};
-  font-size: 1.4rem;
-  line-height: 20px;
+  border: 2px solid ${colors.blue};
+  border-radius: 10px;
+  color: ${colors.white};
   letter-spacing: 0.5px;
-  margin: 40px auto;
-  padding: 20px;
+  padding: ${GU * 6}px;
   width: 100%;
 
+  p {
+    font-weight: 600;
+    font-size: 2rem;
+    line-height: 24px;
+    margin-bottom: ${GU * 6}px;
+  }
+
+  li {
+    font-size: 1.4rem;
+    line-height: 20px;
+    margin-bottom: ${GU * 3}px;
+    margin-left: ${GU * 3}px;
+    padding-left: 0px;
+  }
+
   ${media.sm`
-    font-size: 1.5rem;
-    padding: 40px;
+    padding: ${GU * 10}px;
+
+    li {
+      font-size: 1.5rem;
+    }
   `}
 
   ${media.md`
-    font-size: 1.6rem;
-    width: 800px;
+    padding: ${GU * 6}px;
+    width: 40%;
+
+    p {
+      font-size: 2rem;
+      line-height: 24px;
+    }
+
+    li {
+      line-height: 20px;
+    }
+  `}
+
+  ${media.lg`
+    padding: ${GU * 10}px;
+
+    p {
+      font-size: 2.4rem;
+    }
+
+    li {
+      font-size: 1.8rem;
+      line-height: 24px;
+      padding-left: ${GU * 3}px;
+    }
   `}
 
   ${media.xl`
     font-size: 2.2rem;
     line-height: 25px;
-    width: 1200px;
   `}
 `;

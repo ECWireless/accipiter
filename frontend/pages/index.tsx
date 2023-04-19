@@ -2,7 +2,6 @@ import Head from "next/head";
 import React from "react";
 import styled from "styled-components";
 import { Fade } from "react-reveal";
-import imageUrlBuilder from "@sanity/image-url";
 import client from "client";
 import { media } from "components/breakpoints";
 import { colors, GU } from "components/theme";
@@ -10,6 +9,7 @@ import { colors, GU } from "components/theme";
 import { Container } from "components/Containers";
 import Modal from "components/Modal";
 import { H4 } from "components/Typography";
+import { urlFor } from "lib/helpers";
 
 import { Hero, OurTech, Products, Partners, Contact } from "views/home";
 
@@ -146,10 +146,6 @@ const Home: React.FC = ({ homeProps }: { [key: string]: any }) => {
     </div>
   );
 };
-
-function urlFor(source) {
-  return imageUrlBuilder(client).image(source);
-}
 
 const { DEPLOYMENT_ENVIRONMENT } = process.env;
 

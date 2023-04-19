@@ -2,10 +2,11 @@ import styled from "styled-components";
 import { Fade } from "react-reveal";
 import { media } from "components/breakpoints";
 import { colors, GU } from "components/theme";
+import { useRouter } from "next/router";
 
 import Banner from "components/Banner";
 import { Container, Flex } from "components/Containers";
-import { H4, P2 } from "components/Typography";
+import { H4, P4 } from "components/Typography";
 import Spacer from "components/Spacer";
 
 interface IProducts {
@@ -51,6 +52,7 @@ export const Products: React.FC<IProducts> = ({
               image={products1Image}
               heading={products1Name}
               subheading={products1Description}
+              link={"/products/pcie-gen-4-six-port-switch"}
             />
           </Fade>
           <Fade bottom ssrFadeout delay={100}>
@@ -58,6 +60,7 @@ export const Products: React.FC<IProducts> = ({
               image={products2Image}
               heading={products2Name}
               subheading={products2Description}
+              link={"/products/pcie-gen-4-six-port-switch"}
             />
           </Fade>
         </Flex>
@@ -67,6 +70,7 @@ export const Products: React.FC<IProducts> = ({
               image={products3Image}
               heading={products3Name}
               subheading={products3Description}
+              link={"/products/pcie-gen-4-six-port-switch"}
             />
           </Fade>
           <Fade bottom ssrFadeout delay={300}>
@@ -74,6 +78,7 @@ export const Products: React.FC<IProducts> = ({
               image={products4Image}
               heading={products4Name}
               subheading={products4Description}
+              link={"/products/pcie-gen-4-six-port-switch"}
             />
           </Fade>
         </Flex>
@@ -87,39 +92,45 @@ interface IProductCard {
   image: any;
   heading: string;
   subheading: string;
+  link: string;
 }
 
 const ProductCard: React.FC<IProductCard> = ({
   image,
   heading,
   subheading,
+  link,
 }) => {
+  const { push } = useRouter();
   return (
-    <div>
-      <StyledCardContainer>
-        <StyledPhoto style={{ backgroundImage: `url(${image})` }} />
-        <Spacer size={"sm"} />
-        <H4 align={"center"} color={colors.white}>
-          {heading}
-        </H4>
-        <Spacer size={"sm"} />
-        <P2 align={"center"} color={colors.white}>
-          {subheading}
-        </P2>
-      </StyledCardContainer>
-      <Spacer size={"md"} />
-    </div>
+    <StyledCardContainer onClick={() => push(link)}>
+      <StyledPhoto style={{ backgroundImage: `url(${image})` }} />
+      <Spacer size={"sm"} />
+      <H4 align={"center"} color={colors.white} style={{ fontWeight: 700 }}>
+        {heading}
+      </H4>
+      <Spacer size={"sm"} />
+      <P4 align={"center"} color={colors.white}>
+        {subheading}
+      </P4>
+    </StyledCardContainer>
   );
 };
 
 const StyledCardContainer = styled.div`
   background: ${colors.grey};
-  border: 1px solid ${colors.blue};
+  border: 1px solid ${colors.white};
   border-radius: 10px;
-  margin: 0 auto;
+  margin: 0 auto ${GU * 8}px;
   padding: ${GU * 6}px;
   transition: all 0.3s ease;
   width: ${GU * 75}px;
+
+  &:hover {
+    border: 1px solid ${colors.blue};
+    box-shadow: 0px 0px 10px 0px ${colors.black};
+    cursor: pointer;
+  }
 
   ${media.xs`
     width: ${GU * 100}px;

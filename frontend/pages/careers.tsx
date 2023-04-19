@@ -42,9 +42,11 @@ const Careers: React.FC = ({ careersProps }: { [key: string]: any }) => {
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async () => {
+const { DEPLOYMENT_ENVIRONMENT } = process.env;
+
+export const getStaticProps = async () => {
   const careersProps =
-    await client.fetch(`*[_type == "careers" && slug.current == "v1"][0] {
+    await client.fetch(`*[_type == "careers" && slug.current == "${DEPLOYMENT_ENVIRONMENT}"][0] {
     heading,
 		subheading,
     position1Title,

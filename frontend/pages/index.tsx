@@ -151,9 +151,11 @@ function urlFor(source) {
   return imageUrlBuilder(client).image(source);
 }
 
+const { DEPLOYMENT_ENVIRONMENT } = process.env;
+
 export const getStaticProps = async () => {
   const homeProps =
-    await client.fetch(`*[_type == "home" && slug.current == "v1"][0] {
+    await client.fetch(`*[_type == "home" && slug.current == "${DEPLOYMENT_ENVIRONMENT}"][0] {
 		heroSubheading,
     heroAnimatedText1,
     heroAnimatedText2,

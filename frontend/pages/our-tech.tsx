@@ -45,9 +45,11 @@ const OurTech: React.FC = ({ ourTechProps }: { [key: string]: any }) => {
   );
 };
 
+const { DEPLOYMENT_ENVIRONMENT } = process.env;
+
 export const getStaticProps = async () => {
   const ourTechProps =
-    await client.fetch(`*[_type == "home" && slug.current == "v1"][0] {
+    await client.fetch(`*[_type == "home" && slug.current == "${DEPLOYMENT_ENVIRONMENT}"][0] {
     techHeading,
     techSubheading,
     techCard1Title,

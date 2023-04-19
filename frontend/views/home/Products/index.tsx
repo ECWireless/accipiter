@@ -1,12 +1,12 @@
-import styled from 'styled-components';
-import { Fade } from 'react-reveal'
-import { media } from 'components/breakpoints';
-import { colors, GU } from 'components/theme';
+import styled from "styled-components";
+import { Fade } from "react-reveal";
+import { media } from "components/breakpoints";
+import { colors, GU } from "components/theme";
 
-import Banner from 'components/Banner';
-import { Container, Flex } from 'components/Containers';
-import { H4, P2 } from 'components/Typography';
-import Spacer from 'components/Spacer';
+import Banner from "components/Banner";
+import { Container, Flex } from "components/Containers";
+import { H4, P2 } from "components/Typography";
+import Spacer from "components/Spacer";
 
 interface IProducts {
   productsHeading: string;
@@ -42,10 +42,10 @@ export const Products: React.FC<IProducts> = ({
   products4Description,
 }) => {
   return (
-    <div style={{ borderTop: `1px solid ${colors.blue}`}}>
+    <div style={{ borderTop: `1px solid ${colors.blue}` }}>
       <Banner heading={productsHeading} subheading={productsSubheading} />
       <Container>
-        <Flex align={'center'} justify={'space-between'} wrap={'true'}>
+        <Flex align={"center"} justify={"space-between"} wrap={"true"}>
           <Fade bottom ssrFadeout>
             <ProductCard
               image={products1Image}
@@ -61,7 +61,7 @@ export const Products: React.FC<IProducts> = ({
             />
           </Fade>
         </Flex>
-        <Flex align={'center'} justify={'space-between'} wrap={'true'}>
+        <Flex align={"center"} justify={"space-between"} wrap={"true"}>
           <Fade bottom ssrFadeout delay={200}>
             <ProductCard
               image={products3Image}
@@ -78,10 +78,10 @@ export const Products: React.FC<IProducts> = ({
           </Fade>
         </Flex>
       </Container>
-      <Spacer size={'lg'} />
+      <Spacer size={"lg"} />
     </div>
-  )
-}
+  );
+};
 
 interface IProductCard {
   image: any;
@@ -98,15 +98,19 @@ const ProductCard: React.FC<IProductCard> = ({
     <div>
       <StyledCardContainer>
         <StyledPhoto style={{ backgroundImage: `url(${image})` }} />
-        <Spacer size={'sm'} />
-        <H4 align={'center'} color={colors.white}>{heading}</H4>
-        <Spacer size={'sm'} />
-        <P2 align={'center'} color={colors.white}>{subheading}</P2>
+        <Spacer size={"sm"} />
+        <H4 align={"center"} color={colors.white}>
+          {heading}
+        </H4>
+        <Spacer size={"sm"} />
+        <P2 align={"center"} color={colors.white}>
+          {subheading}
+        </P2>
       </StyledCardContainer>
-      <Spacer size={'md'} />
+      <Spacer size={"md"} />
     </div>
-  )
-}
+  );
+};
 
 const StyledCardContainer = styled.div`
   background: ${colors.grey};
@@ -114,7 +118,7 @@ const StyledCardContainer = styled.div`
   border-radius: 10px;
   margin: 0 auto;
   padding: ${GU * 6}px;
-  transition: all .3s ease;
+  transition: all 0.3s ease;
   width: ${GU * 75}px;
 
   ${media.xs`
@@ -137,7 +141,7 @@ const StyledCardContainer = styled.div`
   ${media.xl`
     width: ${GU * 215}px;
   `}
-`
+`;
 
 const StyledPhoto = styled.div`
   background-size: contain;
@@ -157,4 +161,4 @@ const StyledPhoto = styled.div`
   ${media.xl`
     height: ${GU * 80}px;
   `}
-`
+`;

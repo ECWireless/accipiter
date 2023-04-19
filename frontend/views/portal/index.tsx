@@ -99,7 +99,7 @@ const PDFsMapping = ({
         <>
           <PDFIcon />
           <a style={{ alignSelf: 'flex-end'}} href={`https://cdn.sanity.io/files/${process.env.SANITY_PROJECT_ID}/production/${url.pdfFile.asset._ref.substring(5, (url.pdfFile.asset._ref.length - 4))}.pdf?dl=`}>
-            <P1 style={{ textDecoration: 'underline', marginLeft: '1rem' }} color={colors.white}>
+            <P1 style={{ textDecoration: 'underline', marginLeft: '1rem' }} color={colors.grey}>
               {title}
             </P1>
           </a>

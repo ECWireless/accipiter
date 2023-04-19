@@ -1,49 +1,78 @@
-import styled from 'styled-components';
-import { Fade } from 'react-reveal';
-import BlockContent from '@sanity/block-content-to-react'
-import { GU } from 'components/theme';
+import styled from "styled-components";
+import { Fade } from "react-reveal";
+import BlockContent from "@sanity/block-content-to-react";
+import { colors, GU } from "components/theme";
 
-import Banner from 'components/Banner';
-import { Container } from 'components/Containers';
-import { H3, P2Block } from 'components/Typography';
-import Spacer from 'components/Spacer';
+import Banner from "components/Banner";
+import { Container } from "components/Containers";
+import { H3, P2Block } from "components/Typography";
+import Spacer from "components/Spacer";
 
 interface IJobSpecification {
   heading: string;
   subheading: string;
-  positionTitle: string;
-  positionDescription: string;
+  position1Title: string;
+  position1Description: string;
+  position2Title: string;
+  position2Description: string;
+  position3Title: string;
+  position3Description: string;
 }
 
 export const JobSpecification: React.FC<IJobSpecification> = ({
   heading,
   subheading,
-  positionTitle,
-  positionDescription,
+  position1Title,
+  position1Description,
+  position2Title,
+  position2Description,
+  position3Title,
+  position3Description,
 }) => {
   return (
     <div>
       <Banner heading={heading} subheading={subheading} />
       <Container>
         <Fade bottom ssrFadeout>
-          <H3 bold={true}>{positionTitle}</H3>
+          <H3 bold={true}>{position1Title}</H3>
         </Fade>
-        <Spacer size={'md'} />
+        <Spacer size={"md"} />
         <Fade bottom delay={100} ssrFadeout>
           <P2Block>
-            <BlockContent
-              blocks={positionDescription}
-            />
+            <BlockContent blocks={position1Description} />
           </P2Block>
         </Fade>
+        <Spacer size={"md"} />
+        <StyledLine />
+        <Spacer size={"md"} />
+        <Fade bottom ssrFadeout>
+          <H3 bold={true}>{position2Title}</H3>
+        </Fade>
+        <Spacer size={"md"} />
+        <Fade bottom delay={100} ssrFadeout>
+          <P2Block>
+            <BlockContent blocks={position2Description} />
+          </P2Block>
+        </Fade>
+        {/* <Spacer size={"md"} />
+        <StyledLine />
+        <Spacer size={"md"} />
+        <Fade bottom ssrFadeout>
+          <H3 bold={true}>{position3Title}</H3>
+        </Fade>
+        <Spacer size={"md"} />
+        <Fade bottom delay={100} ssrFadeout>
+          <P2Block>
+            <BlockContent blocks={position3Description} />
+          </P2Block>
+        </Fade> */}
       </Container>
     </div>
-  )
-}
+  );
+};
 
-const StyledList = styled.ul`
-  li {
-    list-style: circle;
-    margin: ${GU * 5}px;
-  }
+const StyledLine = styled.div`
+  background: ${colors.blue};
+  height: 2px;
+  width: 100%;
 `;

@@ -71,7 +71,7 @@ const Home: React.FC = ({ homeProps }: { [key: string]: any} ) => {
   return (
     <div>
       <Head>
-        <title>Accipiter Systems | United States</title>
+        <title>PCIe Switches and High Performance Networking | Accipiter Systems</title>
       </Head>
 
       <main>

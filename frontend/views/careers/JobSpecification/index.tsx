@@ -1,10 +1,7 @@
-import styled from "styled-components";
+// import styled from "styled-components";
 import { Fade } from "react-reveal";
 // import BlockContent from "@sanity/block-content-to-react";
-import {
-  colors,
-  // GU
-} from "components/theme";
+// import { colors, GU } from "components/theme";
 
 import Banner from "components/Banner";
 import { Container } from "components/Containers";
@@ -94,8 +91,8 @@ export const JobSpecification: React.FC<IJobSpecification> = ({
   );
 };
 
-const StyledLine = styled.div`
-  background: ${colors.blue};
-  height: 2px;
-  width: 100%;
-`;
+// const StyledLine = styled.div`
+//   background: ${colors.blue};
+//   height: 2px;
+//   width: 100%;
+// `;

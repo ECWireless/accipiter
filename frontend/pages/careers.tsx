@@ -42,7 +42,7 @@ const Careers: React.FC = ({ careersProps }: { [key: string]: any }) => {
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getStaticProps = async () => {
   const careersProps =
     await client.fetch(`*[_type == "careers" && slug.current == "v1"][0] {
     heading,

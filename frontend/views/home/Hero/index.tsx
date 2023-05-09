@@ -1,8 +1,8 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
 
-import { media } from 'components/breakpoints'
-import { colors, GU, shadows } from 'components/theme'
+import { media } from "components/breakpoints";
+import { colors, GU, shadows } from "components/theme";
 
 interface IHero {
   setModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
@@ -13,7 +13,7 @@ interface IHero {
   heroAnimatedText4: string;
 }
 
-const words = ['words1', 'words2', 'words3']
+const words = ["words1", "words2", "words3"];
 
 export const Hero: React.FC<IHero> = ({
   setModalOpen,
@@ -30,28 +30,39 @@ export const Hero: React.FC<IHero> = ({
       setIndex((state) => (state + 1) % 4);
     }, 4000);
     return () => clearInterval(interval);
-  }, [])
+  }, []);
 
   return (
     <StyledHeroContainer>
       <StyledHeroVideo autoPlay loop muted playsInline>
-        <source src='https://arweave.net/tAO_BpHTcGu8QoSXfa67edQKmhfIKXeAeheC6D3ZfGI' type="video/mp4" />
+        <source
+          src="https://arweave.net/tAO_BpHTcGu8QoSXfa67edQKmhfIKXeAeheC6D3ZfGI"
+          type="video/mp4"
+        />
       </StyledHeroVideo>
       <StyledButton onClick={() => setModalOpen(true)}>
-        <svg version="1.1" fill={'#121212'} xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+        <svg
+          version="1.1"
+          fill={"#121212"}
+          xmlns="http://www.w3.org/2000/svg"
+          width="32"
+          height="32"
+          viewBox="0 0 32 32"
+        >
           <title>play2</title>
           <path d="M16 0c-8.837 0-16 7.163-16 16s7.163 16 16 16 16-7.163 16-16-7.163-16-16-16zM16 29c-7.18 0-13-5.82-13-13s5.82-13 13-13 13 5.82 13 13-5.82 13-13 13zM12 9l12 7-12 7z"></path>
         </svg>
       </StyledButton>
     </StyledHeroContainer>
-  )
-}
+  );
+};
 
 const StyledHeroContainer = styled.div`
   width: 100%;
   height: ${GU * 113}px;
   position: relative;
   overflow: hidden;
+
   ${media.sm`
     height: ${GU * 125}px;
   `}
@@ -64,16 +75,19 @@ const StyledHeroContainer = styled.div`
   ${media.xl`
     height: ${GU * 225}px;
   `}
-`
+`;
 
 const StyledHeroVideo = styled.video`
-  height: 100%;
-  width: auto;
+  object-fit: cover;
   position: absolute;
   top: 0;
   animation-name: fade;
   animation-duration: 2s;
   animation-iteration-count: 1;
+  height: auto;
+  min-height: 100%;
+  min-width: 100%;
+  width: auto;
   z-index: -1;
 
   @keyframes fade {
@@ -84,12 +98,7 @@ const StyledHeroVideo = styled.video`
       opacity: 1;
     }
   }
-  
-  ${media.md`
-    width: 100%;
-    height: auto;
-  `}
-`
+`;
 
 const StyledButton = styled.div`
   align-items: center;
@@ -103,7 +112,7 @@ const StyledButton = styled.div`
   position: relative;
   top: 50%;
   transform: translate(-50%, -50%);
-  transition: all .3s ease;
+  transition: all 0.3s ease;
   width: ${GU * 16}px;
   z-index: 1;
 

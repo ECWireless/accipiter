@@ -43,7 +43,7 @@ export const Partners: React.FC<IPartners> = ({
       </Fade>
       <Spacer size={"md"} />
       <Fade ssrFadeout>
-        <StyledLogoContainerLarge>
+        <StyledLogoContainerLarge topBorder>
           <div style={{ backgroundImage: `url(${partnersLogo1})` }} />
           <div style={{ backgroundImage: `url(${partnersLogo2})` }} />
           <div style={{ backgroundImage: `url(${partnersLogo3})` }} />
@@ -61,7 +61,7 @@ export const Partners: React.FC<IPartners> = ({
         </StyledLogoContainerLarge>
       </Fade>
       <Fade ssrFadeout>
-        <StyledLogoContainerSmall>
+        <StyledLogoContainerSmall topBorder>
           <div style={{ backgroundImage: `url(${partnersLogo1})` }} />
           <div style={{ backgroundImage: `url(${partnersLogo2})` }} />
         </StyledLogoContainerSmall>
@@ -99,7 +99,11 @@ const StyledPartnersBackground = styled.div`
   background: ${colors.white};
 `;
 
-const StyledLogoContainerLarge = styled.div`
+type StyledLogoContainerProps = {
+  topBorder?: boolean;
+};
+
+const StyledLogoContainerLarge = styled.div<StyledLogoContainerProps>`
   background: ${colors.white};
   display: none;
 
@@ -119,6 +123,12 @@ const StyledLogoContainerLarge = styled.div`
     ${media.xl`
       height: ${GU * 60}px;
     `}
+
+    ${(props) =>
+      !props.topBorder &&
+      `
+        border-top: none;
+      `}
   }
 
   div:last-child {
@@ -126,7 +136,7 @@ const StyledLogoContainerLarge = styled.div`
   }
 `;
 
-const StyledLogoContainerSmall = styled.div`
+const StyledLogoContainerSmall = styled.div<StyledLogoContainerProps>`
   background: ${colors.white};
   display: flex;
 
@@ -151,6 +161,12 @@ const StyledLogoContainerSmall = styled.div`
     ${media.sm`
       background-size: 30%;
     `}
+
+    ${(props) =>
+      !props.topBorder &&
+      `
+        border-top: none;
+      `}
   }
 
   div:last-child {

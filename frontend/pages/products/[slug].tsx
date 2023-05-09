@@ -6,6 +6,7 @@ import client from "client";
 import { colors, GU } from "components/theme";
 import Spacer from "components/Spacer";
 import { VStack } from "@chakra-ui/react";
+import Head from "next/head";
 
 import { urlFor } from "lib/helpers";
 
@@ -52,50 +53,55 @@ const Product = ({ product }) => {
   } = product;
 
   return (
-    <article>
-      <Spacer size={"lg"} />
-      <Spacer size={"md"} />
-      <Container>
-        <VStack>
-          <H2 style={{ textAlign: "center", fontWeight: 600 }}>
-            {productName}
-          </H2>
-          <Spacer size={"sm"} />
-          <StyledDivider />
-          {productImage && (
-            <div style={{ position: "relative" }}>
-              <StyledSkewedBackground />
-              <StyledProductImage
-                src={urlFor(productImage).url()}
-                alt={`${title} cover photo`}
-              />
-            </div>
-          )}
-        </VStack>
+    <div>
+      <Head>
+        <title>{title}</title>
+      </Head>
+      <article>
+        <Spacer size={"lg"} />
         <Spacer size={"md"} />
-        <StyledColumnsContainer justify="space-between">
-          <StyledLeftContainer>
-            <P1 color={colors.blue} style={{ fontWeight: 600 }}>
-              {productSummary}
-            </P1>
-            <Spacer size={"sm"} />
-            <StyledDescriptionContainer>
+        <Container>
+          <VStack>
+            <H2 style={{ textAlign: "center", fontWeight: 600 }}>
+              {productName}
+            </H2>
+            <br />
+            <StyledDivider />
+            {productImage && (
+              <div style={{ position: "relative" }}>
+                {/* <StyledSkewedBackground /> */}
+                <StyledProductImage
+                  src={urlFor(productImage).url()}
+                  alt={`${title} cover photo`}
+                />
+              </div>
+            )}
+          </VStack>
+          <Spacer size={"md"} />
+          <StyledColumnsContainer justify="space-between">
+            <StyledLeftContainer>
+              <P1 color={colors.blue} style={{ fontWeight: 600 }}>
+                {productSummary}
+              </P1>
+              <Spacer size={"sm"} />
+              <StyledDescriptionContainer>
+                <PortableText
+                  value={productDescription}
+                  components={ptComponents}
+                />
+              </StyledDescriptionContainer>
+            </StyledLeftContainer>
+            <StyledCapabilitiesContainer>
               <PortableText
-                value={productDescription}
+                value={productCapabilities}
                 components={ptComponents}
               />
-            </StyledDescriptionContainer>
-          </StyledLeftContainer>
-          <StyledCapabilitiesContainer>
-            <PortableText
-              value={productCapabilities}
-              components={ptComponents}
-            />
-          </StyledCapabilitiesContainer>
-        </StyledColumnsContainer>
-        <Spacer size={"lg"} />
-      </Container>
-    </article>
+            </StyledCapabilitiesContainer>
+          </StyledColumnsContainer>
+          <Spacer size={"lg"} />
+        </Container>
+      </article>
+    </div>
   );
 };
 
@@ -155,7 +161,7 @@ const StyledProductImage = styled.img`
 
   ${media.xs`
     height: 300px;
-    width: ${GU * 80}px;
+    width: ${GU * 110}px;
   `}
 `;
 

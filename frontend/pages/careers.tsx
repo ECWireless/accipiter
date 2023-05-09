@@ -1,5 +1,4 @@
 import Head from "next/head";
-import { GetServerSideProps } from "next";
 import client from "client";
 
 import { ApplicationForm, JobSpecification } from "views/careers";

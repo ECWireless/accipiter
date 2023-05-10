@@ -66,6 +66,9 @@ const Product = ({ product, slug }) => {
     }));
   }, [slug]);
 
+  console.log("slug", slug);
+  console.log("specs", specs);
+
   return (
     <div>
       <Head>

@@ -81,7 +81,7 @@ export const H3 = styled.h3<ITypograhpy>`
 	font-size: 2rem;
 	font-weight: 300;
 	font-family: 'Nunito Sans', sans-serif;
-	line-height: 25px;
+	line-height: 38px;
 	
 	${media.xs`
 		font-size: 2.2rem;

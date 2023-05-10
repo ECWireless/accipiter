@@ -7,13 +7,16 @@ import { colors, GU } from "components/theme";
 import Spacer from "components/Spacer";
 import { VStack } from "@chakra-ui/react";
 import Head from "next/head";
+import { useMemo } from "react";
 
 import { urlFor } from "lib/helpers";
 
 import { media } from "components/breakpoints";
 import { Container, Flex } from "components/Containers";
-import { H2, P1 } from "components/Typography";
+import { H2, H3, H4, P1 } from "components/Typography";
 import Spinner from "components/Spinner";
+
+import specData from "data/specs.json";
 
 const ptComponents = {
   types: {
@@ -32,7 +35,7 @@ const ptComponents = {
   },
 };
 
-const Product = ({ product }) => {
+const Product = ({ product, slug }) => {
   const router = useRouter();
 
   if (router.isFallback) {
@@ -51,6 +54,17 @@ const Product = ({ product }) => {
     productSummary = "No summary",
     productDescription = [],
   } = product;
+
+  const specs = useMemo(() => {
+    const product = specData[slug];
+    if (!product) {
+      return [];
+    }
+    return Object.entries(product).map(([key, value]) => ({
+      key,
+      value,
+    }));
+  }, [slug]);
 
   return (
     <div>
@@ -99,6 +113,30 @@ const Product = ({ product }) => {
             </StyledCapabilitiesContainer>
           </StyledColumnsContainer>
           <Spacer size={"lg"} />
+          {specs.length > 0 && (
+            <>
+              <StyledColumnsContainer>
+                <StyledSpecsHeadingContainer>
+                  <H3 style={{ fontWeight: 700, textAlign: "center" }}>
+                    Delivering Results in RealTime.
+                  </H3>
+                </StyledSpecsHeadingContainer>
+                <StyledTableContainer>
+                  <StyledTable>
+                    <tbody>
+                      {specs.map(({ key, value }) => (
+                        <tr key={key}>
+                          <td>{key}</td>
+                          <td>{value}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </StyledTable>
+                </StyledTableContainer>
+              </StyledColumnsContainer>
+              <Spacer size={"lg"} />
+            </>
+          )}
         </Container>
       </article>
     </div>
@@ -139,6 +177,7 @@ export async function getStaticProps(context) {
   return {
     props: {
       product,
+      slug,
     },
     revalidate: 10,
   };
@@ -176,20 +215,20 @@ const StyledDivider = styled.div`
   width: ${GU * 60}px;
 `;
 
-const StyledSkewedBackground = styled.div`
-  background: ${colors.blue};
-  transform: skewX(-32deg) rotate(60deg) translate(50%, -32%);
-  opacity: 0.1;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  width: 40%;
-  z-index: -1;
+// const StyledSkewedBackground = styled.div`
+//   background: ${colors.blue};
+//   transform: skewX(-32deg) rotate(60deg) translate(50%, -32%);
+//   opacity: 0.1;
+//   height: 100%;
+//   position: absolute;
+//   top: 0;
+//   width: 40%;
+//   z-index: -1;
 
-  ${media.sm`
-    transform: skewX(-32deg) rotate(60deg) translate(50%, -25%);
-  `}
-`;
+//   ${media.sm`
+//     transform: skewX(-32deg) rotate(60deg) translate(50%, -25%);
+//   `}
+// `;
 
 const StyledColumnsContainer = styled(Flex)`
   flex-direction: column;
@@ -287,4 +326,44 @@ const StyledCapabilitiesContainer = styled.div`
     font-size: 2.2rem;
     line-height: 25px;
   `}
+`;
+
+const StyledSpecsHeadingContainer = styled.div`
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  margin-bottom: ${GU * 6}px;
+  width: 100%;
+
+  ${media.md`
+    padding: 0 ${GU * 14}px;
+    margin-bottom: 0;
+    min-height: 100%;
+    width: 50%;
+  `}
+
+  ${media.lg`
+    padding: 0 ${GU * 20}px;
+    width: 50%;
+  `}
+`;
+
+const StyledTableContainer = styled.div`
+  overflow-x: auto;
+  width: 100%;
+
+  ${media.md`
+    width: 50%;
+  `}
+`;
+
+const StyledTable = styled.table`
+  border-collapse: collapse;
+  width: 100%;
+  th,
+  td {
+    border: 1px solid ${colors.blue};
+    padding: 8px;
+    text-align: left;
+  }
 `;

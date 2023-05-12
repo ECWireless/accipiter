@@ -1,9 +1,9 @@
-import { Fade } from 'react-reveal';
+import { Fade } from "react-reveal";
 
-import Banner from 'components/Banner';
-import ContactCard from 'components/ContactCard';
-import { Container } from 'components/Containers';
-import Spacer from 'components/Spacer';
+import Banner from "components/Banner";
+import ContactCard from "components/ContactCard";
+import { Container } from "components/Containers";
+import Spacer from "components/Spacer";
 
 interface IContact {
   contactHeading: string;
@@ -21,8 +21,8 @@ export const Contact: React.FC<IContact> = ({
         <Fade bottom ssrFadeout>
           <ContactCard />
         </Fade>
-        <Spacer size={'lg'} />
+        <Spacer size={"lg"} />
       </Container>
     </div>
-  )
-}
+  );
+};

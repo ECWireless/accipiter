@@ -1,5 +1,4 @@
 import Head from "next/head";
-import { GetServerSideProps } from "next";
 import client from "client";
 
 import { ApplicationForm, JobSpecification } from "views/careers";
@@ -42,9 +41,11 @@ const Careers: React.FC = ({ careersProps }: { [key: string]: any }) => {
   );
 };
 
+const { DEPLOYMENT_ENVIRONMENT } = process.env;
+
 export const getStaticProps = async () => {
   const careersProps =
-    await client.fetch(`*[_type == "careers" && slug.current == "v1"][0] {
+    await client.fetch(`*[_type == "careers" && slug.current == "${DEPLOYMENT_ENVIRONMENT}"][0] {
     heading,
 		subheading,
     position1Title,

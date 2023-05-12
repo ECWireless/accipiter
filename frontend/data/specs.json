@@ -1,0 +1,38 @@
+{
+  "pcie-gen-3-twelve-port-switch" : {
+    "Ports": "Twelve 64 Gbps PCIe Ports",
+    "Connectors": "Active Optical or copper QSFP+",
+    "Switch Capacity": "768 Gb",
+    "P2P Latency": "10 Nanoseconds",
+    "Protocols": "Protocol Independent",
+    "Management SW": "FalconX",
+    "Power Consumption": "< 175 watts",
+    "Physical Dimensions": "22 in x 17.2 in x 3.5 in (LxWxH)"
+  },
+  "pcie-gen-3-network-interface-card": {
+    "PCIe Version": "PCIe Gen 3",
+    "Connectors": "Active Optical or copper QSFP",
+    "Protocols": "Protocol Agnostic",
+    "Latency": "<10 Nanoseconds",
+    "Bandwidth": "64 Gbps",
+    "Management SW": "Linux 64-bit, FalconX"
+  },
+  "pcie-gen-4-six-port-switch": {
+    "Ports": "Six 128 Gbps PCIe Ports",
+    "Connectors": "Active Optical",
+    "Switch Capacity": "768 Gb",
+    "P2P Latency": "10 Nanoseconds",
+    "Protocols": "Protocol Independent",
+    "Management SW": "FalconX",
+    "Power Consumption": "< 175 watts",
+    "Physical Dimensions": "22 in x 17.2 in x 3.5 in (LxWxH)"
+  },
+  "pcie-gen-4-network-interface-card": {
+    "PCIe Version": "PCIe Gen 3/4",
+    "Connectors": "Active Optical",
+    "Protocols": "Protocol Agnostic",
+    "Latency": "<10 Nanoseconds",
+    "Bandwidth": "128-256 Gbps",
+    "Management SW": "Linux 64-bit,Windows,FalconX"
+  }
+}

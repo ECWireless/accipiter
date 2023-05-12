@@ -1,12 +1,13 @@
-import styled from 'styled-components';
-import { Fade } from 'react-reveal'
-import { media } from 'components/breakpoints';
-import { colors, GU } from 'components/theme';
+import styled from "styled-components";
+import { Fade } from "react-reveal";
+import { media } from "components/breakpoints";
+import { colors, GU } from "components/theme";
+import { useRouter } from "next/router";
 
-import Banner from 'components/Banner';
-import { Container, Flex } from 'components/Containers';
-import { H4, P2 } from 'components/Typography';
-import Spacer from 'components/Spacer';
+import Banner from "components/Banner";
+import { Container, Flex } from "components/Containers";
+import { H4, P4 } from "components/Typography";
+import Spacer from "components/Spacer";
 
 interface IProducts {
   productsHeading: string;
@@ -42,15 +43,16 @@ export const Products: React.FC<IProducts> = ({
   products4Description,
 }) => {
   return (
-    <div style={{ borderTop: `1px solid ${colors.blue}`}}>
+    <div style={{ borderTop: `1px solid ${colors.blue}` }}>
       <Banner heading={productsHeading} subheading={productsSubheading} />
       <Container>
-        <Flex align={'center'} justify={'space-between'} wrap={'true'}>
+        <Flex align={"center"} justify={"space-between"} wrap={"true"}>
           <Fade bottom ssrFadeout>
             <ProductCard
               image={products1Image}
               heading={products1Name}
               subheading={products1Description}
+              link={"/products/pcie-gen-4-six-port-switch"}
             />
           </Fade>
           <Fade bottom ssrFadeout delay={100}>
@@ -58,15 +60,17 @@ export const Products: React.FC<IProducts> = ({
               image={products2Image}
               heading={products2Name}
               subheading={products2Description}
+              link={"/products/pcie-gen-4-network-interface-card"}
             />
           </Fade>
         </Flex>
-        <Flex align={'center'} justify={'space-between'} wrap={'true'}>
+        <Flex align={"center"} justify={"space-between"} wrap={"true"}>
           <Fade bottom ssrFadeout delay={200}>
             <ProductCard
               image={products3Image}
               heading={products3Name}
               subheading={products3Description}
+              link={"/products/pcie-gen-3-twelve-port-switch"}
             />
           </Fade>
           <Fade bottom ssrFadeout delay={300}>
@@ -74,48 +78,58 @@ export const Products: React.FC<IProducts> = ({
               image={products4Image}
               heading={products4Name}
               subheading={products4Description}
+              link={"/products/pcie-gen-3-network-interface-card"}
             />
           </Fade>
         </Flex>
       </Container>
-      <Spacer size={'lg'} />
+      <Spacer size={"lg"} />
     </div>
-  )
-}
+  );
+};
 
 interface IProductCard {
   image: any;
   heading: string;
   subheading: string;
+  link: string;
 }
 
 const ProductCard: React.FC<IProductCard> = ({
   image,
   heading,
   subheading,
+  link,
 }) => {
+  const { push } = useRouter();
   return (
-    <div>
-      <StyledCardContainer>
-        <StyledPhoto style={{ backgroundImage: `url(${image})` }} />
-        <Spacer size={'sm'} />
-        <H4 align={'center'} color={colors.white}>{heading}</H4>
-        <Spacer size={'sm'} />
-        <P2 align={'center'} color={colors.white}>{subheading}</P2>
-      </StyledCardContainer>
-      <Spacer size={'md'} />
-    </div>
-  )
-}
+    <StyledCardContainer onClick={() => push(link)}>
+      <StyledPhoto style={{ backgroundImage: `url(${image})` }} />
+      <Spacer size={"sm"} />
+      <H4 align={"center"} color={colors.white} style={{ fontWeight: 700 }}>
+        {heading}
+      </H4>
+      <Spacer size={"sm"} />
+      <P4 align={"center"} color={colors.white}>
+        {subheading}
+      </P4>
+    </StyledCardContainer>
+  );
+};
 
 const StyledCardContainer = styled.div`
   background: ${colors.grey};
-  border: 1px solid ${colors.blue};
+  border: 2px solid ${colors.blue};
   border-radius: 10px;
-  margin: 0 auto;
+  margin: 0 auto ${GU * 8}px;
   padding: ${GU * 6}px;
-  transition: all .3s ease;
+  transition: all 0.3s ease;
   width: ${GU * 75}px;
+
+  &:hover {
+    box-shadow: 0px 0px 10px 0px ${colors.black};
+    cursor: pointer;
+  }
 
   ${media.xs`
     width: ${GU * 100}px;
@@ -137,7 +151,7 @@ const StyledCardContainer = styled.div`
   ${media.xl`
     width: ${GU * 215}px;
   `}
-`
+`;
 
 const StyledPhoto = styled.div`
   background-size: contain;
@@ -157,4 +171,4 @@ const StyledPhoto = styled.div`
   ${media.xl`
     height: ${GU * 80}px;
   `}
-`
+`;

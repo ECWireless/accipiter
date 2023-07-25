@@ -14,7 +14,7 @@
     "Connectors": "Active Optical or copper QSFP",
     "Protocols": "Protocol Agnostic",
     "Latency": "<10 Nanoseconds",
-    "Bandwidth": "64 Gbps",
+    "Data Rate": "64 Gbps",
     "Management SW": "Linux 64-bit, FalconX"
   },
   "pcie-gen-4-six-port-switch": {
@@ -32,7 +32,7 @@
     "Connectors": "Active Optical",
     "Protocols": "Protocol Agnostic",
     "Latency": "<10 Nanoseconds",
-    "Bandwidth": "128-256 Gbps",
+    "Data Rate": "128-256 Gbps",
     "Management SW": "Linux 64-bit,Windows,FalconX"
   }
 }

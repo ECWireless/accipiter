@@ -10,7 +10,7 @@
     "Physical Dimensions": "22 in x 17.2 in x 3.5 in (LxWxH)"
   },
   "pcie-gen-3-network-interface-card": {
-    "PCIe Version": "PCIe Gen 3",
+    "PCIe Version": "Gen 3",
     "Connectors": "Active Optical or copper QSFP",
     "Protocols": "Protocol Agnostic",
     "Latency": "<10 Nanoseconds",
@@ -28,7 +28,7 @@
     "Physical Dimensions": "22 in x 17.2 in x 3.5 in (LxWxH)"
   },
   "pcie-gen-4-network-interface-card": {
-    "PCIe Version": "PCIe Gen 3/4",
+    "PCIe Version": "Gen 3/4",
     "Connectors": "Active Optical",
     "Protocols": "Protocol Agnostic",
     "Latency": "<10 Nanoseconds",

@@ -196,7 +196,8 @@ export const getStaticProps = async () => {
     contactSubheading,
 	}`);
   return {
-    props: { homeProps, revalidate: 10 },
+    props: { homeProps },
+    revalidate: 10,
   };
 };
 

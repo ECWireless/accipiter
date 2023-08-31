@@ -13,7 +13,7 @@ import { urlFor } from "lib/helpers";
 
 import { media } from "components/breakpoints";
 import { Container, Flex } from "components/Containers";
-import { H2, H3, H4, P1 } from "components/Typography";
+import { H2, H3, P1 } from "components/Typography";
 import Spinner from "components/Spinner";
 
 import specData from "data/specs.json";

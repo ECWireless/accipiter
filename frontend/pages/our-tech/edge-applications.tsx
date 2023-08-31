@@ -1,8 +1,8 @@
 import Head from "next/head";
-import { Box, VStack, Flex, Text } from "@chakra-ui/react";
+import { Box, VStack, Flex, Text, SlideFade } from "@chakra-ui/react";
+
 import Spacer from "components/Spacer";
 import { Container } from "chakraComponents/Flex";
-
 import { SwitchSVG } from "components/SwitchSvg";
 
 const EdgeApplications: React.FC = () => {
@@ -20,10 +20,14 @@ const EdgeApplications: React.FC = () => {
             lg: 52,
           }}
         >
-          <Text variant="h1">FalconX</Text>
-          <Text color="electric.400" variant="h1">
-            Edge Applications
-          </Text>
+          <SlideFade in>
+            <Text variant="h1">FalconX</Text>
+          </SlideFade>
+          <SlideFade in delay={0.1}>
+            <Text color="electric.400" variant="h1">
+              Edge Applications
+            </Text>
+          </SlideFade>
         </VStack>
         <Container>
           <Flex
@@ -77,26 +81,36 @@ const EdgeApplications: React.FC = () => {
               </Text>
             </VStack>
             <Flex flexDirection="column" gap={3}>
-              <SummaryCard1
-                number={1}
-                text={`Smaller form factor, lower SWAP PCIe based cameras and sensors`}
-              />
-              <SummaryCard1
-                number={2}
-                text={`Connect sensors directly to HPC devices`}
-              />
-              <SummaryCard1
-                number={3}
-                text={`Multiple AI instances utilizing the same or different sensors`}
-              />
-              <SummaryCard1
-                number={4}
-                text={`Rapidly deploy AI instances to the edge`}
-              />
-              <SummaryCard1
-                number={4}
-                text={`More efficient harwdare usage, cost, and SWAP`}
-              />
+              <SlideFade in delay={0.1}>
+                <SummaryCard1
+                  number={1}
+                  text={`Smaller form factor, lower SWAP PCIe based cameras and sensors`}
+                />
+              </SlideFade>
+              <SlideFade in delay={0.2}>
+                <SummaryCard1
+                  number={2}
+                  text={`Connect sensors directly to HPC devices`}
+                />
+              </SlideFade>
+              <SlideFade in delay={0.3}>
+                <SummaryCard1
+                  number={3}
+                  text={`Multiple AI instances utilizing the same or different sensors`}
+                />
+              </SlideFade>
+              <SlideFade in delay={0.4}>
+                <SummaryCard1
+                  number={4}
+                  text={`Rapidly deploy AI instances to the edge`}
+                />
+              </SlideFade>
+              <SlideFade in delay={0.5}>
+                <SummaryCard1
+                  number={4}
+                  text={`More efficient harwdare usage, cost, and SWAP`}
+                />
+              </SlideFade>
             </Flex>
           </Flex>
           <Flex

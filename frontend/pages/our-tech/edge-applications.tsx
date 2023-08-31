@@ -1,7 +1,7 @@
 import Head from "next/head";
 import { Box, VStack, Flex, Text } from "@chakra-ui/react";
 import Spacer from "components/Spacer";
-import { ContainerSmall } from "components/Containers";
+import { Container } from "chakraComponents/Flex";
 
 import { SwitchSVG } from "components/SwitchSvg";
 
@@ -17,36 +17,20 @@ const EdgeApplications: React.FC = () => {
           mt={{
             base: 20,
             md: 48,
-            lg: 60,
+            lg: 52,
           }}
         >
-          <Text
-            color="grey.400"
-            fontSize={{
-              base: "36px",
-              lg: "48px",
-            }}
-            fontWeight={500}
-          >
-            FalconX
-          </Text>
-          <Text
-            color="electric.400"
-            fontSize={{
-              base: "36px",
-              lg: "48px",
-            }}
-            fontWeight={500}
-          >
+          <Text variant="h1">FalconX</Text>
+          <Text color="electric.400" variant="h1">
             Edge Applications
           </Text>
         </VStack>
-        <ContainerSmall>
+        <Container>
           <Flex
-            flexDirection={{ base: "column", lg: "row" }}
+            flexDirection={{ base: "column", xl: "row" }}
             gap={{
               base: 20,
-              lg: 10,
+              xl: 10,
             }}
             mt={{
               base: 10,
@@ -57,7 +41,7 @@ const EdgeApplications: React.FC = () => {
               align="flex-start"
               width={{
                 base: "100%",
-                lg: "60%",
+                xl: "60%",
               }}
             >
               <Text
@@ -148,7 +132,7 @@ const EdgeApplications: React.FC = () => {
               }}
             >
               <Box
-                borderTop="4px dotted #00A5C2"
+                borderTop="4px dashed #00A5C2"
                 h="4px"
                 position="absolute"
                 top="50%"
@@ -168,7 +152,7 @@ const EdgeApplications: React.FC = () => {
               <SummaryCard2>Supports real-time edge applications</SummaryCard2>
             </Flex>
           </Flex>
-        </ContainerSmall>
+        </Container>
         <Spacer size={"lg"} />
         <div>Benefits</div>
         <div>Use cases</div>

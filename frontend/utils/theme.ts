@@ -3,6 +3,19 @@ import {
   theme as defaultTheme,
 } from '@chakra-ui/react';
 
+const Text = {
+  variants: {
+    h1: {
+      color: 'grey.400',
+      fontSize: {
+        base: '36px',
+        lg: '48px',
+      },
+      fontWeight: 500,
+    },
+  }
+}
+
 export const theme = extendTheme({
   config: { initialColorMode: 'light', useSystemColorMode: false },
   colors: {
@@ -27,5 +40,8 @@ export const theme = extendTheme({
     red: {
       ...defaultTheme.colors.red,
     },
+  },
+  components: {
+    Text,
   },
 });

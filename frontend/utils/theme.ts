@@ -11,7 +11,7 @@ const Text = {
         base: '36px',
         lg: '48px',
       },
-      fontWeight: 500,
+      fontWeight: 600,
     },
   }
 }

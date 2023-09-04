@@ -1,9 +1,9 @@
 import Head from "next/head";
-import { Box, VStack, Flex, Text, SlideFade } from "@chakra-ui/react";
+import { Box, VStack, Flex, Text, Image, SlideFade } from "@chakra-ui/react";
 
 import Spacer from "components/Spacer";
 import { Container } from "chakraComponents/Flex";
-import { SwitchSVG } from "components/SwitchSvg";
+import { SwitchSVG } from "components/SVGs/SwitchSvg";
 
 const EdgeApplications: React.FC = () => {
   return (
@@ -214,7 +214,57 @@ const EdgeApplications: React.FC = () => {
             </Flex>
           </Container>
         </Box>
-        <div>Use cases</div>
+        <Container>
+          <Text color="electric.400" my={10} textAlign="center" variant="h1">
+            Use Cases
+          </Text>
+          <Flex
+            justify="center"
+            gap={{
+              base: 10,
+              lg: 20,
+            }}
+            mb={20}
+            wrap="wrap"
+          >
+            <UseCasesCard
+              title="Screening security"
+              body={`Sensor based security, biometrics, and real-time decision making at the edge, with the need for extreme performance, accuracy, and efficiency. Accipiter decreases  screening time to <15 Seconds. Supports large, geographically dispersed databases.`}
+              icon="/icons/shield.svg"
+            />
+            <UseCasesCard
+              title="Computer Vision"
+              body={`Connect HPC and cameras to large databases more efficiently. Find POIs and make decisions faster. Efficiently utilize sensors and enable more efficient and accurate algorithms.`}
+              icon="/icons/vision.svg"
+            />
+            <UseCasesCard
+              title="Internet Of Things"
+              body={`Connect geographically dispersed IOT devices with a low latency interconnect. Support ingress and egress functions of a variety of sensors. Embedded PCIe devices are ideal for IOT.`}
+              icon="/icons/camera.svg"
+            />
+            <UseCasesCard
+              title="Manufacturing Monitoring"
+              body={`Next generation speed, safety, and monitoring with PCIe enabled sensors, cameras, and IOT. Enable easier to manage and deploy control and monitoring mechanisms.`}
+              icon="/icons/gears.svg"
+            />
+          </Flex>
+          <Text
+            color="electric.400"
+            fontSize={{
+              base: "14px",
+              sm: "16px",
+            }}
+            lineHeight={{
+              base: "26px",
+              sm: "32px",
+            }}
+            mb={20}
+            textAlign="center"
+          >
+            For faster, more efficient deployment, scaling and development of
+            edge applications, Accipiter’s OnePlatform is a powerful solution
+          </Text>
+        </Container>
       </article>
     </>
   );
@@ -314,6 +364,68 @@ const BenefitsCard: React.FC<BenefitsCardProps> = ({ number, text }) => {
       </Flex>
       <Text color="white">{text}</Text>
     </Flex>
+  );
+};
+
+type UseCasesCardProps = {
+  title: string;
+  body: string;
+  icon: string;
+};
+
+const UseCasesCard: React.FC<UseCasesCardProps> = ({ title, body, icon }) => {
+  return (
+    <VStack
+      background="grey.100"
+      borderRadius="25px"
+      fontWeight={600}
+      h={{
+        base: "275px",
+        sm: "300px",
+      }}
+      p={{
+        base: 8,
+        sm: 10,
+      }}
+      position="relative"
+      w={{
+        base: "100%",
+        lg: "45%",
+      }}
+    >
+      <Image
+        alt={title}
+        left="50%"
+        h="175px"
+        position="absolute"
+        src={icon}
+        top="50%"
+        transform="translate(-50%, -50%)"
+      />
+      <Text
+        color="electric.400"
+        fontSize={{
+          base: "24px",
+          sm: "28px",
+        }}
+        textAlign="center"
+      >
+        {title}
+      </Text>
+      <Text
+        mt={{
+          base: 2,
+          sm: 10,
+        }}
+        fontSize={{
+          base: "14px",
+          sm: "16px",
+        }}
+        textAlign="center"
+      >
+        {body}
+      </Text>
+    </VStack>
   );
 };
 

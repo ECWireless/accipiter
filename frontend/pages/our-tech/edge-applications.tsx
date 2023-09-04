@@ -168,7 +168,52 @@ const EdgeApplications: React.FC = () => {
           </Flex>
         </Container>
         <Spacer size={"lg"} />
-        <div>Benefits</div>
+        <Box background="electric.900" py={20}>
+          <Container>
+            <Text color="white" mb={8} textAlign="center" variant="h1">
+              Application Benefits
+            </Text>
+            <Text
+              color="white"
+              fontSize={{
+                base: "14px",
+                sm: "16px",
+              }}
+              lineHeight={{
+                base: "26px",
+                sm: "32px",
+              }}
+            >
+              <Text as="span" fontWeight={600}>
+                Applications are now deployed on memory within an edge resource
+                pool - not on bare metal servers.
+              </Text>{" "}
+              The usage of resource pooling enables edge sensors to be directly
+              connected to storage, HPC, and other sensors with minimal overhead
+              or data preconditioning. This enables efficient On-Demand
+              deployment of edge applications , and decreases software and
+              hardware complexity and cost.
+            </Text>
+            <Flex gap={10} maxW="800px" mt={20} mx="auto" wrap="wrap">
+              <BenefitsCard
+                number={1}
+                text={`Edge resources appear as a single system. Simplify application code, and efficiency`}
+              />
+              <BenefitsCard
+                number={2}
+                text={`Efficient scaling, hardware, and sensor usage`}
+              />
+              <BenefitsCard
+                number={3}
+                text={`Built-In local storage and playback capabilities. No need for different network segments`}
+              />
+              <BenefitsCard
+                number={4}
+                text={`Bit-Bit sensor access enables new application architectures and algorithms`}
+              />
+            </Flex>
+          </Container>
+        </Box>
         <div>Use cases</div>
       </article>
     </>
@@ -213,6 +258,62 @@ const SummaryCard2: React.FC = ({ children }) => {
     >
       {children}
     </Box>
+  );
+};
+
+type BenefitsCardProps = {
+  number: number;
+  text: string;
+};
+
+const BenefitsCard: React.FC<BenefitsCardProps> = ({ number, text }) => {
+  return (
+    <Flex
+      align="center"
+      background="electric.800"
+      gap={4}
+      pb={12}
+      position="relative"
+      pt={{
+        base: 24,
+        md: 12,
+      }}
+      px={{
+        base: 10,
+        md: 24,
+      }}
+      w={{
+        base: "100%",
+        md: "45%",
+      }}
+    >
+      <Flex
+        align="center"
+        background="electric.100"
+        borderRadius="50%"
+        h="32px"
+        justify="center"
+        left={{
+          base: "50%",
+          md: "12px",
+        }}
+        position="absolute"
+        transform={{
+          base: "translateX(-50%)",
+          md: "none",
+        }}
+        top={{
+          base: "20px",
+          md: "10px",
+        }}
+        w="32px"
+      >
+        <Text color="electric.400" fontSize="20px" fontWeight={600}>
+          {number}
+        </Text>
+      </Flex>
+      <Text color="white">{text}</Text>
+    </Flex>
   );
 };
 

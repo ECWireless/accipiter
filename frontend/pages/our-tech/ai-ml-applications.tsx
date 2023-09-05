@@ -12,11 +12,11 @@ import {
   UseCasesCard,
 } from "./components";
 
-const EdgeApplications: React.FC = () => {
+const AiMlApplications: React.FC = () => {
   return (
     <>
       <Head>
-        <title>Edge Applications | Accipiter Systems</title>
+        <title>AI/ML Applications | Accipiter Systems</title>
       </Head>
       <article>
         <VStack
@@ -32,7 +32,7 @@ const EdgeApplications: React.FC = () => {
           </SlideFade>
           <SlideFade in delay={0.1}>
             <Text color="electric.400" variant="h1">
-              Edge Applications
+              AI/ML Applications
             </Text>
           </SlideFade>
         </VStack>
@@ -64,7 +64,7 @@ const EdgeApplications: React.FC = () => {
                 }}
                 fontWeight={500}
               >
-                FalconX for edge applications
+                FalconX for AI
               </Text>
               <Text
                 fontSize={{
@@ -76,46 +76,45 @@ const EdgeApplications: React.FC = () => {
                   sm: "32px",
                 }}
               >
-                allows for the efficient pooling and management of storage, HPC,
-                device, and system memory Across the edge. Simplify edge
-                architectures by deploying Accipiter’s Platform One, Which
-                allows developers to see and manage all distributed edge
-                resources as a single system. PCIe sensor integration enables
-                HPC, memory, and storage to have bit by bit access to sensor
-                data and enables multiple AI instances to access the same
-                sensors simultaneously. This architecture supports lightweight
-                and reconfigurable edge applications to LAN scales.
+                brings efficient pooling and management of HPC, storage device,
+                and system memory to any AI workflow. Simplify hardware and
+                software architectures by deploying AI on Accipiter’s
+                OnePlatform, which allows developers to see and manage all
+                resources as a single system. AI instances can now be deployed
+                with the needed resources, allowing for faster AI training,
+                execution, and hardware deployment. Enterprise AI features can
+                now be used by businesses of all sizes.
               </Text>
             </VStack>
             <Flex flexDirection="column" gap={3}>
               <SlideFade in delay={0.1}>
                 <SummaryCard1
                   number={1}
-                  text={`Smaller form factor, lower SWAP PCIe based cameras and sensors`}
+                  text={`Pooling provides on-demand scaling of resources`}
                 />
               </SlideFade>
               <SlideFade in delay={0.2}>
                 <SummaryCard1
                   number={2}
-                  text={`Connect sensors directly to HPC devices`}
+                  text={`Storage scaling connects data as close to processing as possible`}
                 />
               </SlideFade>
               <SlideFade in delay={0.3}>
                 <SummaryCard1
                   number={3}
-                  text={`Multiple AI instances utilizing the same or different sensors`}
+                  text={`Memory scaling supports larger in-memory algorithms`}
                 />
               </SlideFade>
               <SlideFade in delay={0.4}>
                 <SummaryCard1
                   number={4}
-                  text={`Rapidly deploy AI instances to the edge`}
+                  text={`Rapidly deploy, manage, and scale AI instances`}
                 />
               </SlideFade>
               <SlideFade in delay={0.5}>
                 <SummaryCard1
                   number={4}
-                  text={`More efficient harwdare usage, cost, and SWAP`}
+                  text={`Most efficient harwdare usage, cost, and SWAP`}
                 />
               </SlideFade>
             </Flex>
@@ -168,13 +167,15 @@ const EdgeApplications: React.FC = () => {
                 Resource pooling provides on demand scaling of resources
               </SummaryCard2>
               <SummaryCard2>
-                Sensors are connected directly to system and device memory
+                HPC or storage connected directly to system and device memory
               </SummaryCard2>
               <SummaryCard2>
-                Bit-bit access to sensor data means no need for data
-                preprocessing at the edge
+                Scaling GPU memory supports large deployments
               </SummaryCard2>
-              <SummaryCard2>Supports real-time edge applications</SummaryCard2>
+              <SummaryCard2>
+                One interconnect eliminates network segmentation, cost, and
+                complexity
+              </SummaryCard2>
             </Flex>
           </Flex>
         </Container>
@@ -199,28 +200,58 @@ const EdgeApplications: React.FC = () => {
                 Applications are now deployed on memory within an edge resource
                 pool - not on bare metal servers.
               </Text>{" "}
-              The usage of resource pooling enables edge sensors to be directly
-              connected to storage, HPC, and other sensors with minimal overhead
-              or data preconditioning. This enables efficient On-Demand
-              deployment of edge applications , and decreases software and
-              hardware complexity and cost.
+              Resource pooling enables AI instances to run in pools of memory.
+              This connects storage, HPC, and other systems with minimal
+              overhead and data preconditioning. This provides efficient
+              on-demand deployment of AI applications, and decreases software
+              and hardware complexity or cost.
             </Text>
             <Flex gap={10} maxW="800px" mt={20} mx="auto" wrap="wrap">
               <BenefitsCard
                 number={1}
-                text={`Edge resources appear as a single system. Simplify application code, and efficiency`}
+                text={`Enables advanced neural networks with more hidden layers`}
               />
               <BenefitsCard
                 number={2}
-                text={`Efficient scaling, hardware, and sensor usage`}
+                text={`Fast and efficient training saves time`}
               />
               <BenefitsCard
                 number={3}
-                text={`Built-In local storage and playback capabilities. No need for different network segments`}
+                text={`Scaling of system and device memory on demand supports hardware usage for complex algorithms`}
               />
               <BenefitsCard
                 number={4}
-                text={`Bit-Bit sensor access enables new application architectures and algorithms`}
+                text={`Deploy more AI instances with less hardware and management overhead`}
+              />
+            </Flex>
+            <Flex
+              align="center"
+              direction={{
+                base: "column",
+                lg: "row",
+              }}
+              gap={20}
+              mt={32}
+            >
+              <Text
+                color="white"
+                fontSize="24px"
+                fontWeight={600}
+                w={{
+                  base: "100%",
+                  lg: "50%",
+                }}
+                textAlign="center"
+              >
+                Scale AI instances by deploying pools of PCIe connected
+                resources
+              </Text>
+              <Image
+                src="/images/instancePool.png"
+                w={{
+                  base: "100%",
+                  lg: "50%",
+                }}
               />
             </Flex>
           </Container>
@@ -239,24 +270,24 @@ const EdgeApplications: React.FC = () => {
             wrap="wrap"
           >
             <UseCasesCard
-              title="Screening security"
-              body={`Sensor based security, biometrics, and real-time decision making at the edge, with the need for extreme performance, accuracy, and efficiency. Accipiter decreases  screening time to <15 Seconds. Supports large, geographically dispersed databases.`}
-              icon="/icons/shield.svg"
+              title="Medical Diagnosis"
+              body={`Compare large reference files with AI faster and more efficiently. Connect powerful AI to large blocks of storage for faster and more accurate diagnosis.`}
+              icon="/icons/aid.svg"
             />
             <UseCasesCard
-              title="Computer Vision"
-              body={`Connect HPC and cameras to large databases more efficiently. Find POIs and make decisions faster. Efficiently utilize sensors and enable more efficient and accurate algorithms.`}
-              icon="/icons/vision.svg"
+              title="AI Training"
+              body={`Speed up AI training by pooling HPC and memory. Scale training across machines and resource pools. Faster training means shorter time to deployment.`}
+              icon="/icons/ai.svg"
             />
             <UseCasesCard
-              title="Internet Of Things"
-              body={`Connect geographically dispersed IOT devices with a low latency interconnect. Support ingress and egress functions of a variety of sensors. Embedded PCIe devices are ideal for IOT.`}
-              icon="/icons/camera.svg"
+              title="Generative AI"
+              body={`Support more complex prompts with multiple different media types, simultaneously and in real-time. User facing generative AI made efficient through PCIe integration.`}
+              icon="/icons/aiAndGear.svg"
             />
             <UseCasesCard
-              title="Manufacturing Monitoring"
-              body={`Next generation speed, safety, and monitoring with PCIe enabled sensors, cameras, and IOT. Enable easier to manage and deploy control and monitoring mechanisms.`}
-              icon="/icons/gears.svg"
+              title="AI On-Demand"
+              body={`Deploy and scale AI as a service with industry leading transport and memory pooling technologies. Low SWAP and higher hardware utilization results in better ROI.`}
+              icon="/icons/aiAndCloud.svg"
             />
           </Flex>
           <Text
@@ -272,8 +303,8 @@ const EdgeApplications: React.FC = () => {
             mb={20}
             textAlign="center"
           >
-            For faster, more efficient deployment, scaling and development of
-            edge applications, Accipiter’s OnePlatform is a powerful solution
+            For faster deployment, scaling, and development of edge
+            applications, Accipiter’s OnePlatform is the most flexible solution
           </Text>
         </Container>
       </article>
@@ -281,4 +312,4 @@ const EdgeApplications: React.FC = () => {
   );
 };
 
-export default EdgeApplications;
+export default AiMlApplications;

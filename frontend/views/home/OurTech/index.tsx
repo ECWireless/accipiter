@@ -50,7 +50,7 @@ export const OurTech: React.FC<IOurTech> = ({
         <Spacer size={"md"} />
         <Fade bottom ssrFadeout delay={100}>
           <TechCard
-            href="/our-tech/edge-applications"
+            href="/our-tech/ai-ml-applications"
             heading={techCard2Title}
             subheading={techCard2Paragraph}
           />

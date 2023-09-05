@@ -10,7 +10,7 @@ import {
   SummaryCard1,
   SummaryCard2,
   UseCasesCard,
-} from "./components";
+} from "views/home/OurTech/components";
 
 const AiMlApplications: React.FC = () => {
   return (

@@ -164,3 +164,50 @@ export const UseCasesCard: React.FC<UseCasesCardProps> = ({
     </VStack>
   );
 };
+
+type StepsCardProps = {
+  color: string;
+  heading: string;
+  paragraph1: string;
+  paragraph2: string;
+};
+
+export const StepsCard: React.FC<StepsCardProps> = ({
+  color,
+  heading,
+  paragraph1,
+  paragraph2,
+}) => {
+  return (
+    <Box>
+      <Box background={color} borderRadius="12px 12px 0px 0px" h="28px" />
+      <VStack
+        align="flex-start"
+        background="grey.100"
+        borderRadius="0px 0px 12px 12px"
+        h="300px"
+        p={6}
+      >
+        <Text
+          color="grey.400"
+          fontSize={{
+            base: "20px",
+            sm: "24px",
+            lg: "32px",
+          }}
+          fontWeight={500}
+          alignSelf="center"
+        >
+          {heading}
+        </Text>
+        <Box background="grey.400" h="3px" my={6} opacity={0.3} w="100%" />
+        <Text borderLeft={`4px solid ${color}`} color="grey.800" pl={4}>
+          {paragraph1}
+        </Text>
+        <Text borderLeft={`4px solid ${color}`} color="grey.800" mt={10} pl={4}>
+          {paragraph2}
+        </Text>
+      </VStack>
+    </Box>
+  );
+};

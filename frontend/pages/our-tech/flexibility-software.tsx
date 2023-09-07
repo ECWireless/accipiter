@@ -4,7 +4,7 @@ import { Box, VStack, Flex, Text, SlideFade, Image } from "@chakra-ui/react";
 import Spacer from "components/Spacer";
 import { Container } from "chakraComponents/Flex";
 
-import { SummaryCard1 } from "views/home/OurTech/components";
+import { SummaryCard1, StepsCard } from "views/home/OurTech/components";
 
 const FlexibilitySoftware: React.FC = () => {
   return (
@@ -279,15 +279,37 @@ const FlexibilitySoftware: React.FC = () => {
         </Box>
         <Container>
           <Flex
-            justify="center"
+            direction={{
+              base: "column",
+              xl: "row",
+            }}
             gap={{
               base: 10,
-              lg: 20,
+              xl: 20,
             }}
-            mb={20}
-            wrap="wrap"
+            justify="center"
+            maxW="900px"
+            my={20}
+            mx="auto"
           >
-            Cards
+            <StepsCard
+              color="#00A5C2"
+              heading="Deploy"
+              paragraph1="Deploy applications with the needed amount of resources"
+              paragraph2="CXL and DMA natively supported"
+            />
+            <StepsCard
+              color="#6E6F72"
+              heading="Connect"
+              paragraph1="Connect HPC storage and system memory with PCIe"
+              paragraph2="CXL and DMA natively supported"
+            />
+            <StepsCard
+              color="#F49A40"
+              heading="Manage"
+              paragraph1="View real time performance and hardware usage"
+              paragraph2="Perform systen and network optimizations"
+            />
           </Flex>
           <Text
             color="electric.400"

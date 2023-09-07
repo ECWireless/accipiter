@@ -200,6 +200,111 @@ const FlexibilityAndCxlCoherency: React.FC = () => {
             />
           </VStack>
         </Flex>
+        <Box background="electric.900" mb={10} py={20}>
+          <Container>
+            <Flex
+              direction={{
+                base: "column",
+                xl: "row",
+              }}
+              gap={20}
+            >
+              <VStack
+                alignItems={{
+                  base: "center",
+                  xl: "flex-start",
+                }}
+                justify="center"
+                w={{
+                  base: "100%",
+                  xl: "50%",
+                }}
+              >
+                <Text
+                  color="white"
+                  fontSize={{
+                    base: "20px",
+                    sm: "24px",
+                    lg: "32px",
+                  }}
+                  fontWeight={600}
+                >
+                  Device + Memory Coherency
+                </Text>
+                <Text
+                  color="white"
+                  textAlign={{
+                    base: "center",
+                    xl: "left",
+                  }}
+                >
+                  PCIe + CXL enables system and device memory coherency over the
+                  fastest system interconnect
+                </Text>
+              </VStack>
+              <Image
+                src="/images/deviceCoherency.png"
+                w={{
+                  base: "100%",
+                  xl: "50%",
+                }}
+              />
+            </Flex>
+          </Container>
+        </Box>
+        <Box background="yellow.400" mb={10} py={20}>
+          <Container>
+            <Flex
+              direction={{
+                base: "column",
+                xl: "row",
+              }}
+              gap={20}
+            >
+              <VStack
+                alignItems={{
+                  base: "center",
+                  xl: "flex-start",
+                }}
+                justify="center"
+                w={{
+                  base: "100%",
+                  xl: "50%",
+                }}
+              >
+                <Text
+                  color="white"
+                  fontSize={{
+                    base: "20px",
+                    sm: "24px",
+                    lg: "32px",
+                  }}
+                  fontWeight={600}
+                >
+                  Applications
+                </Text>
+                <Text
+                  color="white"
+                  textAlign={{
+                    base: "center",
+                    xl: "left",
+                  }}
+                >
+                  Applications run independent of servers within coherent memory
+                  space, and have access to all device and memory resources
+                  across the LAN
+                </Text>
+              </VStack>
+              <Image
+                src="/images/applications.png"
+                w={{
+                  base: "100%",
+                  xl: "50%",
+                }}
+              />
+            </Flex>
+          </Container>
+        </Box>
         <Box background="electric.900" py={20}>
           <Container>
             <Text color="white" mb={8} textAlign="center" variant="h1">

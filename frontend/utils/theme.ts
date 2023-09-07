@@ -36,6 +36,7 @@ export const theme = extendTheme({
     },
     yellow: {
       ...defaultTheme.colors.yellow,
+      400: "#F49A40",
     },
     red: {
       ...defaultTheme.colors.red,

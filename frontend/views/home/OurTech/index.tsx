@@ -66,7 +66,7 @@ export const OurTech: React.FC<IOurTech> = ({
         <Spacer size={"md"} />
         <Fade bottom ssrFadeout delay={300}>
           <TechCard
-            href="/our-tech/edge-applications"
+            href="/our-tech/flexibility-software"
             heading={techCard4Title}
             subheading={techCard4Paragraph}
           />

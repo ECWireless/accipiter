@@ -206,7 +206,14 @@ const AiMlApplications: React.FC = () => {
               on-demand deployment of AI applications, and decreases software
               and hardware complexity or cost.
             </Text>
-            <Flex gap={10} maxW="800px" mt={20} mx="auto" wrap="wrap">
+            <Flex
+              gap={10}
+              justify="center"
+              maxW="800px"
+              mt={20}
+              mx="auto"
+              wrap="wrap"
+            >
               <BenefitsCard
                 number={1}
                 text={`Enables advanced neural networks with more hidden layers`}

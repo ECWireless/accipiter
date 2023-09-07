@@ -39,6 +39,7 @@ export const theme = extendTheme({
     },
     red: {
       ...defaultTheme.colors.red,
+      400: '#FF0000',
     },
   },
   components: {

@@ -205,7 +205,14 @@ const EdgeApplications: React.FC = () => {
               deployment of edge applications , and decreases software and
               hardware complexity and cost.
             </Text>
-            <Flex gap={10} maxW="800px" mt={20} mx="auto" wrap="wrap">
+            <Flex
+              gap={10}
+              justify="center"
+              maxW="800px"
+              mt={20}
+              mx="auto"
+              wrap="wrap"
+            >
               <BenefitsCard
                 number={1}
                 text={`Edge resources appear as a single system. Simplify application code, and efficiency`}

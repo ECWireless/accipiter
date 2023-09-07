@@ -1,9 +1,7 @@
 import Head from "next/head";
 import { Box, VStack, Flex, Text, Image, SlideFade } from "@chakra-ui/react";
 
-import Spacer from "components/Spacer";
 import { Container } from "chakraComponents/Flex";
-import { SwitchSVG } from "components/SVGs/SwitchSvg";
 
 import {
   BenefitsCard,
@@ -156,6 +154,7 @@ const FlexibilityAndCxlCoherency: React.FC = () => {
               Applications run on and only have access to one server’s resources
             </Text>
             <Image
+              alt="Legacy Solution Diagram"
               src="/images/legacySolution.png"
               h={{
                 base: "auto",
@@ -188,6 +187,7 @@ const FlexibilityAndCxlCoherency: React.FC = () => {
               FalconX PCIe + CXL
             </Text>
             <Image
+              alt="FalconX PCIe + CXL Solution Diagram"
               src="/images/falconxSolution.png"
               h={{
                 base: "auto",
@@ -243,6 +243,7 @@ const FlexibilityAndCxlCoherency: React.FC = () => {
                 </Text>
               </VStack>
               <Image
+                alt="Device + Memory Coherency Diagram"
                 src="/images/deviceCoherency.png"
                 w={{
                   base: "100%",
@@ -296,6 +297,7 @@ const FlexibilityAndCxlCoherency: React.FC = () => {
                 </Text>
               </VStack>
               <Image
+                alt="Applications Diagram"
                 src="/images/applications.png"
                 w={{
                   base: "100%",

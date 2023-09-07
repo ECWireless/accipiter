@@ -254,6 +254,7 @@ const AiMlApplications: React.FC = () => {
                 resources
               </Text>
               <Image
+                alt="Instance Pool Diagram"
                 src="/images/instancePool.png"
                 w={{
                   base: "100%",

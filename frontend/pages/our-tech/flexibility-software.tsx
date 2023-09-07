@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { Box, VStack, Flex, Text, SlideFade } from "@chakra-ui/react";
+import { Box, VStack, Flex, Text, SlideFade, Image } from "@chakra-ui/react";
 
 import Spacer from "components/Spacer";
 import { Container } from "chakraComponents/Flex";
@@ -32,7 +32,9 @@ const FlexibilitySoftware: React.FC = () => {
         </VStack>
         <Container>
           <Flex
-            flexDirection={{ base: "column", xl: "row" }}
+            align="center"
+            flexDirection={{ base: "column-reverse", xl: "row" }}
+            justify="space-between"
             gap={{
               base: 20,
               xl: 10,
@@ -44,9 +46,9 @@ const FlexibilitySoftware: React.FC = () => {
           >
             <VStack
               align="flex-start"
-              width={{
+              w={{
                 base: "100%",
-                xl: "60%",
+                xl: "52%",
               }}
             >
               <Text
@@ -79,29 +81,40 @@ const FlexibilitySoftware: React.FC = () => {
                 pane of glass.
               </Text>
               <Text
+                color="electric.400"
                 fontSize={{
                   base: "14px",
                   sm: "16px",
                 }}
+                fontWeight={600}
                 lineHeight={{
                   base: "26px",
                   sm: "32px",
                 }}
+                mt={10}
               >
                 FalconX Software works with any Accipiter product and allows
                 users to maximize deployment of PCIe as a system interconnect.
               </Text>
             </VStack>
-            <Flex flexDirection="column" gap={3}>
-              Bluh
-            </Flex>
+            <Image
+              alt="falconX Software Diagram"
+              w={{
+                base: "220px",
+                md: "300px",
+                xl: "38%",
+              }}
+              src="/images/falconxSoftware.png"
+            />
           </Flex>
           <Flex
+            align="center"
             flexDirection={{ base: "column", xl: "row" }}
             gap={{
               base: 20,
               xl: 10,
             }}
+            justify="space-between"
             mt={{
               base: 10,
               lg: 20,
@@ -109,14 +122,111 @@ const FlexibilitySoftware: React.FC = () => {
           >
             <VStack
               align="flex-start"
+              spacing={2}
               width={{
                 base: "100%",
                 xl: "60%",
               }}
             >
-              <Text>Bluh</Text>
+              <Text
+                background="yellow.400"
+                color="white"
+                fontSize={{
+                  base: "24px",
+                  lg: "32px",
+                }}
+                fontWeight={600}
+                py={{
+                  base: 2,
+                  lg: 0,
+                }}
+                textAlign="center"
+                w="100%"
+              >
+                Application
+              </Text>
+              <Flex
+                color="white"
+                fontSize={{
+                  base: "12px",
+                  lg: "18px",
+                }}
+                fontWeight={600}
+                gap={2}
+                textAlign="center"
+                w="100%"
+              >
+                <Text background="#C2C8D3" py={3} w="100%">
+                  FalconX SDN
+                </Text>
+                <Text background="#C2C8D3" py={3} w="100%">
+                  FalconX Device Manager
+                </Text>
+                <Text background="#C2C8D3" py={3} w="100%">
+                  FalconX GUI
+                </Text>
+              </Flex>
+              <Flex
+                color="white"
+                fontSize={{
+                  base: "12px",
+                  lg: "18px",
+                }}
+                fontWeight={600}
+                gap={2}
+                textAlign="center"
+                w="100%"
+              >
+                <Text background="#C2C8D3" py={3} w="100%">
+                  FalconX Drivers
+                </Text>
+                <Text background="#C2C8D3" py={3} w="100%">
+                  FalconX Monitor
+                </Text>
+              </Flex>
+              <Text
+                background="grey.400"
+                color="white"
+                fontSize={{
+                  base: "24px",
+                  lg: "32px",
+                }}
+                fontWeight={600}
+                py={{
+                  base: 2,
+                  lg: 0,
+                }}
+                textAlign="center"
+                w="100%"
+              >
+                FalconX Control
+              </Text>
+              <Text
+                background="electric.400"
+                color="white"
+                fontSize={{
+                  base: "24px",
+                  lg: "32px",
+                }}
+                fontWeight={600}
+                py={{
+                  base: 2,
+                  lg: 0,
+                }}
+                textAlign="center"
+                w="100%"
+              >
+                FalconX Software
+              </Text>
             </VStack>
-            <Flex flexDirection="column" gap={3}>
+            <Flex
+              flexDirection="column"
+              gap={3}
+              w={{
+                base: "100%",
+                xl: "40%",
+              }}
+            >
               <SlideFade in delay={0.1}>
                 <SummaryCard1
                   number={1}

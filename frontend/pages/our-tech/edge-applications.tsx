@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { Box, VStack, Flex, Text, Image, SlideFade } from "@chakra-ui/react";
+import { Box, VStack, Flex, Text, SlideFade } from "@chakra-ui/react";
 
 import Spacer from "components/Spacer";
 import { Container } from "chakraComponents/Flex";

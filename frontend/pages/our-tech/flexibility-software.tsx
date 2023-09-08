@@ -1,24 +1,76 @@
 import Head from "next/head";
-import { Box, VStack, Flex, Text, SlideFade, Image } from "@chakra-ui/react";
+import NextLink from "next/link";
+import {
+  Box,
+  VStack,
+  Flex,
+  Text,
+  SlideFade,
+  Image,
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+} from "@chakra-ui/react";
 
 import Spacer from "components/Spacer";
 import { Container } from "chakraComponents/Flex";
+import { Container as OldContainer } from "components/Containers";
 
 import { SummaryCard1, StepsCard } from "views/home/OurTech/components";
 
 const FlexibilitySoftware: React.FC = () => {
+  const slug = "flexibility-software";
+
   return (
     <>
       <Head>
         <title>Flexibility Software | Accipiter Systems</title>
       </Head>
       <article>
+        <OldContainer>
+          <Breadcrumb separator=">" spacing={4}>
+            <BreadcrumbItem
+              color="electric.400"
+              fontWeight={600}
+              _hover={{
+                textDecoration: "underline",
+              }}
+            >
+              <BreadcrumbLink as={NextLink} href="/">
+                Home
+              </BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbItem
+              color="electric.400"
+              fontWeight={600}
+              _hover={{
+                textDecoration: "underline",
+              }}
+            >
+              <BreadcrumbLink as={NextLink} href="/our-tech">
+                Our Tech
+              </BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbItem
+              color="electric.400"
+              fontWeight={600}
+              _hover={{
+                textDecoration: "underline",
+              }}
+            >
+              <BreadcrumbLink as={NextLink} href={`/our-tech/${slug}`}>
+                {`${slug.slice(0, 1).toUpperCase() + slug.slice(1, 12)}${
+                  slug.length > 12 ? "..." : ""
+                }`}
+              </BreadcrumbLink>
+            </BreadcrumbItem>
+          </Breadcrumb>
+        </OldContainer>
         <VStack
           spacing={0}
           mt={{
-            base: 20,
-            md: 48,
-            lg: 52,
+            base: 10,
+            md: 20,
           }}
         >
           <SlideFade in>

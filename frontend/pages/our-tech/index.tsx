@@ -51,7 +51,7 @@ const OurTech: React.FC = ({ ourTechProps }: { [key: string]: any }) => {
               }}
             >
               <BreadcrumbLink as={NextLink} href="/our-tech">
-                Our tech
+                Our Tech
               </BreadcrumbLink>
             </BreadcrumbItem>
           </Breadcrumb>

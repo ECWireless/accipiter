@@ -1,7 +1,20 @@
 import Head from "next/head";
-import { Box, VStack, Flex, Text, Image, SlideFade } from "@chakra-ui/react";
+import NextLink from "next/link";
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  Box,
+  VStack,
+  Flex,
+  Text,
+  Image,
+  SlideFade,
+} from "@chakra-ui/react";
+import Spacer from "components/Spacer";
 
 import { Container } from "chakraComponents/Flex";
+import { Container as OldContainer } from "components/Containers";
 
 import {
   BenefitsCard,
@@ -10,25 +23,66 @@ import {
 } from "views/home/OurTech/components";
 
 const FlexibilityAndCxlCoherency: React.FC = () => {
+  const slug = "flexibility-and-cxl-coherency";
+
   return (
     <>
       <Head>
         <title>Flexibility and CXL Coherency| Accipiter Systems</title>
       </Head>
       <article>
+        <Spacer size={"lg"} />
+        <OldContainer>
+          <Breadcrumb separator=">" spacing={4}>
+            <BreadcrumbItem
+              color="electric.400"
+              fontWeight={600}
+              _hover={{
+                textDecoration: "underline",
+              }}
+            >
+              <BreadcrumbLink as={NextLink} href="/">
+                Home
+              </BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbItem
+              color="electric.400"
+              fontWeight={600}
+              _hover={{
+                textDecoration: "underline",
+              }}
+            >
+              <BreadcrumbLink as={NextLink} href="/our-tech">
+                Our Tech
+              </BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbItem
+              color="electric.400"
+              fontWeight={600}
+              _hover={{
+                textDecoration: "underline",
+              }}
+            >
+              <BreadcrumbLink as={NextLink} href={`/our-tech/${slug}`}>
+                {`${slug.slice(0, 1).toUpperCase() + slug.slice(1, 12)}${
+                  slug.length > 12 ? "..." : ""
+                }`}
+              </BreadcrumbLink>
+            </BreadcrumbItem>
+          </Breadcrumb>
+        </OldContainer>
         <VStack
           spacing={0}
           mt={{
-            base: 20,
-            md: 48,
-            lg: 52,
+            base: 10,
+            md: 20,
           }}
         >
           <SlideFade in>
             <Text variant="h1">FalconX</Text>
           </SlideFade>
           <SlideFade in delay={0.1}>
-            <Text color="electric.400" variant="h1">
+            <Text color="electric.400" textAlign="center" variant="h1">
               Flexibility + CXL Coherency
             </Text>
           </SlideFade>

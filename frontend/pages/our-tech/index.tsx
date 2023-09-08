@@ -1,9 +1,12 @@
 import Head from "next/head";
 import client from "client";
+import NextLink from "next/link";
+import { Breadcrumb, BreadcrumbItem, BreadcrumbLink } from "@chakra-ui/react";
 
 import Spacer from "components/Spacer";
 
 import { OurTech as OurTechSection } from "views/home";
+import { Container } from "components/Containers";
 
 const OurTech: React.FC = ({ ourTechProps }: { [key: string]: any }) => {
   const {
@@ -26,7 +29,33 @@ const OurTech: React.FC = ({ ourTechProps }: { [key: string]: any }) => {
       </Head>
 
       <main>
-        <Spacer size={"md"} />
+        <Spacer size={"lg"} />
+        <Container>
+          <Breadcrumb separator=">" spacing={4}>
+            <BreadcrumbItem
+              color="electric.400"
+              fontWeight={600}
+              _hover={{
+                textDecoration: "underline",
+              }}
+            >
+              <BreadcrumbLink as={NextLink} href="/">
+                Home
+              </BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbItem
+              color="electric.400"
+              fontWeight={600}
+              _hover={{
+                textDecoration: "underline",
+              }}
+            >
+              <BreadcrumbLink as={NextLink} href="/our-tech">
+                Our tech
+              </BreadcrumbLink>
+            </BreadcrumbItem>
+          </Breadcrumb>
+        </Container>
         <OurTechSection
           topLine={false}
           techHeading={techHeading}

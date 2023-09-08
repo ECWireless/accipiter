@@ -43,7 +43,7 @@ export const Products: React.FC<IProducts> = ({
   products4Description,
 }) => {
   return (
-    <div style={{ borderTop: `1px solid ${colors.blue}` }}>
+    <div>
       <Banner heading={productsHeading} subheading={productsSubheading} />
       <Container>
         <Flex align={"center"} justify={"space-between"} wrap={"true"}>
@@ -104,7 +104,7 @@ const ProductCard: React.FC<IProductCard> = ({
   const { push } = useRouter();
   return (
     <StyledCardContainer onClick={() => push(link)}>
-      <StyledPhoto style={{ backgroundImage: `url(${image})` }} />
+      <StyledPhoto alt={`${heading} cover photo`} src={image} />
       <Spacer size={"sm"} />
       <H4 align={"center"} color={colors.white} style={{ fontWeight: 700 }}>
         {heading}
@@ -153,11 +153,12 @@ const StyledCardContainer = styled.div`
   `}
 `;
 
-const StyledPhoto = styled.div`
+const StyledPhoto = styled.img`
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
   height: ${GU * 30}px;
+  margin: auto;
   wdith: 100%;
 
   ${media.xs`

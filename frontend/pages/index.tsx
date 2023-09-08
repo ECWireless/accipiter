@@ -100,6 +100,7 @@ const Home: React.FC = ({ homeProps }: { [key: string]: any }) => {
           techCard4Title={techCard4Title}
           techCard4Paragraph={techCard4Paragraph}
         />
+        <div style={{ borderTop: `1px solid ${colors.blue}` }} />
         <Products
           productsHeading={productsHeading}
           productsSubheading={productsSubheading}

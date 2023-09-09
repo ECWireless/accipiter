@@ -67,7 +67,7 @@ const Sidebar = ({ sidebar, setSidebar }): JSX.Element => {
       <Link href="/careers">
         <StyledSidebarOption
           onClick={() => setSidebar(false)}
-          active={router.pathname === "/careers" ? true : false}
+          active={router.pathname.includes("/careers") ? true : false}
         >
           <Flex
             justify={"flex-start"}

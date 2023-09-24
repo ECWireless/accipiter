@@ -127,12 +127,11 @@ const FlexibilityAndCxlCoherency: React.FC = () => {
                   sm: "32px",
                 }}
               >
-                takes the enabling technological benefits of PCIe interconnects,
-                and pairs it with the enabling device and memory coherency of
-                CXL. This allows for shared memory systems which have lower
+                Takes the technological benefits of PCIe interconnects and pairs
+                it with the device and memory coherency of CXL (Compute Express
+                Link). This allows for shared memory systems which have lower
                 development costs and code complexity. PCIe system-interconnects
-                give all devices access to all the memory. Enabling components
-                to communicate more efficiently.
+                give all devices access to all the memory across a platform.
               </Text>
             </VStack>
             <Flex flexDirection="column" gap={3}>
@@ -162,7 +161,7 @@ const FlexibilityAndCxlCoherency: React.FC = () => {
               </SlideFade>
               <SlideFade in delay={0.5}>
                 <SummaryCard1
-                  number={4}
+                  number={5}
                   text={`Efficient CPU-to-device and CPU-to-memory architecture`}
                 />
               </SlideFade>
@@ -254,7 +253,7 @@ const FlexibilityAndCxlCoherency: React.FC = () => {
             />
           </VStack>
         </Flex>
-        <Box background="electric.900" mb={10} py={20}>
+        <Box background="electric.900" py={20}>
           <Container>
             <Flex
               direction={{
@@ -307,7 +306,7 @@ const FlexibilityAndCxlCoherency: React.FC = () => {
             </Flex>
           </Container>
         </Box>
-        <Box background="yellow.400" mb={10} py={20}>
+        <Box background="yellow.400" py={20}>
           <Container>
             <Flex
               direction={{

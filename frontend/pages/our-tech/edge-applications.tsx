@@ -116,7 +116,7 @@ const EdgeApplications: React.FC = () => {
                 }}
                 fontWeight={500}
               >
-                FalconX for edge applications
+                FalconX Edge Applications
               </Text>
               <Text
                 fontSize={{
@@ -128,15 +128,15 @@ const EdgeApplications: React.FC = () => {
                   sm: "32px",
                 }}
               >
-                allows for the efficient pooling and management of storage, HPC,
-                device, and system memory Across the edge. Simplify edge
-                architectures by deploying Accipiter’s Platform One, Which
-                allows developers to see and manage all distributed edge
-                resources as a single system. PCIe sensor integration enables
-                HPC, memory, and storage to have bit by bit access to sensor
-                data and enables multiple AI instances to access the same
-                sensors simultaneously. This architecture supports lightweight
-                and reconfigurable edge applications to LAN scales.
+                Supports pooling and management of storage, HPC, device, and
+                system memory across the edge. Simplify edge architectures by
+                deploying Accipiter’s OnePlatform, which allows developers to
+                see and manage all distributed edge resources as a single
+                system. PCIe sensor integration enables HPC, memory, and storage
+                to have bit by bit access to sensor data and enables multiple AI
+                instances to access the same sensors simultaneously. This
+                architecture supports lightweight and reconfigurable edge
+                applications at LAN scales.
               </Text>
             </VStack>
             <Flex flexDirection="column" gap={3}>
@@ -192,7 +192,10 @@ const EdgeApplications: React.FC = () => {
               base: "flex-start",
               xl: "center",
             }}
-            overflow="scroll"
+            overflow={{
+              base: "scroll",
+              xl: "hidden",
+            }}
             mt={{
               base: 32,
               lg: 40,
@@ -253,9 +256,7 @@ const EdgeApplications: React.FC = () => {
               </Text>{" "}
               The usage of resource pooling enables edge sensors to be directly
               connected to storage, HPC, and other sensors with minimal overhead
-              or data preconditioning. This enables efficient On-Demand
-              deployment of edge applications , and decreases software and
-              hardware complexity and cost.
+              or data preconditioning, enabling On-Demand deployment.
             </Text>
             <Flex
               gap={10}
@@ -267,7 +268,7 @@ const EdgeApplications: React.FC = () => {
             >
               <BenefitsCard
                 number={1}
-                text={`Edge resources appear as a single system. Simplify application code, and efficiency`}
+                text={`Edge resources appear as a single system`}
               />
               <BenefitsCard
                 number={2}
@@ -275,11 +276,11 @@ const EdgeApplications: React.FC = () => {
               />
               <BenefitsCard
                 number={3}
-                text={`Built-In local storage and playback capabilities. No need for different network segments`}
+                text={`Built-In local storage and playback capabilities`}
               />
               <BenefitsCard
                 number={4}
-                text={`Bit-Bit sensor access enables new application architectures and algorithms`}
+                text={`Bit-bit sensor access supports advanced application architectures and algorithms`}
               />
             </Flex>
           </Container>
@@ -298,23 +299,23 @@ const EdgeApplications: React.FC = () => {
             wrap="wrap"
           >
             <UseCasesCard
-              title="Screening security"
+              title="Screening Security"
               body={`Sensor based security, biometrics, and real-time decision making at the edge, with the need for extreme performance, accuracy, and efficiency. Accipiter decreases  screening time to <15 Seconds. Supports large, geographically dispersed databases.`}
               icon="/icons/shield.svg"
             />
             <UseCasesCard
               title="Computer Vision"
-              body={`Connect HPC and cameras to large databases more efficiently. Find POIs and make decisions faster. Efficiently utilize sensors and enable more efficient and accurate algorithms.`}
+              body={`Connect HPC and cameras to large databases more efficiently. Efficiently utilize sensors and enable more efficient and accurate algorithms.`}
               icon="/icons/vision.svg"
             />
             <UseCasesCard
               title="Internet Of Things"
-              body={`Connect geographically dispersed IOT devices with a low latency interconnect. Support ingress and egress functions of a variety of sensors. Embedded PCIe devices are ideal for IOT.`}
+              body={`Connect geographically dispersed IOT devices with a low latency interconnect. Support ingress and egress functions of a variety of sensors. Embedded PCIe devices enhance IOT environments.`}
               icon="/icons/camera.svg"
             />
             <UseCasesCard
               title="Manufacturing Monitoring"
-              body={`Next generation speed, safety, and monitoring with PCIe enabled sensors, cameras, and IOT. Enable easier to manage and deploy control and monitoring mechanisms.`}
+              body={`Next generation speed, safety, and monitoring with PCIe enabled sensors, cameras, and IOT. Enable simple management and deployment of monitoring features.`}
               icon="/icons/gears.svg"
             />
           </Flex>

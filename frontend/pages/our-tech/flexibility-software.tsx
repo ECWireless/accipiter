@@ -112,7 +112,7 @@ const FlexibilitySoftware: React.FC = () => {
                 }}
                 fontWeight={500}
               >
-                Accipiters FalconX Software
+                Accipiter FalconX Software
               </Text>
               <Text
                 fontSize={{
@@ -124,13 +124,12 @@ const FlexibilitySoftware: React.FC = () => {
                   sm: "32px",
                 }}
               >
-                enables management, control, and monitoring of PCIe
-                interconnected devices and across disaggregated single systems.
-                Take full advantage of the benefits of PCIe with a fully
-                integrated and seamless software. Manage hardware pools and
-                allocations, monitor performance in real-time, perform automated
-                network optimization, and deploy apps efficiently using a single
-                pane of glass.
+                Manages, controls, and monitors PCIe interconnected devices
+                across disaggregated single systems. Take full advantage of the
+                benefits of PCIe with a fully integrated and seamless software.
+                Manage hardware pools and allocations, monitor performance in
+                real-time, perform automated network optimization, and deploy
+                applications efficiently using a single pane of glass.
               </Text>
               <Text
                 color="electric.400"
@@ -208,13 +207,13 @@ const FlexibilitySoftware: React.FC = () => {
                 textAlign="center"
                 w="100%"
               >
-                <Text background="#C2C8D3" py={3} w="100%">
+                <Text background="#a3a9b3" py={3} w="100%">
                   FalconX SDN
                 </Text>
-                <Text background="#C2C8D3" py={3} w="100%">
+                <Text background="#a3a9b3" py={3} w="100%">
                   FalconX Device Manager
                 </Text>
-                <Text background="#C2C8D3" py={3} w="100%">
+                <Text background="#a3a9b3" py={3} w="100%">
                   FalconX GUI
                 </Text>
               </Flex>
@@ -229,10 +228,10 @@ const FlexibilitySoftware: React.FC = () => {
                 textAlign="center"
                 w="100%"
               >
-                <Text background="#C2C8D3" py={3} w="100%">
+                <Text background="#a3a9b3" py={3} w="100%">
                   FalconX Drivers
                 </Text>
-                <Text background="#C2C8D3" py={3} w="100%">
+                <Text background="#a3a9b3" py={3} w="100%">
                   FalconX Monitor
                 </Text>
               </Flex>
@@ -359,8 +358,8 @@ const FlexibilitySoftware: React.FC = () => {
             <StepsCard
               color="#F49A40"
               heading="Manage"
-              paragraph1="View real time performance and hardware usage"
-              paragraph2="Perform systen and network optimizations"
+              paragraph1="View real-time performance and hardware usage"
+              paragraph2="Perform system and network optimizations"
             />
           </Flex>
           <Text

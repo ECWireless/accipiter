@@ -117,7 +117,7 @@ const AiMlApplications: React.FC = () => {
                 }}
                 fontWeight={500}
               >
-                FalconX for AI
+                FalconX for Artificial Intelligence and Machine Learning
               </Text>
               <Text
                 fontSize={{
@@ -129,7 +129,7 @@ const AiMlApplications: React.FC = () => {
                   sm: "32px",
                 }}
               >
-                brings efficient pooling and management of HPC, storage device,
+                Brings efficient pooling and management of HPC, storage device,
                 and system memory to any AI workflow. Simplify hardware and
                 software architectures by deploying AI on Accipiter’s
                 OnePlatform, which allows developers to see and manage all
@@ -166,7 +166,7 @@ const AiMlApplications: React.FC = () => {
               </SlideFade>
               <SlideFade in delay={0.5}>
                 <SummaryCard1
-                  number={4}
+                  number={5}
                   text={`Most efficient harwdare usage, cost, and SWAP`}
                 />
               </SlideFade>
@@ -192,7 +192,10 @@ const AiMlApplications: React.FC = () => {
               base: "flex-start",
               xl: "center",
             }}
-            overflow="scroll"
+            overflow={{
+              base: "scroll",
+              xl: "hidden",
+            }}
             mt={{
               base: 32,
               lg: 40,
@@ -254,10 +257,10 @@ const AiMlApplications: React.FC = () => {
                 pool - not on bare metal servers.
               </Text>{" "}
               Resource pooling enables AI instances to run in pools of memory.
-              This connects storage, HPC, and other systems with minimal
-              overhead and data preconditioning. This provides efficient
-              on-demand deployment of AI applications, and decreases software
-              and hardware complexity or cost.
+              Connects storage, HPC, and other systems with minimal overhead and
+              data preconditioning. This provides efficient on-demand deployment
+              of AI applications, and decreases software and hardware complexity
+              or cost.
             </Text>
             <Flex
               gap={10}

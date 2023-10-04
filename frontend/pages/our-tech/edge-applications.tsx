@@ -25,11 +25,12 @@ import { Container as OldContainer } from "components/Containers";
 
 const EdgeApplications: React.FC = () => {
   const slug = "edge-applications";
+  const title = "Edge Applications";
 
   return (
     <>
       <Head>
-        <title>Edge Applications | Accipiter Systems</title>
+        <title>{slug} | Accipiter Systems</title>
       </Head>
       <article>
         <Spacer size={"lg"} />
@@ -65,8 +66,8 @@ const EdgeApplications: React.FC = () => {
               }}
             >
               <BreadcrumbLink as={NextLink} href={`/our-tech/${slug}`}>
-                {`${slug.slice(0, 1).toUpperCase() + slug.slice(1, 12)}${
-                  slug.length > 12 ? "..." : ""
+                {`${title.slice(0, 1).toUpperCase() + title.slice(1, 12)}${
+                  title.length > 12 ? "..." : ""
                 }`}
               </BreadcrumbLink>
             </BreadcrumbItem>
@@ -226,7 +227,7 @@ const EdgeApplications: React.FC = () => {
                 Sensors are connected directly to system and device memory
               </SummaryCard2>
               <SummaryCard2>
-                Bit-bit access to sensor data means no need for data
+                Bit by bit access to sensor data means no need for data
                 preprocessing at the edge
               </SummaryCard2>
               <SummaryCard2>Supports real-time edge applications</SummaryCard2>
@@ -300,7 +301,7 @@ const EdgeApplications: React.FC = () => {
           >
             <UseCasesCard
               title="Screening Security"
-              body={`Sensor based security, biometrics, and real-time decision making at the edge, with the need for extreme performance, accuracy, and efficiency. Accipiter decreases  screening time to <15 Seconds. Supports large, geographically dispersed databases.`}
+              body={`Sensor based security, biometrics, and real-time decision making at the edge, with the need for extreme performance, accuracy, and efficiency. Accipiter decreases  screening time to <15 seconds. Supports large, geographically dispersed databases.`}
               icon="/icons/shield.svg"
             />
             <UseCasesCard

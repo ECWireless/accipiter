@@ -58,7 +58,7 @@ export const OurTech: React.FC<IOurTech> = ({
         <Spacer size={"md"} />
         <Fade bottom ssrFadeout delay={200}>
           <TechCard
-            href="/our-tech/flexibility-and-cxl-coherency"
+            href="/our-tech/flexibility-software"
             heading={techCard3Title}
             subheading={techCard3Paragraph}
           />
@@ -66,7 +66,7 @@ export const OurTech: React.FC<IOurTech> = ({
         <Spacer size={"md"} />
         <Fade bottom ssrFadeout delay={300}>
           <TechCard
-            href="/our-tech/flexibility-software"
+            href="/our-tech/pcie-and-cxl"
             heading={techCard4Title}
             subheading={techCard4Paragraph}
           />

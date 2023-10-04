@@ -20,13 +20,15 @@ import { SummaryCard1, StepsCard } from "views/home/OurTech/components";
 
 const FlexibilitySoftware: React.FC = () => {
   const slug = "flexibility-software";
+  const title = "Flexibility Software";
 
   return (
     <>
       <Head>
-        <title>Flexibility Software | Accipiter Systems</title>
+        <title>{title} | Accipiter Systems</title>
       </Head>
       <article>
+        <Spacer size={"lg"} />
         <OldContainer>
           <Breadcrumb separator=">" spacing={4}>
             <BreadcrumbItem
@@ -59,8 +61,8 @@ const FlexibilitySoftware: React.FC = () => {
               }}
             >
               <BreadcrumbLink as={NextLink} href={`/our-tech/${slug}`}>
-                {`${slug.slice(0, 1).toUpperCase() + slug.slice(1, 12)}${
-                  slug.length > 12 ? "..." : ""
+                {`${title.slice(0, 1).toUpperCase() + title.slice(1, 12)}${
+                  title.length > 12 ? "..." : ""
                 }`}
               </BreadcrumbLink>
             </BreadcrumbItem>
@@ -112,7 +114,7 @@ const FlexibilitySoftware: React.FC = () => {
                 }}
                 fontWeight={500}
               >
-                Accipiter FalconX Software
+                FalconX Flexibility Software
               </Text>
               <Text
                 fontSize={{
@@ -124,11 +126,11 @@ const FlexibilitySoftware: React.FC = () => {
                   sm: "32px",
                 }}
               >
-                Manages, controls, and monitors PCIe interconnected devices
+                Develops, manages, and controls PCIe interconnected devices
                 across disaggregated single systems. Take full advantage of the
                 benefits of PCIe with a fully integrated and seamless software.
                 Manage hardware pools and allocations, monitor performance in
-                real-time, perform automated network optimization, and deploy
+                real time, perform automated network optimization, and deploy
                 applications efficiently using a single pane of glass.
               </Text>
               <Text
@@ -144,8 +146,9 @@ const FlexibilitySoftware: React.FC = () => {
                 }}
                 mt={10}
               >
-                FalconX Software works with any Accipiter product and allows
-                users to maximize deployment of PCIe as a system interconnect.
+                FalconX Flexibility software works with any Accipiter product
+                and allows users to maximize deployment of PCIe as a system
+                interconnect.
               </Text>
             </VStack>
             <Image
@@ -324,7 +327,7 @@ const FlexibilitySoftware: React.FC = () => {
               }}
             >
               Integrate and manage Accipiter PCIe interconnects into LAN
-              infrastructures, and leverage the power of PCIe
+              infrastructures and leverage the power of PCIe
             </Text>
           </Container>
         </Box>
@@ -345,19 +348,19 @@ const FlexibilitySoftware: React.FC = () => {
           >
             <StepsCard
               color="#00A5C2"
-              heading="Deploy"
+              heading="Develop"
               paragraph1="Deploy applications with the needed amount of resources"
               paragraph2="CXL and DMA natively supported"
             />
             <StepsCard
               color="#6E6F72"
-              heading="Connect"
+              heading="Manage"
               paragraph1="Connect HPC storage and system memory with PCIe"
-              paragraph2="CXL and DMA natively supported"
+              paragraph2="Real time resource management"
             />
             <StepsCard
               color="#F49A40"
-              heading="Manage"
+              heading="Control"
               paragraph1="View real-time performance and hardware usage"
               paragraph2="Perform system and network optimizations"
             />

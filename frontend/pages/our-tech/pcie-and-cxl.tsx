@@ -23,12 +23,13 @@ import {
 } from "views/home/OurTech/components";
 
 const FlexibilityAndCxlCoherency: React.FC = () => {
-  const slug = "flexibility-and-cxl-coherency";
+  const slug = "pcie-and-cxl";
+  const title = "PCIe + CXL";
 
   return (
     <>
       <Head>
-        <title>Flexibility and CXL Coherency| Accipiter Systems</title>
+        <title>{title} | Accipiter Systems</title>
       </Head>
       <article>
         <Spacer size={"lg"} />
@@ -64,8 +65,8 @@ const FlexibilityAndCxlCoherency: React.FC = () => {
               }}
             >
               <BreadcrumbLink as={NextLink} href={`/our-tech/${slug}`}>
-                {`${slug.slice(0, 1).toUpperCase() + slug.slice(1, 12)}${
-                  slug.length > 12 ? "..." : ""
+                {`${title.slice(0, 1).toUpperCase() + title.slice(1, 12)}${
+                  title.length > 12 ? "..." : ""
                 }`}
               </BreadcrumbLink>
             </BreadcrumbItem>
@@ -83,7 +84,7 @@ const FlexibilityAndCxlCoherency: React.FC = () => {
           </SlideFade>
           <SlideFade in delay={0.1}>
             <Text color="electric.400" textAlign="center" variant="h1">
-              Flexibility + CXL Coherency
+              PCIe + CXL
             </Text>
           </SlideFade>
         </VStack>
@@ -115,7 +116,7 @@ const FlexibilityAndCxlCoherency: React.FC = () => {
                 }}
                 fontWeight={500}
               >
-                FalconX + CXL
+                PCie + CXL
               </Text>
               <Text
                 fontSize={{
@@ -128,10 +129,10 @@ const FlexibilityAndCxlCoherency: React.FC = () => {
                 }}
               >
                 Takes the technological benefits of PCIe interconnects and pairs
-                it with the device and memory coherency of CXL (Compute Express
-                Link). This allows for shared memory systems which have lower
-                development costs and code complexity. PCIe system-interconnects
-                give all devices access to all the memory across a platform.
+                it with CXL (Compute Express Link). This allows for shared
+                memory systems which have lower development costs and code
+                complexity. PCIe system interconnects + CXL give all devices
+                access to all memory across a platform.
               </Text>
             </VStack>
             <Flex flexDirection="column" gap={3}>
@@ -395,19 +396,19 @@ const FlexibilityAndCxlCoherency: React.FC = () => {
             >
               <BenefitsCard
                 number={1}
-                text={`Applications have access to GPU, storage, and memory from across the system. No changes to the applications are needed`}
+                text={`Applications have access to GPU, storage, and memory from across the system. No changes to the applications are needed.`}
               />
               <BenefitsCard
                 number={2}
-                text={`Systems utilize DMA to communicate utilizing system memory over PCIe`}
+                text={`Systems utilize DMA to communicate utilizing system memory over PCIe.`}
               />
               <BenefitsCard
                 number={3}
-                text={`High power and flexibility of distributed compute, without the high management, hardware, or SWAP costs`}
+                text={`High power and flexibility of distributed compute, without the high management, hardware, or SWAP costs.`}
               />
               <BenefitsCard
                 number={4}
-                text={`Infrastructure is now a tightly integrated and flexible single system`}
+                text={`Infrastructure is now a tightly integrated and flexible single system.`}
               />
             </Flex>
           </Container>

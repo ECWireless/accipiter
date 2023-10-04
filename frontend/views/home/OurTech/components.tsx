@@ -179,7 +179,7 @@ export const StepsCard: React.FC<StepsCardProps> = ({
   paragraph2,
 }) => {
   return (
-    <Box>
+    <Box w="100%">
       <Box background={color} borderRadius="12px 12px 0px 0px" h="28px" />
       <VStack
         align="flex-start"

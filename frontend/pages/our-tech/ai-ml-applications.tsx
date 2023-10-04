@@ -26,11 +26,12 @@ import { Container as OldContainer } from "components/Containers";
 
 const AiMlApplications: React.FC = () => {
   const slug = "ai-ml-applications";
+  const title = "AI/ML Applications";
 
   return (
     <>
       <Head>
-        <title>AI/ML Applications | Accipiter Systems</title>
+        <title>{title} | Accipiter Systems</title>
       </Head>
       <article>
         <Spacer size={"lg"} />
@@ -66,8 +67,8 @@ const AiMlApplications: React.FC = () => {
               }}
             >
               <BreadcrumbLink as={NextLink} href={`/our-tech/${slug}`}>
-                {`${slug.slice(0, 1).toUpperCase() + slug.slice(1, 12)}${
-                  slug.length > 12 ? "..." : ""
+                {`${title.slice(0, 1).toUpperCase() + title.slice(1, 12)}${
+                  title.length > 12 ? "..." : ""
                 }`}
               </BreadcrumbLink>
             </BreadcrumbItem>
@@ -167,7 +168,7 @@ const AiMlApplications: React.FC = () => {
               <SlideFade in delay={0.5}>
                 <SummaryCard1
                   number={5}
-                  text={`Most efficient harwdare usage, cost, and SWAP`}
+                  text={`Most efficient hardware usage, cost, and SWAP`}
                 />
               </SlideFade>
             </Flex>

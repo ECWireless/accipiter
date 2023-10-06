@@ -63,11 +63,11 @@ export default function Navigation({ setSidebar }) {
               <StyledNavButton>Home</StyledNavButton>
             )}
           </Link>
-          <Link href="/our-tech">
-            {router.pathname.includes("/our-tech") ? (
-              <StyledNavButtonActive>Our Tech</StyledNavButtonActive>
+          <Link href="/our-edge">
+            {router.pathname.includes("/our-edge") ? (
+              <StyledNavButtonActive>Our Edge</StyledNavButtonActive>
             ) : (
-              <StyledNavButton>Our Tech</StyledNavButton>
+              <StyledNavButton>Our Edge</StyledNavButton>
             )}
           </Link>
           <Link href="/products">

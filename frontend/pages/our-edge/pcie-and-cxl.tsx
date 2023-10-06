@@ -20,7 +20,7 @@ import {
   BenefitsCard,
   SummaryCard1,
   UseCasesCard,
-} from "views/home/OurTech/components";
+} from "views/home/OurEdge/components";
 
 const FlexibilityAndCxlCoherency: React.FC = () => {
   const slug = "pcie-and-cxl";
@@ -53,8 +53,8 @@ const FlexibilityAndCxlCoherency: React.FC = () => {
                 textDecoration: "underline",
               }}
             >
-              <BreadcrumbLink as={NextLink} href="/our-tech">
-                Our Tech
+              <BreadcrumbLink as={NextLink} href="/our-edge">
+                Our Edge
               </BreadcrumbLink>
             </BreadcrumbItem>
             <BreadcrumbItem
@@ -64,7 +64,7 @@ const FlexibilityAndCxlCoherency: React.FC = () => {
                 textDecoration: "underline",
               }}
             >
-              <BreadcrumbLink as={NextLink} href={`/our-tech/${slug}`}>
+              <BreadcrumbLink as={NextLink} href={`/our-edge/${slug}`}>
                 {`${title.slice(0, 1).toUpperCase() + title.slice(1, 12)}${
                   title.length > 12 ? "..." : ""
                 }`}

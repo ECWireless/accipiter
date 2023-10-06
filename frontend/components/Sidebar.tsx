@@ -32,10 +32,10 @@ const Sidebar = ({ sidebar, setSidebar }): JSX.Element => {
           </StyledCloseContainer>
         </Flex>
       </SidebarTop>
-      <Link href="/our-tech">
+      <Link href="/our-edge">
         <StyledSidebarOption
           onClick={() => setSidebar(false)}
-          active={router.pathname.includes("/our-tech") ? true : false}
+          active={router.pathname.includes("/our-edge") ? true : false}
         >
           <Flex
             justify={"flex-start"}
@@ -43,7 +43,7 @@ const Sidebar = ({ sidebar, setSidebar }): JSX.Element => {
             style={{ height: "100%" }}
           >
             <P2 style={{ marginLeft: "2rem" }} color={colors.black}>
-              Our Tech
+              Our Edge
             </P2>
           </Flex>
         </StyledSidebarOption>

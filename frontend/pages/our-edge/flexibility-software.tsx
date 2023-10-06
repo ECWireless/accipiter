@@ -16,7 +16,7 @@ import Spacer from "components/Spacer";
 import { Container } from "chakraComponents/Flex";
 import { Container as OldContainer } from "components/Containers";
 
-import { SummaryCard1, StepsCard } from "views/home/OurTech/components";
+import { SummaryCard1, StepsCard } from "views/home/OurEdge/components";
 
 const FlexibilitySoftware: React.FC = () => {
   const slug = "flexibility-software";
@@ -49,8 +49,8 @@ const FlexibilitySoftware: React.FC = () => {
                 textDecoration: "underline",
               }}
             >
-              <BreadcrumbLink as={NextLink} href="/our-tech">
-                Our Tech
+              <BreadcrumbLink as={NextLink} href="/our-edge">
+                Our Edge
               </BreadcrumbLink>
             </BreadcrumbItem>
             <BreadcrumbItem
@@ -60,7 +60,7 @@ const FlexibilitySoftware: React.FC = () => {
                 textDecoration: "underline",
               }}
             >
-              <BreadcrumbLink as={NextLink} href={`/our-tech/${slug}`}>
+              <BreadcrumbLink as={NextLink} href={`/our-edge/${slug}`}>
                 {`${title.slice(0, 1).toUpperCase() + title.slice(1, 12)}${
                   title.length > 12 ? "..." : ""
                 }`}

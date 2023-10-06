@@ -42,7 +42,7 @@ export const OurTech: React.FC<IOurTech> = ({
       <Container>
         <Fade bottom ssrFadeout>
           <TechCard
-            href="/our-tech/edge-applications"
+            href="/our-edge/edge-applications"
             heading={techCard1Title}
             subheading={techCard1Paragraph}
           />
@@ -50,7 +50,7 @@ export const OurTech: React.FC<IOurTech> = ({
         <Spacer size={"md"} />
         <Fade bottom ssrFadeout delay={100}>
           <TechCard
-            href="/our-tech/ai-ml-applications"
+            href="/our-edge/ai-ml-applications"
             heading={techCard2Title}
             subheading={techCard2Paragraph}
           />
@@ -58,7 +58,7 @@ export const OurTech: React.FC<IOurTech> = ({
         <Spacer size={"md"} />
         <Fade bottom ssrFadeout delay={200}>
           <TechCard
-            href="/our-tech/flexibility-software"
+            href="/our-edge/flexibility-software"
             heading={techCard3Title}
             subheading={techCard3Paragraph}
           />
@@ -66,7 +66,7 @@ export const OurTech: React.FC<IOurTech> = ({
         <Spacer size={"md"} />
         <Fade bottom ssrFadeout delay={300}>
           <TechCard
-            href="/our-tech/pcie-and-cxl"
+            href="/our-edge/pcie-and-cxl"
             heading={techCard4Title}
             subheading={techCard4Paragraph}
           />

@@ -25,7 +25,7 @@ const OurTech: React.FC = ({ ourTechProps }: { [key: string]: any }) => {
   return (
     <div>
       <Head>
-        <title>Our Tech | Accipiter Systems</title>
+        <title>Our Edge | Accipiter Systems</title>
       </Head>
 
       <main>
@@ -50,8 +50,8 @@ const OurTech: React.FC = ({ ourTechProps }: { [key: string]: any }) => {
                 textDecoration: "underline",
               }}
             >
-              <BreadcrumbLink as={NextLink} href="/our-tech">
-                Our Tech
+              <BreadcrumbLink as={NextLink} href="/our-edge">
+                Our Edge
               </BreadcrumbLink>
             </BreadcrumbItem>
           </Breadcrumb>

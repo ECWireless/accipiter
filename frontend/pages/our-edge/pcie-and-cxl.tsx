@@ -429,22 +429,22 @@ const FlexibilityAndCxlCoherency: React.FC = () => {
             <UseCasesCard
               title="Scale"
               body={`System and device memory coherence enables hyperscale deployments by reducing SWAP and removing the need for network segmentation.`}
-              icon="/icons/aid.svg"
+              icon="/icons/scale.svg"
             />
             <UseCasesCard
               title="Economics"
               body={`PCIe and CXL consortiums and industry have identified these enabling technologies as critical to future applications. Efficient systems reduce hardware and personnel costs.`}
-              icon="/icons/ai.svg"
+              icon="/icons/economics.svg"
             />
             <UseCasesCard
               title="Performance"
               body={`Enable applications with large pools of harware, and move data efficiently over a system with ultra-high speed and a path to terabit per second per port.`}
-              icon="/icons/aiAndGear.svg"
+              icon="/icons/performance.svg"
             />
             <UseCasesCard
               title="Efficiency"
               body={`Industry leading resource pooling paired with  PCIe-based interconnects allow for increases in efficiency throughout the software and hardware.`}
-              icon="/icons/aiAndCloud.svg"
+              icon="/icons/efficiency.svg"
             />
           </Flex>
           <Text

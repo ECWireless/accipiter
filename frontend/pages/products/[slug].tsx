@@ -5,15 +5,21 @@ import styled from "styled-components";
 import client from "client";
 import { colors, GU } from "components/theme";
 import Spacer from "components/Spacer";
-import { VStack } from "@chakra-ui/react";
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  VStack,
+} from "@chakra-ui/react";
 import Head from "next/head";
+import NextLink from "next/link";
 import { useMemo } from "react";
 
 import { urlFor } from "lib/helpers";
 
 import { media } from "components/breakpoints";
 import { Container, Flex } from "components/Containers";
-import { H2, H3, H4, P1 } from "components/Typography";
+import { H2, H3, P1 } from "components/Typography";
 import Spinner from "components/Spinner";
 
 import specData from "data/specs.json";
@@ -73,8 +79,45 @@ const Product = ({ product, slug }) => {
       </Head>
       <article>
         <Spacer size={"lg"} />
-        <Spacer size={"md"} />
         <Container>
+          <Breadcrumb separator=">" spacing={4}>
+            <BreadcrumbItem
+              color="electric.400"
+              fontWeight={600}
+              _hover={{
+                textDecoration: "underline",
+              }}
+            >
+              <BreadcrumbLink as={NextLink} href="/">
+                Home
+              </BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbItem
+              color="electric.400"
+              fontWeight={600}
+              _hover={{
+                textDecoration: "underline",
+              }}
+            >
+              <BreadcrumbLink as={NextLink} href="/products">
+                Products
+              </BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbItem
+              color="electric.400"
+              fontWeight={600}
+              _hover={{
+                textDecoration: "underline",
+              }}
+            >
+              <BreadcrumbLink as={NextLink} href={`/products/${slug}`}>
+                {`${slug.slice(0, 1).toUpperCase() + slug.slice(1, 12)}${
+                  slug.length > 12 ? "..." : ""
+                }`}
+              </BreadcrumbLink>
+            </BreadcrumbItem>
+          </Breadcrumb>
+          <Spacer size={"md"} />
           <VStack>
             <H2 style={{ textAlign: "center", fontWeight: 600 }}>
               {productName}

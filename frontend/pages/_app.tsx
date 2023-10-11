@@ -3,6 +3,7 @@ import styled, { css } from "styled-components";
 import Head from "next/head";
 import "styles/globals.css";
 import { ChakraProvider } from "@chakra-ui/react";
+import { theme } from "utils/theme";
 
 // Components
 import Navigation from "components/Navigation";
@@ -81,7 +82,7 @@ export default function App({ Component, pageProps }): JSX.Element {
 
 const Layout = ({ children, setSidebar, sidebar }) => {
   return (
-    <ChakraProvider>
+    <ChakraProvider resetCSS theme={theme}>
       <Navigation setSidebar={setSidebar} />
       <Backdrop onClick={() => setSidebar(false)} open={sidebar} />
       <Sidebar sidebar={sidebar} setSidebar={setSidebar} />

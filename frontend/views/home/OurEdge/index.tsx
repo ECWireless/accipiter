@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { Fade } from "react-reveal";
 import { media } from "components/breakpoints";
 import { colors, GU } from "components/theme";
+import Link from "next/link";
 
 import Banner from "components/Banner";
 import { Container } from "components/Containers";
@@ -40,19 +41,35 @@ export const OurTech: React.FC<IOurTech> = ({
       <Banner heading={techHeading} subheading={techSubheading} />
       <Container>
         <Fade bottom ssrFadeout>
-          <TechCard heading={techCard1Title} subheading={techCard1Paragraph} />
+          <TechCard
+            href="/our-edge/edge-applications"
+            heading={techCard1Title}
+            subheading={techCard1Paragraph}
+          />
         </Fade>
         <Spacer size={"md"} />
         <Fade bottom ssrFadeout delay={100}>
-          <TechCard heading={techCard2Title} subheading={techCard2Paragraph} />
+          <TechCard
+            href="/our-edge/ai-ml-applications"
+            heading={techCard2Title}
+            subheading={techCard2Paragraph}
+          />
         </Fade>
         <Spacer size={"md"} />
         <Fade bottom ssrFadeout delay={200}>
-          <TechCard heading={techCard3Title} subheading={techCard3Paragraph} />
+          <TechCard
+            href="/our-edge/flexibility-software"
+            heading={techCard3Title}
+            subheading={techCard3Paragraph}
+          />
         </Fade>
         <Spacer size={"md"} />
         <Fade bottom ssrFadeout delay={300}>
-          <TechCard heading={techCard4Title} subheading={techCard4Paragraph} />
+          <TechCard
+            href="/our-edge/pcie-and-cxl"
+            heading={techCard4Title}
+            subheading={techCard4Paragraph}
+          />
         </Fade>
         <Spacer size={"lg"} />
       </Container>
@@ -61,22 +78,25 @@ export const OurTech: React.FC<IOurTech> = ({
 };
 
 interface ITechCard {
+  href: string;
   heading: string;
   subheading: string;
 }
 
-const TechCard: React.FC<ITechCard> = ({ heading, subheading }) => {
+const TechCard: React.FC<ITechCard> = ({ href, heading, subheading }) => {
   return (
-    <StyledCardContainer>
-      <H4 align={"center"} bold={true} color={colors.white}>
-        {heading}
-      </H4>
-      <Spacer size={"xs"} />
-      <Spacer size={"xs"} />
-      <P2 align={"center"} color={colors.white}>
-        {subheading}
-      </P2>
-    </StyledCardContainer>
+    <Link href={href}>
+      <StyledCardContainer>
+        <H4 align={"center"} bold={true} color={colors.white}>
+          {heading}
+        </H4>
+        <Spacer size={"xs"} />
+        <Spacer size={"xs"} />
+        <P2 align={"center"} color={colors.white}>
+          {subheading}
+        </P2>
+      </StyledCardContainer>
+    </Link>
   );
 };
 
@@ -84,6 +104,7 @@ const StyledCardContainer = styled.div`
   background: ${colors.grey};
   border: 1px solid ${colors.blue};
   border-radius: 10px;
+  cursor: pointer;
   margin: 0 auto;
   padding: ${GU * 6}px;
   width: 100%;

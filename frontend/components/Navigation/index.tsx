@@ -7,7 +7,6 @@ import { media } from "components/breakpoints";
 
 import useAuth from "hooks/useAuth";
 
-import { Flex } from "components/Containers";
 import { SandwichMenu } from "components/SandwichMenu";
 
 export default function Navigation({ setSidebar }) {
@@ -17,7 +16,7 @@ export default function Navigation({ setSidebar }) {
 
   React.useEffect(() => {
     window.addEventListener("scroll", function () {
-      if (window.pageYOffset === 0) {
+      if (window.scrollY === 0) {
         setBackground(false);
       } else {
         setBackground(true);
@@ -64,15 +63,22 @@ export default function Navigation({ setSidebar }) {
               <StyledNavButton>Home</StyledNavButton>
             )}
           </Link>
-          <Link href="/our-tech">
-            {router.pathname === "/our-tech" ? (
-              <StyledNavButtonActive>Our Tech</StyledNavButtonActive>
+          <Link href="/our-edge">
+            {router.pathname.includes("/our-edge") ? (
+              <StyledNavButtonActive>Our Edge</StyledNavButtonActive>
             ) : (
-              <StyledNavButton>Our Tech</StyledNavButton>
+              <StyledNavButton>Our Edge</StyledNavButton>
+            )}
+          </Link>
+          <Link href="/products">
+            {router.pathname.includes("/products") ? (
+              <StyledNavButtonActive>Products</StyledNavButtonActive>
+            ) : (
+              <StyledNavButton>Products</StyledNavButton>
             )}
           </Link>
           <Link href="/careers">
-            {router.pathname === "/careers" ? (
+            {router.pathname.includes("/careers") ? (
               <StyledNavButtonActive>Careers</StyledNavButtonActive>
             ) : (
               <StyledNavButton>Careers</StyledNavButton>
@@ -141,7 +147,7 @@ const StyledMenuContainer = styled.div`
     top: ${GU * 5}px;
   `}
 
-  ${media.sm`
+  ${media.md`
     display: none;
   `}
 `;
@@ -160,7 +166,7 @@ const StyledHeader = styled.header<IStyledHeader>`
   width: 100%;
   z-index: 100;
 
-  ${media.sm`
+  ${media.md`
     background: rgba(30, 30, 30, 1);
     transform: translateX(-50%);
   `}
@@ -168,7 +174,7 @@ const StyledHeader = styled.header<IStyledHeader>`
   ${(props) =>
     props.background &&
     css`
-      ${media.sm`
+      ${media.md`
       background: rgba(30, 30, 30, 1);
     `}
     `}
@@ -185,7 +191,7 @@ const StyledNav = styled.nav`
   top: 50%;
   transform: translate(-50%, -50%);
 
-  ${media.sm`
+  ${media.md`
     display: flex;
   `}
 `;

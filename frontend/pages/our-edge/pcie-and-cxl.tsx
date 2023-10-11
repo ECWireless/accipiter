@@ -116,7 +116,7 @@ const FlexibilityAndCxlCoherency: React.FC = () => {
                 }}
                 fontWeight={500}
               >
-                PCie + CXL
+                PCIe + CXL
               </Text>
               <Text
                 fontSize={{
@@ -460,7 +460,7 @@ const FlexibilityAndCxlCoherency: React.FC = () => {
             mb={20}
             textAlign="center"
           >
-            Accipiter Systems FlaconX + CXL is the only flexible single system
+            Accipiter Systems FalconX + CXL is the only flexible single system
             solution for CXL deployments
           </Text>
         </Container>

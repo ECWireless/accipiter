@@ -22,10 +22,6 @@ const OurTech: React.FC = ({ ourTechProps }: { [key: string]: any }) => {
     techCard4Paragraph,
   } = ourTechProps;
 
-  const { DEPLOYMENT_ENVIRONMENT } = process.env;
-  console.log("DEPLOYMENT_ENVIRONMENT", DEPLOYMENT_ENVIRONMENT);
-  console.log(ourTechProps);
-
   return (
     <div>
       <Head>

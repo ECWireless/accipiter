@@ -25,7 +25,7 @@ const PhotonicProcessing: React.FC = () => {
     <>
       <Head>
         <title>
-          Optical Switching & Photonic Processing | Accipiter Systems
+          Optical Switching and Photonic Processing | Accipiter Systems
         </title>
       </Head>
       <article>
@@ -81,7 +81,7 @@ const PhotonicProcessing: React.FC = () => {
           </SlideFade>
           <SlideFade in delay={0.1}>
             <Text align="center" color="electric.400" variant="h1">
-              Optical Switching & Photonic Processing
+              Optical Switching and Photonic Processing
             </Text>
           </SlideFade>
         </VStack>

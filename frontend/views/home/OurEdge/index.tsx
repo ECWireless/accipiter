@@ -42,13 +42,21 @@ export const OurTech: React.FC<IOurTech> = ({
       <Container>
         <Fade bottom ssrFadeout>
           <TechCard
+            href="/our-edge/photonic-processing"
+            heading="Photonic Processing"
+            subheading="Process data at the speed of light"
+          />
+        </Fade>
+        <Spacer size={"md"} />
+        <Fade bottom ssrFadeout delay={100}>
+          <TechCard
             href="/our-edge/edge-applications"
             heading={techCard1Title}
             subheading={techCard1Paragraph}
           />
         </Fade>
         <Spacer size={"md"} />
-        <Fade bottom ssrFadeout delay={100}>
+        <Fade bottom ssrFadeout delay={200}>
           <TechCard
             href="/our-edge/ai-ml-applications"
             heading={techCard2Title}
@@ -56,7 +64,7 @@ export const OurTech: React.FC<IOurTech> = ({
           />
         </Fade>
         <Spacer size={"md"} />
-        <Fade bottom ssrFadeout delay={200}>
+        <Fade bottom ssrFadeout delay={300}>
           <TechCard
             href="/our-edge/flexibility-software"
             heading={techCard3Title}
@@ -64,7 +72,7 @@ export const OurTech: React.FC<IOurTech> = ({
           />
         </Fade>
         <Spacer size={"md"} />
-        <Fade bottom ssrFadeout delay={300}>
+        <Fade bottom ssrFadeout delay={400}>
           <TechCard
             href="/our-edge/pcie-and-cxl"
             heading={techCard4Title}

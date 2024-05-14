@@ -13,6 +13,14 @@ const Text = {
       },
       fontWeight: 600,
     },
+    h2: {
+      color: 'grey.400',
+      fontSize: {
+        base: '24px',
+        lg: '32px',
+      },
+      fontWeight: 600,
+    },
   }
 }
 

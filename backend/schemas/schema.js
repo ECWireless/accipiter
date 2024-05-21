@@ -7,6 +7,7 @@ import careers from './careers'
 import pdfs from './pdfs'
 import emails from './emails'
 import products from './products'
+import ourTech from './ourTech'
 
 export default [
   home,
@@ -14,5 +15,6 @@ export default [
   pdfs,
   emails,
   products,
+  ourTech,
   blockContent,
 ]

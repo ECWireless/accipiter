@@ -43,7 +43,7 @@ export const OurTech: React.FC<IOurTech> = ({
         <Fade bottom ssrFadeout>
           <TechCard
             href="/our-edge/photonic-processing"
-            heading="Photonic Processing"
+            heading="SWaP Sensitive (Photonic Processing) Applications"
             subheading="Process data at the speed of light"
           />
         </Fade>
@@ -79,6 +79,14 @@ export const OurTech: React.FC<IOurTech> = ({
             subheading={techCard4Paragraph}
           />
         </Fade>
+        <Spacer size={"md"} />
+        <Fade bottom ssrFadeout delay={400}>
+          <TechCard
+            href="/our-edge/pcie-and-cxl"
+            heading="Border Protection (Rack Scale) Applications"
+            subheading={techCard4Paragraph}
+          />
+        </Fade>
         <Spacer size={"lg"} />
       </Container>
     </div>
@@ -98,11 +106,11 @@ const TechCard: React.FC<ITechCard> = ({ href, heading, subheading }) => {
         <H4 align={"center"} bold={true} color={colors.white}>
           {heading}
         </H4>
-        <Spacer size={"xs"} />
+        {/* <Spacer size={"xs"} />
         <Spacer size={"xs"} />
         <P2 align={"center"} color={colors.white}>
           {subheading}
-        </P2>
+        </P2> */}
       </StyledCardContainer>
     </Link>
   );
@@ -114,11 +122,15 @@ const StyledCardContainer = styled.div`
   border-radius: 10px;
   cursor: pointer;
   margin: 0 auto;
-  padding: ${GU * 6}px;
+  padding: ${GU * 6}px ${GU * 8}px;
   width: 100%;
 
   ${media.sm`
-    padding: ${GU * 8}px;
+    padding: ${GU * 8}px ${GU * 50}px;
+
+    h4 {
+      line-height: 1.2;
+    }
   `}
 
   ${media.lg`

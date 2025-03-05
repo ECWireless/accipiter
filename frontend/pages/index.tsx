@@ -8,7 +8,7 @@ import { colors, GU } from "components/theme";
 
 import { Container } from "components/Containers";
 import Modal from "components/Modal";
-import { H4 } from "components/Typography";
+import { H4, P2 } from "components/Typography";
 import { urlFor } from "lib/helpers";
 
 import { Hero, OurTech, Products, Partners, Contact } from "views/home";
@@ -87,6 +87,17 @@ const Home: React.FC = ({ homeProps }: { [key: string]: any }) => {
             </Fade>
           </Container>
         </StyledBanner>
+        <StyledBanner2>
+          <Container>
+            <Fade bottom ssrFadeout>
+              <P2 align={"center"} color={colors.white}>
+                Our electronic, photonic, and software products enable AI system
+                design companies to deliver efficient infrastructure located at
+                the data source.
+              </P2>
+            </Fade>
+          </Container>
+        </StyledBanner2>
         <OurTech
           topLine={false}
           techHeading={techHeading}
@@ -240,5 +251,16 @@ const StyledBanner = styled.div`
 
   h4 {
     font-weight: 700;
+  }
+`;
+
+const StyledBanner2 = styled.div`
+  background: ${colors.greyLight};
+  padding: ${GU * 8}px 0;
+
+  p {
+    font-weight: 600;
+    margin: 0 auto;
+    max-width: 900px;
   }
 `;

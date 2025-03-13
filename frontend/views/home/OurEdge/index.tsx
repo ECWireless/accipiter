@@ -6,7 +6,7 @@ import Link from "next/link";
 
 import Banner from "components/Banner";
 import { Container } from "components/Containers";
-import { H4, P2 } from "components/Typography";
+import { H3, H4, P2 } from "components/Typography";
 import Spacer from "components/Spacer";
 
 interface IOurTech {
@@ -21,6 +21,10 @@ interface IOurTech {
   techCard3Paragraph: string;
   techCard4Title: string;
   techCard4Paragraph: string;
+  techCard5Title: string;
+  techCard5Paragraph: string;
+  techCard6Title: string;
+  techCard6Paragraph: string;
 }
 
 export const OurTech: React.FC<IOurTech> = ({
@@ -35,6 +39,10 @@ export const OurTech: React.FC<IOurTech> = ({
   techCard3Paragraph,
   techCard4Title,
   techCard4Paragraph,
+  techCard5Title,
+  techCard5Paragraph,
+  techCard6Title,
+  techCard6Paragraph,
 }) => {
   return (
     <div style={{ borderTop: topLine ? `1px solid ${colors.blue}` : "none" }}>
@@ -43,38 +51,30 @@ export const OurTech: React.FC<IOurTech> = ({
         <Fade bottom ssrFadeout>
           <TechCard
             href="/our-edge/photonic-processing"
-            heading="SWaP Sensitive (Photonic Processing) Applications"
-            subheading="Process data at the speed of light"
+            heading={techCard1Title}
+            subheading={techCard1Paragraph}
           />
         </Fade>
         <Spacer size={"md"} />
         <Fade bottom ssrFadeout delay={100}>
           <TechCard
             href="/our-edge/edge-applications"
-            heading={techCard1Title}
-            subheading={techCard1Paragraph}
+            heading={techCard2Title}
+            subheading={techCard2Paragraph}
           />
         </Fade>
         <Spacer size={"md"} />
         <Fade bottom ssrFadeout delay={200}>
           <TechCard
             href="/our-edge/ai-ml-applications"
-            heading={techCard2Title}
-            subheading={techCard2Paragraph}
+            heading={techCard3Title}
+            subheading={techCard3Paragraph}
           />
         </Fade>
         <Spacer size={"md"} />
         <Fade bottom ssrFadeout delay={300}>
           <TechCard
             href="/our-edge/flexibility-software"
-            heading={techCard3Title}
-            subheading={techCard3Paragraph}
-          />
-        </Fade>
-        <Spacer size={"md"} />
-        <Fade bottom ssrFadeout delay={400}>
-          <TechCard
-            href="/our-edge/pcie-and-cxl"
             heading={techCard4Title}
             subheading={techCard4Paragraph}
           />
@@ -83,8 +83,16 @@ export const OurTech: React.FC<IOurTech> = ({
         <Fade bottom ssrFadeout delay={400}>
           <TechCard
             href="/our-edge/pcie-and-cxl"
-            heading="Border Protection (Rack Scale) Applications"
-            subheading={techCard4Paragraph}
+            heading={techCard5Title}
+            subheading={techCard5Paragraph}
+          />
+        </Fade>
+        <Spacer size={"md"} />
+        <Fade bottom ssrFadeout delay={400}>
+          <TechCard
+            href="/our-edge/pcie-and-cxl"
+            heading={techCard6Title}
+            subheading={techCard6Paragraph}
           />
         </Fade>
         <Spacer size={"lg"} />
@@ -103,14 +111,14 @@ const TechCard: React.FC<ITechCard> = ({ href, heading, subheading }) => {
   return (
     <Link href={href}>
       <StyledCardContainer>
-        <H4 align={"center"} bold={true} color={colors.white}>
+        <H3 align={"center"} bold={true} color={colors.white}>
           {heading}
-        </H4>
-        {/* <Spacer size={"xs"} />
+        </H3>
+        <Spacer size={"xs"} />
         <Spacer size={"xs"} />
         <P2 align={"center"} color={colors.white}>
           {subheading}
-        </P2> */}
+        </P2>
       </StyledCardContainer>
     </Link>
   );
@@ -126,7 +134,7 @@ const StyledCardContainer = styled.div`
   width: 100%;
 
   ${media.sm`
-    padding: ${GU * 8}px ${GU * 50}px;
+    padding: ${GU * 8}px ${GU * 20}px;
 
     h4 {
       line-height: 1.2;
@@ -134,7 +142,8 @@ const StyledCardContainer = styled.div`
   `}
 
   ${media.lg`
-    width: ${GU * 200}px;
+    padding: ${GU * 8}px ${GU * 40}px;
+    width: ${GU * 220}px;
   `}
 
   ${media.xl`

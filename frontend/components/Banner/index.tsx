@@ -1,12 +1,12 @@
-import { Fade } from 'react-reveal'
-import styled from 'styled-components'
-import { media } from 'components/breakpoints'
-import { colors, GU } from 'components/theme'
+import { Fade } from "react-reveal";
+import styled from "styled-components";
+import { media } from "components/breakpoints";
+import { colors, GU } from "components/theme";
 
 // Components
-import { Flex } from 'components/Containers'
-import Spacer from 'components/Spacer'
-import { H3, P1 } from 'components/Typography'
+import { Flex } from "components/Containers";
+import Spacer from "components/Spacer";
+import { H3, P1 } from "components/Typography";
 
 interface IBanner {
   color?: string;
@@ -14,36 +14,41 @@ interface IBanner {
   subheading?: string;
 }
 
-const Banner: React.FC<IBanner> = ({
-  color,
-  heading,
-  subheading,
-}) => {
+const Banner: React.FC<IBanner> = ({ color, heading, subheading }) => {
   return (
     <StyledBannerContainer>
-      <Spacer size={'lg'} />
-      <Flex align={'center'} justify={'space-between'}>
+      <Spacer size={"lg"} />
+      <Flex align={"center"} justify={"space-between"}>
         <Fade ssrFadeout bottom>
           <StyledLine />
         </Fade>
-        <Flex align={'center'} direction={'column'}>
+        <Flex align={"center"} direction={"column"}>
           <Fade bottom ssrFadeout>
-            <H3 color={color ? color : colors.grey} bold={true} uppercase>{heading}</H3>
+            <H3
+              align={"center"}
+              color={color ? color : colors.grey}
+              bold={true}
+              uppercase
+            >
+              {heading}
+            </H3>
           </Fade>
-          {subheading && <Fade delay={200} bottom ssrFadeout>
-            <Spacer size={'sm'} />
-            <P1 color={color ? color : colors.grey}>{subheading}</P1>
-          </Fade>}
+          {subheading && (
+            <Fade delay={200} bottom ssrFadeout>
+              <Spacer size={"sm"} />
+              <P1 color={color ? color : colors.grey}>{subheading}</P1>
+            </Fade>
+          )}
         </Flex>
         <Fade ssrFadeout top>
           <StyledLine />
         </Fade>
       </Flex>
-      <Spacer size={'md'} />
-      <Spacer size={'md'} />
+      <Spacer size={"md"} />
+      <Spacer size={"md"} />
     </StyledBannerContainer>
-  )
-}
+  );
+};
 
 export default Banner;
 
@@ -62,10 +67,10 @@ const StyledBannerContainer = styled.div`
   ${media.xl`
     width: ${GU * 140}px;
   `}
-`
+`;
 
 const StyledLine = styled.div`
   background: ${colors.blue};
   height: ${GU * 15}px;
   width: 2px;
-`
+`;

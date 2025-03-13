@@ -20,6 +20,10 @@ const OurTech: React.FC = ({ ourTechProps }: { [key: string]: any }) => {
     techCard3Paragraph,
     techCard4Title,
     techCard4Paragraph,
+    techCard5Title,
+    techCard5Paragraph,
+    techCard6Title,
+    techCard6Paragraph,
   } = ourTechProps;
 
   return (
@@ -68,6 +72,10 @@ const OurTech: React.FC = ({ ourTechProps }: { [key: string]: any }) => {
           techCard3Paragraph={techCard3Paragraph}
           techCard4Title={techCard4Title}
           techCard4Paragraph={techCard4Paragraph}
+          techCard5Title={techCard5Title}
+          techCard5Paragraph={techCard5Paragraph}
+          techCard6Title={techCard6Title}
+          techCard6Paragraph={techCard6Paragraph}
         />
       </main>
     </div>
@@ -89,6 +97,10 @@ export const getStaticProps = async () => {
     techCard3Paragraph,
     techCard4Title,
     techCard4Paragraph,
+    techCard5Title,
+    techCard5Paragraph,
+    techCard6Title,
+    techCard6Paragraph,
 	}`);
   return {
     props: { ourTechProps, revalidate: 10 },

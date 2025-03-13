@@ -30,6 +30,10 @@ const Home: React.FC = ({ homeProps }: { [key: string]: any }) => {
     techCard3Paragraph,
     techCard4Title,
     techCard4Paragraph,
+    techCard5Title,
+    techCard5Paragraph,
+    techCard6Title,
+    techCard6Paragraph,
     productsHeading,
     productsSubheading,
     products1Image,
@@ -64,9 +68,7 @@ const Home: React.FC = ({ homeProps }: { [key: string]: any }) => {
   return (
     <div>
       <Head>
-        <title>
-          PCIe Switches and High Performance Networking | Accipiter Systems
-        </title>
+        <title>PCIe & Optical System Interconnects | Accipiter Systems</title>
       </Head>
 
       <main>
@@ -110,6 +112,10 @@ const Home: React.FC = ({ homeProps }: { [key: string]: any }) => {
           techCard3Paragraph={techCard3Paragraph}
           techCard4Title={techCard4Title}
           techCard4Paragraph={techCard4Paragraph}
+          techCard5Title={techCard5Title}
+          techCard5Paragraph={techCard5Paragraph}
+          techCard6Title={techCard6Title}
+          techCard6Paragraph={techCard6Paragraph}
         />
         <div style={{ borderTop: `1px solid ${colors.blue}` }} />
         <Products
@@ -179,6 +185,10 @@ export const getStaticProps = async () => {
     techCard3Paragraph,
     techCard4Title,
     techCard4Paragraph,
+    techCard5Title,
+    techCard5Paragraph,
+    techCard6Title,
+    techCard6Paragraph,
     productsHeading,
     productsSubheading,
     products1Image,

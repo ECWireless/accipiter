@@ -195,6 +195,42 @@ export default {
       type: "string",
     },
     {
+      name: "products5Image",
+      title: "Product 5 Image",
+      type: "image",
+      options: {
+        hotspot: true,
+      },
+    },
+    {
+      name: "products5Name",
+      title: "Products 5 Name",
+      type: "string",
+    },
+    {
+      name: "products5Description",
+      title: "Products 5 Description",
+      type: "string",
+    },
+    {
+      name: "products6Image",
+      title: "Product 6 Image",
+      type: "image",
+      options: {
+        hotspot: true,
+      },
+    },
+    {
+      name: "products6Name",
+      title: "Products 6 Name",
+      type: "string",
+    },
+    {
+      name: "products6Description",
+      title: "Products 6 Description",
+      type: "string",
+    },
+    {
       name: "partnersHeading",
       title: "Partners Heading",
       type: "string",

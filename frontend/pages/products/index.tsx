@@ -25,6 +25,12 @@ const Products: React.FC = ({ productsProps }: { [key: string]: any }) => {
     products4Image,
     products4Name,
     products4Description,
+    products5Image,
+    products5Name,
+    products5Description,
+    products6Image,
+    products6Name,
+    products6Description,
   } = productsProps;
 
   return (
@@ -76,6 +82,12 @@ const Products: React.FC = ({ productsProps }: { [key: string]: any }) => {
           products4Image={urlFor(products4Image)}
           products4Name={products4Name}
           products4Description={products4Description}
+          products5Image={urlFor(products5Image)}
+          products5Name={products5Name}
+          products5Description={products5Description}
+          products6Image={urlFor(products6Image)}
+          products6Name={products6Name}
+          products6Description={products6Description}
         />
       </main>
     </div>
@@ -101,6 +113,12 @@ export const getStaticProps = async () => {
       products4Image,
       products4Name,
       products4Description,
+      products5Image,
+      products5Name,
+      products5Description,
+      products6Image,
+      products6Name,
+      products6Description,
 	}`);
   return {
     props: { productsProps, revalidate: 10 },

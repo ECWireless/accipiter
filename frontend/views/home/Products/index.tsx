@@ -24,6 +24,12 @@ interface IProducts {
   products4Image: any;
   products4Name: string;
   products4Description: string;
+  products5Image: any;
+  products5Name: string;
+  products5Description: string;
+  products6Image: any;
+  products6Name: string;
+  products6Description: string;
 }
 
 export const Products: React.FC<IProducts> = ({
@@ -41,6 +47,12 @@ export const Products: React.FC<IProducts> = ({
   products4Image,
   products4Name,
   products4Description,
+  products5Image,
+  products5Name,
+  products5Description,
+  products6Image,
+  products6Name,
+  products6Description,
 }) => {
   return (
     <div>
@@ -79,6 +91,24 @@ export const Products: React.FC<IProducts> = ({
               heading={products4Name}
               subheading={products4Description}
               link={"/products/pcie-gen-3-network-interface-card"}
+            />
+          </Fade>
+        </Flex>
+        <Flex align={"center"} justify={"space-between"} wrap={"true"}>
+          <Fade bottom ssrFadeout delay={200}>
+            <ProductCard
+              image={products5Image}
+              heading={products5Name}
+              subheading={products5Description}
+              link={"/our-edge/flexibility-software"}
+            />
+          </Fade>
+          <Fade bottom ssrFadeout delay={300}>
+            <ProductCard
+              image={products6Image}
+              heading={products6Name}
+              subheading={products6Description}
+              link={"/our-edge/pcie-and-cxl"}
             />
           </Fade>
         </Flex>

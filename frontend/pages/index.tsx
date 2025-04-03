@@ -8,10 +8,11 @@ import { colors, GU } from "components/theme";
 
 import { Container } from "components/Containers";
 import Modal from "components/Modal";
-import { H4, P2 } from "components/Typography";
+import { H4, P2, P5 } from "components/Typography";
 import { urlFor } from "lib/helpers";
 
 import { Hero, OurTech, Products, Partners, Contact } from "views/home";
+import { Box } from "@chakra-ui/react";
 
 const Home: React.FC = ({ homeProps }: { [key: string]: any }) => {
   const {
@@ -99,10 +100,26 @@ const Home: React.FC = ({ homeProps }: { [key: string]: any }) => {
           <Container>
             <Fade bottom ssrFadeout>
               <P2 align={"center"} color={colors.white}>
-                Our electronic, photonic, and software products enable AI system
-                design companies to deliver efficient infrastructure located at
-                the data source.
+                We deliver specialized AI application platforms at the data
+                source powered by our high-performance system interconnect and
+                software solutions where superior architectures and efficiencies
+                are required.
               </P2>
+            </Fade>
+            <Fade bottom ssrFadeout>
+              <Box mt={6}>
+                <P5 align={"center"} color={colors.white}>
+                  As a leading manufacturer of open standards-based electronic
+                  and photonic system interconnect products, we streamline AI
+                  infrastructure at the data source for demanding edge
+                  applications like medical, simulation, emulation, storage,
+                  fintech, and border protection. The AI application platforms
+                  of system design companies are driven by our hardware
+                  components (switches, switch modules, NICs, expansion chassis)
+                  and software components (switch software, drivers, APIs,
+                  GUIs).
+                </P5>
+              </Box>
             </Fade>
           </Container>
         </StyledBanner2>

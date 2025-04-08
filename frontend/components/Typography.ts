@@ -171,11 +171,13 @@ export const H4 = styled.h4<ITypograhpy>`
 `;
 
 export const P1 = styled.p<ITypograhpy>`
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   font-family: "Nunito Sans", sans-serif;
   font-weight: light;
+  line-height: 20px;
   padding: 0;
   margin: 0;
+
   ${media.xs`
 		font-size: 1.6rem;
 	`}
@@ -184,12 +186,14 @@ export const P1 = styled.p<ITypograhpy>`
 	`}
 	${media.md`
 		font-size: 2rem;
+		line-height: 26px;
 	`}
 	${media.lg`
 		font-size: 2.2rem;
 	`}
 	${media.xl`
 		font-size: 2.8rem;
+		line-height: 34px;
 	`}
 	${(props) =>
     props.uppercase &&
@@ -212,7 +216,7 @@ export const P1 = styled.p<ITypograhpy>`
 `;
 
 export const P2 = styled.p<ITypograhpy>`
-  font-size: 1.6rem;
+  font-size: 1.4rem;
   font-family: "Nunito Sans", sans-serif;
   font-weight: regular;
   padding: 0;
@@ -223,6 +227,7 @@ export const P2 = styled.p<ITypograhpy>`
 	`}
   ${media.md`
 		font-size: 2rem;
+		line-height: 26px;
 	`}
 	${media.xl`
 		font-size: 2.6rem;

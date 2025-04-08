@@ -8,7 +8,7 @@ import { colors, GU } from "components/theme";
 
 import { Container } from "components/Containers";
 import Modal from "components/Modal";
-import { H4, P2, P5 } from "components/Typography";
+import { H4, P1, P2 } from "components/Typography";
 import { urlFor } from "lib/helpers";
 
 import { Hero, OurTech, Products, Partners, Contact } from "views/home";
@@ -99,26 +99,40 @@ const Home: React.FC = ({ homeProps }: { [key: string]: any }) => {
         <StyledBanner2>
           <Container>
             <Fade bottom ssrFadeout>
-              <P2 align={"center"} color={colors.white}>
-                We deliver specialized AI application platforms at the data
-                source powered by our high-performance system interconnect and
-                software solutions where superior architectures and efficiencies
-                are required.
+              <P2 align={"center"} bold color={colors.white}>
+                Powered by our high-performance system interconnects and
+                software solutions, we deliver specialized AI application
+                platforms at the data source where superior architectures and
+                efficiencies are required.
               </P2>
             </Fade>
-            <Fade bottom ssrFadeout>
+            <Fade bottom delay={200} ssrFadeout>
               <Box mt={6}>
-                <P5 align={"center"} color={colors.white}>
+                <P2 align={"center"} color={colors.white}>
                   As a leading manufacturer of open standards-based electronic
                   and photonic system interconnect products, we streamline AI
                   infrastructure at the data source for demanding edge
-                  applications like medical, simulation, emulation, storage,
-                  fintech, and border protection. The AI application platforms
-                  of system design companies are driven by our hardware
-                  components (switches, switch modules, NICs, expansion chassis)
-                  and software components (switch software, drivers, APIs,
-                  GUIs).
-                </P5>
+                  applications such as medical, simulation, emulation, storage,
+                  fintech, and border protection.
+                </P2>
+              </Box>
+            </Fade>
+            <Fade bottom delay={400} ssrFadeout>
+              <Box mt={6}>
+                <P2 align={"center"} color={colors.white}>
+                  The AI application platforms of system design companies are
+                  driven by our hardware components (switches, switch modules,
+                  NICs, expansion chassis) and software components (switch
+                  software, drivers, APIs, GUIs).
+                </P2>
+              </Box>
+            </Fade>
+            <Fade bottom delay={600} ssrFadeout>
+              <Box mt={6}>
+                <P1 align={"center"} bold color={colors.white}>
+                  Our customers report 100X improvement in data throughput rates
+                  and 10X reduction in latency.
+                </P1>
               </Box>
             </Fade>
           </Container>
@@ -304,7 +318,6 @@ const StyledBanner2 = styled.div`
   padding: ${GU * 8}px 0;
 
   p {
-    font-weight: 600;
     margin: 0 auto;
     max-width: 900px;
   }

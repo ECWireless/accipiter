@@ -5,6 +5,7 @@ import { Fade } from "react-reveal";
 import client from "client";
 import { media } from "components/breakpoints";
 import { colors, GU } from "components/theme";
+import { Flex } from "@chakra-ui/react";
 
 import { Container } from "components/Containers";
 import Modal from "components/Modal";
@@ -128,12 +129,26 @@ const Home: React.FC = ({ homeProps }: { [key: string]: any }) => {
               </Box>
             </Fade>
             <Fade bottom delay={600} ssrFadeout>
-              <Box mt={6}>
+              <Flex
+                align="center"
+                background="electric.800"
+                m="20px auto 0"
+                py={12}
+                px={{
+                  base: 8,
+                  lg: 12,
+                }}
+                w={{
+                  base: "100%",
+                  md: "65%",
+                  xl: "45%",
+                }}
+              >
                 <P1 align={"center"} bold color={colors.white}>
                   Our customers report 100X improvement in data throughput rates
                   and 10X reduction in latency.
                 </P1>
-              </Box>
+              </Flex>
             </Fade>
           </Container>
         </StyledBanner2>

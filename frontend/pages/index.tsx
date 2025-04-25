@@ -110,11 +110,11 @@ const Home: React.FC = ({ homeProps }: { [key: string]: any }) => {
             <Fade bottom delay={200} ssrFadeout>
               <Box mt={6}>
                 <P2 align={"center"} color={colors.white}>
-                  As a leading manufacturer of open standards-based electronic
-                  and photonic system interconnect products, we streamline AI
-                  infrastructure at the data source for demanding edge
-                  applications such as medical, simulation, emulation, storage,
-                  fintech, and border protection.
+                  With leading open standards-based electronic and photonic
+                  system interconnect products, we streamline AI infrastructure
+                  at the data source for demanding edge applications such as
+                  medical, simulation, emulation, storage, fintech, and border
+                  protection.
                 </P2>
               </Box>
             </Fade>

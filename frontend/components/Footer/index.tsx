@@ -33,8 +33,8 @@ const Footer: React.FC = () => {
           <StyledTextContainer>
             <P5 color={colors.white}>(724) 933-8895</P5>
             <StyledLine />
-            <P5 color={colors.white}>12330 PERRY HWY, SUITE #106</P5>
-            <P5 color={colors.white}>WEXFORD, PA 15090</P5>
+            <P5 color={colors.white}>2000 Westinghouse Dr. Suite #102</P5>
+            <P5 color={colors.white}>Cranberry Township, Pennsylvania 16066</P5>
           </StyledTextContainer>
         </StyledInnerContainer>
       </Container>

@@ -147,7 +147,7 @@ const ContactCard: React.FC = () => {
             uppercase={"true"}
             weight={700}
             type={"submit"}
-            disabled={status.submitting}
+            disabled={status.submitting || !recaptchaToken}
           >
             {!status.submitting ? (
               !status.submitted ? (

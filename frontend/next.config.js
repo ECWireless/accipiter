@@ -7,6 +7,5 @@ module.exports = {
     ENCRYPTION_SECRET: process.env.ENCRYPTION_SECRET,
     SANITY_TOKEN: process.env.SANITY_TOKEN,
     RECAPTCHA_API_KEY: process.env.RECAPTCHA_API_KEY,
-    RECAPTCHA_SECRET_KEY: process.env.RECAPTCHA_SECRET_KEY,
   },
 };

@@ -1,13 +1,40 @@
-const sgMail = require('@sendgrid/mail')
+const sgMail = require("@sendgrid/mail");
 
-export default async function(req, res) {
-  sgMail.setApiKey(process.env.SENDGRID_API_KEY)
+export default async function (req, res) {
+  sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
-  const { name, email, phone, message } = req.body
+  const { name, email, phone, message, recaptchaToken } = req.body;
+
+  if (!recaptchaToken) {
+    return res.status(400).send("reCAPTCHA token is missing.");
+  }
+
+  try {
+    const recaptchaResponse = await fetch(
+      "https://www.google.com/recaptcha/api/siteverify",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+        body: `secret=${process.env.RECAPTCHA_SECRET_KEY}&response=${recaptchaToken}`,
+      }
+    );
+
+    const recaptchaData = await recaptchaResponse.json();
+
+    if (!recaptchaData.success) {
+      console.log("reCAPTCHA verification failed:", recaptchaData);
+      return res.status(400).send("reCAPTCHA verification failed.");
+    }
+  } catch (error) {
+    console.log("reCAPTCHA verification error:", error);
+    return res.status(500).send("reCAPTCHA verification error.");
+  }
 
   const confirmationEmail = {
     to: email,
-    from: 'info@accipitersystems.com',
+    from: "info@accipitersystems.com",
     subject: `Submission was successful!`,
     html: `
       <p>Thank you for contacting us! We will be in touch shortly.</p>
@@ -17,12 +44,12 @@ export default async function(req, res) {
       <p>Email: ${email}</p>
       <p>Phone: ${phone}</p>
       <p>Message: ${message}</p>
-    `
-  }
+    `,
+  };
 
   const notificationEmail = {
-    to: ['info@accipitersystems.com', 'mflynn@accipitersystems.com'],
-    from: 'info@accipitersystems.com',
+    to: ["info@accipitersystems.com", "mflynn@accipitersystems.com"],
+    from: "info@accipitersystems.com",
     subject: `New Contact Form Submission - ${email}`,
     html: `
       <p>New contact form submission from ${name}.</p>
@@ -31,15 +58,15 @@ export default async function(req, res) {
       <p>Email: ${email}</p>
       <p>Phone: ${phone}</p>
       <p>Message: ${message}</p>
-    `
-  }
+    `,
+  };
 
   try {
-    await sgMail.send(confirmationEmail)
-    await sgMail.send(notificationEmail)
-    return res.status(200).send('Message sent successfully.')
+    await sgMail.send(confirmationEmail);
+    await sgMail.send(notificationEmail);
+    return res.status(200).send("Message sent successfully.");
   } catch (error) {
-    console.log('ERROR', error)
-    return res.status(400).send('Message not sent.')
+    console.log("ERROR", error);
+    return res.status(400).send("Message not sent.");
   }
 }

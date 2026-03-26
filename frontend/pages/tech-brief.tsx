@@ -303,11 +303,7 @@ const TechBrief = () => {
               Tell us about your interest.
             </Text>
 
-            <Box
-              as="form"
-              mt={6}
-              onSubmit={(event) => event.preventDefault()}
-            >
+            <Box as="form" mt={6} onSubmit={(event) => event.preventDefault()}>
               <SimpleGrid columns={{ base: 1, md: 2 }} gap={8}>
                 <FormControl>
                   <FormLabel sx={labelStyles}>Name</FormLabel>
@@ -331,7 +327,9 @@ const TechBrief = () => {
                   />
                 </FormControl>
                 <FormControl>
-                  <FormLabel sx={labelStyles}>Investment Interest Range</FormLabel>
+                  <FormLabel sx={labelStyles}>
+                    Investment Interest Range
+                  </FormLabel>
                   <Input placeholder="Example: $250k - $1M" sx={inputStyles} />
                 </FormControl>
               </SimpleGrid>
@@ -360,7 +358,9 @@ const TechBrief = () => {
               </Box>
 
               <FormControl mt={8}>
-                <FormLabel sx={labelStyles}>Tell us about your interest</FormLabel>
+                <FormLabel sx={labelStyles}>
+                  Tell us about your interest
+                </FormLabel>
                 <Textarea
                   placeholder="Tell us about your interest"
                   resize="vertical"
@@ -368,10 +368,7 @@ const TechBrief = () => {
                 />
               </FormControl>
 
-              <Flex
-                justify="flex-end"
-                mt={8}
-              >
+              <Flex justify="flex-end" mt={8}>
                 <HomeButton
                   disabled
                   style={{
@@ -384,12 +381,7 @@ const TechBrief = () => {
             </Box>
           </Box>
 
-          <Box
-            borderTop="1px solid"
-            borderColor="grey.100"
-            mt={10}
-            pt={8}
-          >
+          <Box borderTop="1px solid" borderColor="grey.100" mt={10} pt={8}>
             <VStack spacing={5}>
               <Text
                 color="grey.800"
@@ -537,24 +529,26 @@ const TechBrief = () => {
               </Box>
 
               <VStack align="stretch" spacing={5}>
-                {overviewSection.richParagraphs.map((paragraph, paragraphIndex) => (
-                  <Text
-                    key={paragraphIndex}
-                    color="grey.800"
-                    {...bodyTextProps}
-                  >
-                    {paragraph.map((segment, segmentIndex) => (
-                      <Text
-                        as="span"
-                        display="inline"
-                        fontWeight={segment.bold ? 700 : 400}
-                        key={`${paragraphIndex}-${segmentIndex}`}
-                      >
-                        {segment.text}
-                      </Text>
-                    ))}
-                  </Text>
-                ))}
+                {overviewSection.richParagraphs.map(
+                  (paragraph, paragraphIndex) => (
+                    <Text
+                      key={paragraphIndex}
+                      color="grey.800"
+                      {...bodyTextProps}
+                    >
+                      {paragraph.map((segment, segmentIndex) => (
+                        <Text
+                          as="span"
+                          display="inline"
+                          fontWeight={segment.bold ? 700 : 400}
+                          key={`${paragraphIndex}-${segmentIndex}`}
+                        >
+                          {segment.text}
+                        </Text>
+                      ))}
+                    </Text>
+                  ),
+                )}
               </VStack>
               <Box sx={{ clear: "both" }} />
             </Box>
@@ -575,17 +569,28 @@ const TechBrief = () => {
                     fontSize={{
                       base: "26px",
                       md: "32px",
-                  }}
-                  fontWeight={600}
-                >
-                  {shiftSection.heading}
-                </Text>
-                  {shiftSection.richParagraphs.map((paragraph, paragraphIndex) => (
-                    <Text key={paragraphIndex} color="grey.800" {...bodyTextProps}>
-                      {renderInlineSegments(paragraph)}
-                    </Text>
-                  ))}
-                  <Text color="grey.800" fontWeight={600} mt={1} {...bodyTextProps}>
+                    }}
+                    fontWeight={600}
+                  >
+                    {shiftSection.heading}
+                  </Text>
+                  {shiftSection.richParagraphs.map(
+                    (paragraph, paragraphIndex) => (
+                      <Text
+                        key={paragraphIndex}
+                        color="grey.800"
+                        {...bodyTextProps}
+                      >
+                        {renderInlineSegments(paragraph)}
+                      </Text>
+                    ),
+                  )}
+                  <Text
+                    color="grey.800"
+                    fontWeight={600}
+                    mt={1}
+                    {...bodyTextProps}
+                  >
                     AI workloads have evolved from:
                   </Text>
                   <VStack align="stretch" spacing={4} pt={1} w="100%">
@@ -734,7 +739,12 @@ const TechBrief = () => {
                     <Text color="grey.800" {...bodyTextProps}>
                       {shiftSection.examplesIntro}
                     </Text>
-                    <SimpleGrid columns={{ base: 1, md: 2 }} gap={3} mt={6} w="100%">
+                    <SimpleGrid
+                      columns={{ base: 1, md: 2 }}
+                      gap={3}
+                      mt={6}
+                      w="100%"
+                    >
                       {shiftSection.examples.map((example) => (
                         <Box
                           key={example}
@@ -750,8 +760,17 @@ const TechBrief = () => {
                         </Box>
                       ))}
                     </SimpleGrid>
-                    <Box borderLeft="4px solid" borderColor="electric.400" mt={6} pl={5}>
-                      <Text color="grey.800" fontWeight={600} {...bodyTextProps}>
+                    <Box
+                      borderLeft="4px solid"
+                      borderColor="electric.400"
+                      mt={6}
+                      pl={5}
+                    >
+                      <Text
+                        color="grey.800"
+                        fontWeight={600}
+                        {...bodyTextProps}
+                      >
                         {renderInlineSegments(shiftSection.closingSegments)}
                       </Text>
                     </Box>
@@ -795,16 +814,16 @@ const TechBrief = () => {
                     base: 4,
                     md: 5,
                   }}
-                  >
-                    <Box borderRadius="28px" overflow="hidden">
-                      <Image
-                        alt="Why Traditional Networks Fall Short"
-                        display="block"
-                        src="/images/tech-brief/traditional-networks-fall-short.png"
-                        w="100%"
-                      />
-                    </Box>
+                >
+                  <Box borderRadius="28px" overflow="hidden">
+                    <Image
+                      alt="Why Traditional Networks Fall Short"
+                      display="block"
+                      src="/images/tech-brief/traditional-networks-fall-short.png"
+                      w="100%"
+                    />
                   </Box>
+                </Box>
               </Box>
               <SimpleGrid columns={{ base: 1, md: 2 }} gap={5}>
                 {limitationsSection.items.map((item, index) => (
@@ -943,7 +962,12 @@ const TechBrief = () => {
                   md: 10,
                 }}
               >
-                <Text color="whiteAlpha.900" fontWeight={600} mb={5} {...bodyTextProps}>
+                <Text
+                  color="whiteAlpha.900"
+                  fontWeight={600}
+                  mb={5}
+                  {...bodyTextProps}
+                >
                   {bandwidthSection.issuesHeading}
                 </Text>
                 <VStack align="stretch" spacing={4}>
@@ -1001,7 +1025,12 @@ const TechBrief = () => {
                     <Text color="grey.800" fontWeight={600} {...bodyTextProps}>
                       {pcieSection.devicesIntro}
                     </Text>
-                    <SimpleGrid columns={{ base: 1, sm: 2 }} gap={3} mt={5} w="100%">
+                    <SimpleGrid
+                      columns={{ base: 1, sm: 2 }}
+                      gap={3}
+                      mt={5}
+                      w="100%"
+                    >
                       {pcieSection.devices.map((device, index) => (
                         <GridItem
                           colSpan={{
@@ -1045,7 +1074,12 @@ const TechBrief = () => {
                     p={{ base: 5, md: 6 }}
                     w="100%"
                   >
-                    <Box borderRadius="24px" maxW="360px" mx="auto" overflow="hidden">
+                    <Box
+                      borderRadius="24px"
+                      maxW="360px"
+                      mx="auto"
+                      overflow="hidden"
+                    >
                       <Image
                         alt="PCIe on motherboard"
                         display="block"
@@ -1063,36 +1097,45 @@ const TechBrief = () => {
                     p={{ base: 6, md: 8 }}
                   >
                     <Text color="grey.800" {...bodyTextProps}>
-                      {renderInlineSegments(pcieSection.characteristicsIntroSegments)}
+                      {renderInlineSegments(
+                        pcieSection.characteristicsIntroSegments,
+                      )}
                     </Text>
-                    <SimpleGrid columns={{ base: 1, sm: 2 }} gap={3} mt={6} w="100%">
-                      {pcieSection.characteristics.map((characteristic, index) => (
-                        <GridItem
-                          colSpan={{
-                            base: 1,
-                            sm:
-                              pcieSection.characteristics.length % 2 === 1 &&
-                              index === pcieSection.characteristics.length - 1
-                                ? 2
-                                : 1,
-                          }}
-                          key={characteristic}
-                        >
-                          <Box
-                            background="grey.100"
-                            border="1px solid"
-                            borderColor="grey.100"
-                            borderRadius="16px"
-                            minH="60px"
-                            px={5}
-                            py={4}
+                    <SimpleGrid
+                      columns={{ base: 1, sm: 2 }}
+                      gap={3}
+                      mt={6}
+                      w="100%"
+                    >
+                      {pcieSection.characteristics.map(
+                        (characteristic, index) => (
+                          <GridItem
+                            colSpan={{
+                              base: 1,
+                              sm:
+                                pcieSection.characteristics.length % 2 === 1 &&
+                                index === pcieSection.characteristics.length - 1
+                                  ? 2
+                                  : 1,
+                            }}
+                            key={characteristic}
                           >
-                            <Text color="grey.800" fontWeight={600}>
-                              {characteristic}
-                            </Text>
-                          </Box>
-                        </GridItem>
-                      ))}
+                            <Box
+                              background="grey.100"
+                              border="1px solid"
+                              borderColor="grey.100"
+                              borderRadius="16px"
+                              minH="60px"
+                              px={5}
+                              py={4}
+                            >
+                              <Text color="grey.800" fontWeight={600}>
+                                {characteristic}
+                              </Text>
+                            </Box>
+                          </GridItem>
+                        ),
+                      )}
                     </SimpleGrid>
                     <Text color="grey.800" mt={6} {...bodyTextProps}>
                       {pcieSection.closing}
@@ -1139,10 +1182,18 @@ const TechBrief = () => {
                   {pcieWhyNowSection.items[0].title}
                 </Text>
                 <Text color="grey.800" mt={4} {...bodyTextProps}>
-                  {renderInlineSegments(pcieWhyNowSection.items[0].bodySegments)}
+                  {renderInlineSegments(
+                    pcieWhyNowSection.items[0].bodySegments,
+                  )}
                 </Text>
-                {"detail" in pcieWhyNowSection.items[0] && pcieWhyNowSection.items[0].detail ? (
-                  <Text color="grey.800" fontWeight={600} mt={5} {...bodyTextProps}>
+                {"detail" in pcieWhyNowSection.items[0] &&
+                pcieWhyNowSection.items[0].detail ? (
+                  <Text
+                    color="grey.800"
+                    fontWeight={600}
+                    mt={5}
+                    {...bodyTextProps}
+                  >
                     {pcieWhyNowSection.items[0].detail}
                   </Text>
                 ) : null}
@@ -1208,27 +1259,31 @@ const TechBrief = () => {
                         >
                           PCIe Generation
                         </Td>
-                        {pcieWhyNowSection.performanceDemandedToday.columns.map((column) => (
-                          <Td
-                            background={column.highlighted ? "#F7E7B6" : "#DCE8F4"}
-                            border="1px solid"
-                            borderColor="#1E2430"
-                            color="#111111"
-                            fontSize={{
-                              base: "16px",
-                              md: "18px",
-                            }}
-                            fontWeight={700}
-                            key={column.generation}
-                            lineHeight="1.1"
-                            minW="96px"
-                            p={2.5}
-                            textAlign="center"
-                            whiteSpace="nowrap"
-                          >
-                            {column.generation}
-                          </Td>
-                        ))}
+                        {pcieWhyNowSection.performanceDemandedToday.columns.map(
+                          (column) => (
+                            <Td
+                              background={
+                                column.highlighted ? "#F7E7B6" : "#DCE8F4"
+                              }
+                              border="1px solid"
+                              borderColor="#1E2430"
+                              color="#111111"
+                              fontSize={{
+                                base: "16px",
+                                md: "18px",
+                              }}
+                              fontWeight={700}
+                              key={column.generation}
+                              lineHeight="1.1"
+                              minW="96px"
+                              p={2.5}
+                              textAlign="center"
+                              whiteSpace="nowrap"
+                            >
+                              {column.generation}
+                            </Td>
+                          ),
+                        )}
                       </Tr>
                       <Tr>
                         <Td
@@ -1247,26 +1302,30 @@ const TechBrief = () => {
                         >
                           Specification Released
                         </Td>
-                        {pcieWhyNowSection.performanceDemandedToday.columns.map((column) => (
-                          <Td
-                            background={column.highlighted ? "#FDF3CF" : "white"}
-                            border="1px solid"
-                            borderColor="#1E2430"
-                            color="#111111"
-                            fontSize={{
-                              base: "15px",
-                              md: "16px",
-                            }}
-                            fontWeight={500}
-                            key={`${column.generation}-released`}
-                            lineHeight="1.1"
-                            p={2.5}
-                            textAlign="center"
-                            whiteSpace="nowrap"
-                          >
-                            {column.released}
-                          </Td>
-                        ))}
+                        {pcieWhyNowSection.performanceDemandedToday.columns.map(
+                          (column) => (
+                            <Td
+                              background={
+                                column.highlighted ? "#FDF3CF" : "white"
+                              }
+                              border="1px solid"
+                              borderColor="#1E2430"
+                              color="#111111"
+                              fontSize={{
+                                base: "15px",
+                                md: "16px",
+                              }}
+                              fontWeight={500}
+                              key={`${column.generation}-released`}
+                              lineHeight="1.1"
+                              p={2.5}
+                              textAlign="center"
+                              whiteSpace="nowrap"
+                            >
+                              {column.released}
+                            </Td>
+                          ),
+                        )}
                       </Tr>
                       <Tr>
                         <Td
@@ -1285,26 +1344,30 @@ const TechBrief = () => {
                         >
                           Total Bandwidth (x16)
                         </Td>
-                        {pcieWhyNowSection.performanceDemandedToday.columns.map((column) => (
-                          <Td
-                            background={column.highlighted ? "#FDF3CF" : "white"}
-                            border="1px solid"
-                            borderColor="#1E2430"
-                            color="#111111"
-                            fontSize={{
-                              base: "15px",
-                              md: "16px",
-                            }}
-                            fontWeight={500}
-                            key={`${column.generation}-bandwidth`}
-                            lineHeight="1.1"
-                            p={2.5}
-                            textAlign="center"
-                            whiteSpace="nowrap"
-                          >
-                            {column.bandwidth}
-                          </Td>
-                        ))}
+                        {pcieWhyNowSection.performanceDemandedToday.columns.map(
+                          (column) => (
+                            <Td
+                              background={
+                                column.highlighted ? "#FDF3CF" : "white"
+                              }
+                              border="1px solid"
+                              borderColor="#1E2430"
+                              color="#111111"
+                              fontSize={{
+                                base: "15px",
+                                md: "16px",
+                              }}
+                              fontWeight={500}
+                              key={`${column.generation}-bandwidth`}
+                              lineHeight="1.1"
+                              p={2.5}
+                              textAlign="center"
+                              whiteSpace="nowrap"
+                            >
+                              {column.bandwidth}
+                            </Td>
+                          ),
+                        )}
                       </Tr>
                     </Tbody>
                   </Table>
@@ -1356,11 +1419,17 @@ const TechBrief = () => {
                 >
                   {longReachSection.heading}
                 </Text>
-                {longReachSection.richParagraphs.map((paragraph, paragraphIndex) => (
-                  <Text key={paragraphIndex} color="whiteAlpha.900" {...bodyTextProps}>
-                    {renderInlineSegments(paragraph)}
-                  </Text>
-                ))}
+                {longReachSection.richParagraphs.map(
+                  (paragraph, paragraphIndex) => (
+                    <Text
+                      key={paragraphIndex}
+                      color="whiteAlpha.900"
+                      {...bodyTextProps}
+                    >
+                      {renderInlineSegments(paragraph)}
+                    </Text>
+                  ),
+                )}
                 <SimpleGrid columns={{ base: 1, sm: 2 }} gap={4} w="100%">
                   {longReachSection.capabilities.map((capability) => (
                     <Box
@@ -1517,11 +1586,17 @@ const TechBrief = () => {
                         {emergingArchitectureSection.outsideRackIntro}
                       </Text>
                       <VStack align="stretch" mt={4} spacing={2}>
-                        {emergingArchitectureSection.outsideRackItems.map((item) => (
-                          <Text key={item} color="grey.800" {...bodyTextProps}>
-                            - {item}
-                          </Text>
-                        ))}
+                        {emergingArchitectureSection.outsideRackItems.map(
+                          (item) => (
+                            <Text
+                              key={item}
+                              color="grey.800"
+                              {...bodyTextProps}
+                            >
+                              - {item}
+                            </Text>
+                          ),
+                        )}
                       </VStack>
                     </Box>
 
@@ -1532,7 +1607,11 @@ const TechBrief = () => {
                       p={{ base: 5, md: 6 }}
                       w="100%"
                     >
-                      <Text color="grey.800" fontWeight={600} {...bodyTextProps}>
+                      <Text
+                        color="grey.800"
+                        fontWeight={600}
+                        {...bodyTextProps}
+                      >
                         {emergingArchitectureSection.closing}
                       </Text>
                     </Box>
@@ -1556,11 +1635,17 @@ const TechBrief = () => {
               >
                 {conclusionSection.heading}
               </Text>
-              {conclusionSection.richParagraphs.map((paragraph, paragraphIndex) => (
-                <Text key={paragraphIndex} color="whiteAlpha.900" {...bodyTextProps}>
-                  {renderInlineSegments(paragraph)}
-                </Text>
-              ))}
+              {conclusionSection.richParagraphs.map(
+                (paragraph, paragraphIndex) => (
+                  <Text
+                    key={paragraphIndex}
+                    color="whiteAlpha.900"
+                    {...bodyTextProps}
+                  >
+                    {renderInlineSegments(paragraph)}
+                  </Text>
+                ),
+              )}
             </VStack>
           </Container>
         </Box>

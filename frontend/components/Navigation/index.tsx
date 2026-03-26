@@ -77,6 +77,13 @@ export default function Navigation({ setSidebar }) {
               <StyledNavButton>Products</StyledNavButton>
             )}
           </Link>
+          <Link href="/tech-brief">
+            {router.pathname.includes("/tech-brief") ? (
+              <StyledNavButtonActive>Tech Brief</StyledNavButtonActive>
+            ) : (
+              <StyledNavButton>Tech Brief</StyledNavButton>
+            )}
+          </Link>
           <Link href="/careers">
             {router.pathname.includes("/careers") ? (
               <StyledNavButtonActive>Careers</StyledNavButtonActive>
@@ -184,6 +191,7 @@ const StyledNav = styled.nav`
   align-items: center;
   box-sizing: border-box;
   display: none;
+  gap: ${GU * 2}px;
   height: 100%;
   justify-content: space-between;
   position: absolute;
@@ -200,12 +208,12 @@ const StyledNavButton = styled.button`
   background: transparent;
   border: none;
   color: ${colors.white};
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   height: 100%;
   outline: none;
+  padding: 0 ${GU * 3}px;
   text-transform: uppercase;
   transition: all 0.3s ease;
-  width: ${GU * 45}px;
   z-index: 102;
 
   &:hover {
@@ -218,12 +226,12 @@ const StyledNavButtonActive = styled.button`
   background: transparent;
   border: none;
   color: ${colors.blue};
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   height: 100%;
   outline: none;
+  padding: 0 ${GU * 3}px;
   text-transform: uppercase;
   transition: all 0.3s ease;
-  width: ${GU * 45}px;
   z-index: 102;
 
   &:hover {

@@ -64,6 +64,22 @@ const Sidebar = ({ sidebar, setSidebar }): JSX.Element => {
           </Flex>
         </StyledSidebarOption>
       </Link>
+      <Link href="/tech-brief">
+        <StyledSidebarOption
+          onClick={() => setSidebar(false)}
+          active={router.pathname.includes("/tech-brief") ? true : false}
+        >
+          <Flex
+            justify={"flex-start"}
+            align={"center"}
+            style={{ height: "100%" }}
+          >
+            <P2 style={{ marginLeft: "2rem" }} color={colors.black}>
+              Tech Brief
+            </P2>
+          </Flex>
+        </StyledSidebarOption>
+      </Link>
       <Link href="/careers">
         <StyledSidebarOption
           onClick={() => setSidebar(false)}

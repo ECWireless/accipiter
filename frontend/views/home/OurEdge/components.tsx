@@ -45,7 +45,7 @@ export const SummaryCard2: React.FC = ({ children }) => {
 
 type BenefitsCardProps = {
   number: number;
-  text: string;
+  text: React.ReactNode;
 };
 
 export const BenefitsCard: React.FC<BenefitsCardProps> = ({ number, text }) => {

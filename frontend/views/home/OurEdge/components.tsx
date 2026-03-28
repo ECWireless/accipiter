@@ -45,56 +45,93 @@ export const SummaryCard2: React.FC = ({ children }) => {
 
 type BenefitsCardProps = {
   number: number;
+  numberPosition?: "center" | "top";
   text: React.ReactNode;
+  width?: any;
 };
 
-export const BenefitsCard: React.FC<BenefitsCardProps> = ({ number, text }) => {
+export const BenefitsCard: React.FC<BenefitsCardProps> = ({
+  number,
+  numberPosition = "top",
+  text,
+  width,
+}) => {
+  const isCenteredNumber = numberPosition === "center";
+
   return (
     <Flex
       align="center"
       background="electric.800"
-      gap={4}
-      pb={12}
+      gap={isCenteredNumber ? 6 : 4}
+      pb={isCenteredNumber ? 8 : 12}
       position="relative"
-      pt={{
-        base: 24,
-        md: 12,
-      }}
-      px={{
-        base: 10,
-        md: 24,
-      }}
-      w={{
-        base: "100%",
-        md: "45%",
-      }}
+      pt={
+        isCenteredNumber
+          ? 8
+          : {
+              base: 24,
+              md: 12,
+            }
+      }
+      px={
+        isCenteredNumber
+          ? {
+              base: 6,
+              md: 7,
+            }
+          : {
+              base: 10,
+              md: 24,
+            }
+      }
+      w={
+        width || {
+          base: "100%",
+          md: "45%",
+        }
+      }
     >
       <Flex
         align="center"
         background="electric.100"
         borderRadius="50%"
+        flexShrink={0}
         h="32px"
         justify="center"
-        left={{
-          base: "50%",
-          md: "12px",
-        }}
-        position="absolute"
-        transform={{
-          base: "translateX(-50%)",
-          md: "none",
-        }}
-        top={{
-          base: "20px",
-          md: "10px",
-        }}
+        left={
+          isCenteredNumber
+            ? undefined
+            : {
+                base: "50%",
+                md: "12px",
+              }
+        }
+        position={isCenteredNumber ? "relative" : "absolute"}
+        top={
+          isCenteredNumber
+            ? undefined
+            : {
+                base: "20px",
+                md: "10px",
+              }
+        }
+        transform={
+          isCenteredNumber
+            ? undefined
+            : {
+                base: "translateX(-50%)",
+                md: "none",
+              }
+        }
         w="32px"
       >
         <Text color="electric.400" fontSize="20px" fontWeight={600}>
           {number}
         </Text>
       </Flex>
-      <Text color="white">{text}</Text>
+      <Text color="white">
+        {text}
+      </Text>
     </Flex>
   );
 };

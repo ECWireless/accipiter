@@ -1,15 +1,34 @@
-const sgMail = require("@sendgrid/mail");
+import type { NextApiRequest, NextApiResponse } from "next";
+import sgMail from "@sendgrid/mail";
 
-export default async function (req, res) {
+type CareersRequestBody = {
+  email: string;
+  file: string;
+  message: string;
+  name: string;
+  phone: string;
+  recaptchaToken: string;
+};
+
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse<string>,
+) {
   sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
-  const { name, email, phone, message, file, recaptchaToken } = req.body;
+  const { name, email, phone, message, file, recaptchaToken } =
+    req.body as CareersRequestBody;
 
   if (!recaptchaToken) {
     return res.status(400).send("reCAPTCHA token is missing.");
   }
 
   try {
+    const recaptchaBody = new URLSearchParams({
+      response: recaptchaToken,
+      secret: process.env.RECAPTCHA_SECRET_KEY || "",
+    }).toString();
+
     const recaptchaResponse = await fetch(
       "https://www.google.com/recaptcha/api/siteverify",
       {
@@ -17,7 +36,7 @@ export default async function (req, res) {
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",
         },
-        body: `secret=${process.env.RECAPTCHA_SECRET_KEY}&response=${recaptchaToken}`,
+        body: recaptchaBody,
       }
     );
 
@@ -83,6 +102,6 @@ export default async function (req, res) {
     return res.status(200).send("Message sent successfully.");
   } catch (error) {
     console.log("ERROR", error);
-    return res.status(400).send("Message not sent.");
+    return res.status(500).send("Message not sent.");
   }
 }

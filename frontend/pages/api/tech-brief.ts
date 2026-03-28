@@ -1,22 +1,49 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import sgMail from "@sendgrid/mail";
 
-type HelloRequestBody = {
+type TechBriefRequestBody = {
   email: string;
-  message: string;
+  investmentRange?: string;
+  message?: string;
   name: string;
-  phone: string;
+  organization?: string;
   recaptchaToken: string;
+};
+
+const getSafeValue = (value: unknown): string => {
+  if (typeof value !== "string") {
+    return "Not provided";
+  }
+
+  const trimmedValue = value.trim();
+  return trimmedValue || "Not provided";
 };
 
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<string>,
 ) {
+  if (req.method !== "POST") {
+    return res.status(405).send("Method not allowed.");
+  }
+
   sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
-  const { name, email, phone, message, recaptchaToken } =
-    req.body as HelloRequestBody;
+  const {
+    name,
+    email,
+    organization,
+    investmentRange,
+    message,
+    recaptchaToken,
+  } = req.body as TechBriefRequestBody;
+
+  const normalizedName = typeof name === "string" ? name.trim() : "";
+  const normalizedEmail = typeof email === "string" ? email.trim() : "";
+
+  if (!normalizedName || !normalizedEmail) {
+    return res.status(400).send("Name and email are required.");
+  }
 
   if (!recaptchaToken) {
     return res.status(400).send("reCAPTCHA token is missing.");
@@ -36,7 +63,7 @@ export default async function handler(
           "Content-Type": "application/x-www-form-urlencoded",
         },
         body: recaptchaBody,
-      }
+      },
     );
 
     const recaptchaData = await recaptchaResponse.json();
@@ -50,39 +77,24 @@ export default async function handler(
     return res.status(500).send("reCAPTCHA verification error.");
   }
 
-  const confirmationEmail = {
-    to: email,
-    from: "info@accipitersystems.com",
-    subject: `Submission was successful!`,
-    html: `
-      <p>Thank you for contacting us! We will be in touch shortly.</p>
-      <br/>
-      <h3>Your submission:</h3>
-      <p>Name: ${name}</p>
-      <p>Email: ${email}</p>
-      <p>Phone: ${phone}</p>
-      <p>Message: ${message}</p>
-    `,
-  };
-
   const notificationEmail = {
-    to: ["info@accipitersystems.com", "mflynn@accipitersystems.com"],
+    to: "elliott@coopallc.com",
     from: "info@accipitersystems.com",
-    subject: `New Contact Form Submission - ${email}`,
+    subject: `New Tech Brief Interest Submission - ${normalizedEmail}`,
     html: `
-      <p>New contact form submission from ${name}.</p>
+      <p>New Tech Brief investor interest submission received.</p>
       <br/>
-      <p>Name: ${name}</p>
-      <p>Email: ${email}</p>
-      <p>Phone: ${phone}</p>
-      <p>Message: ${message}</p>
+      <p><strong>Name:</strong> ${normalizedName}</p>
+      <p><strong>Email:</strong> ${normalizedEmail}</p>
+      <p><strong>Organization / Investor Type:</strong> ${getSafeValue(organization)}</p>
+      <p><strong>Investment Interest Range:</strong> ${getSafeValue(investmentRange)}</p>
+      <p><strong>Message:</strong> ${getSafeValue(message)}</p>
     `,
   };
 
   try {
-    await sgMail.send(confirmationEmail);
     await sgMail.send(notificationEmail);
-    return res.status(200).send("Message sent successfully.");
+    return res.status(200).send("Interest submitted successfully.");
   } catch (error) {
     console.log("ERROR", error);
     return res.status(500).send("Message not sent.");

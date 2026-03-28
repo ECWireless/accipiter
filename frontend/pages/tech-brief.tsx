@@ -1,12 +1,12 @@
 import Head from "next/head";
 import NextLink from "next/link";
-import { Fragment } from "react";
+import { ChangeEvent, FormEvent, Fragment, ReactNode, useState } from "react";
+import ReCAPTCHA from "react-google-recaptcha";
 import {
   Breadcrumb,
   BreadcrumbItem,
   BreadcrumbLink,
   Box,
-  Checkbox,
   Flex,
   FormControl,
   FormLabel,
@@ -27,7 +27,9 @@ import {
 } from "@chakra-ui/react";
 
 import { Button as HomeButton } from "components/Buttons";
+import Snackbar from "components/Snackbar";
 import Spacer from "components/Spacer";
+import Spinner from "components/Spinner";
 import { colors } from "components/theme";
 import { Container } from "chakraComponents/Flex";
 import { Container as OldContainer } from "components/Containers";
@@ -38,7 +40,6 @@ import {
   conclusionSection,
   emergingArchitectureSection,
   investorIntro,
-  investorTypeOptions,
   limitationsSection,
   longReachSection,
   overviewSection,
@@ -131,7 +132,152 @@ const labelStyles = {
   mb: 3,
 };
 
+const AccentBulletItem = ({ children }: { children: ReactNode }) => (
+  <Flex align="flex-start" gap={3}>
+    <Box
+      background="electric.400"
+      borderRadius="full"
+      flexShrink={0}
+      h="7px"
+      mt={{
+        base: "10px",
+        sm: "12px",
+      }}
+      w="7px"
+    />
+    <Text color="grey.800" flex="1" {...bodyTextProps}>
+      {children}
+    </Text>
+  </Flex>
+);
+
+type TechBriefFormInputs = {
+  email: string;
+  investmentRange: string;
+  message: string;
+  name: string;
+  organization: string;
+};
+
+type TechBriefFormStatus = {
+  info: {
+    error: boolean;
+    msg: string | null;
+  };
+  submitted: boolean;
+  submitting: boolean;
+};
+
+const initialFormInputs: TechBriefFormInputs = {
+  email: "",
+  investmentRange: "",
+  message: "",
+  name: "",
+  organization: "",
+};
+
+const initialFormStatus: TechBriefFormStatus = {
+  info: {
+    error: false,
+    msg: null,
+  },
+  submitted: false,
+  submitting: false,
+};
+
 const TechBrief = () => {
+  const [status, setStatus] = useState<TechBriefFormStatus>(initialFormStatus);
+  const [inputs, setInputs] = useState<TechBriefFormInputs>(initialFormInputs);
+  const [snackbar, setSnackbar] = useState(false);
+  const [recaptchaToken, setRecaptchaToken] = useState<string | null>(null);
+  const [recaptchaKey, setRecaptchaKey] = useState(0);
+  const conclusionLeadParagraphs = conclusionSection.richParagraphs.slice(0, -1);
+  const conclusionCalloutParagraph =
+    conclusionSection.richParagraphs[conclusionSection.richParagraphs.length - 1];
+
+  const handleResponse = (responseStatus: number, msg: string) => {
+    if (responseStatus === 200) {
+      setStatus({
+        submitted: true,
+        submitting: false,
+        info: {
+          error: false,
+          msg,
+        },
+      });
+      setInputs(initialFormInputs);
+      setRecaptchaToken(null);
+      setRecaptchaKey((currentKey) => currentKey + 1);
+      setSnackbar(true);
+      return;
+    }
+
+    setStatus({
+      submitted: false,
+      submitting: false,
+      info: {
+        error: true,
+        msg,
+      },
+    });
+    setSnackbar(true);
+  };
+
+  const handleInputChange = (
+    event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { id, value } = event.target;
+
+    setInputs((prev) => ({
+      ...prev,
+      [id]: value,
+    }));
+    setStatus((prev) => ({
+      ...prev,
+      submitted: false,
+      submitting: false,
+      info: {
+        error: false,
+        msg: null,
+      },
+    }));
+  };
+
+  const handleOnSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    if (!recaptchaToken) {
+      return;
+    }
+
+    setStatus((prev) => ({
+      ...prev,
+      submitting: true,
+    }));
+
+    try {
+      const res = await fetch("/api/tech-brief", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          ...inputs,
+          recaptchaToken,
+        }),
+      });
+
+      const text = await res.text();
+      handleResponse(res.status, text);
+    } catch (error) {
+      handleResponse(500, "Message not sent.");
+    }
+  };
+
+  const onCloseSnackbar = () => {
+    setSnackbar(false);
+  };
+
   return (
     <>
       <Head>
@@ -303,18 +449,29 @@ const TechBrief = () => {
               Tell us about your interest.
             </Text>
 
-            <Box as="form" mt={6} onSubmit={(event) => event.preventDefault()}>
+            <Box as="form" mt={6} onSubmit={handleOnSubmit}>
               <SimpleGrid columns={{ base: 1, md: 2 }} gap={8}>
                 <FormControl>
                   <FormLabel sx={labelStyles}>Name</FormLabel>
-                  <Input placeholder="Your name" sx={inputStyles} />
+                  <Input
+                    id="name"
+                    onChange={handleInputChange}
+                    placeholder="Your name"
+                    required
+                    sx={inputStyles}
+                    value={inputs.name}
+                  />
                 </FormControl>
                 <FormControl>
                   <FormLabel sx={labelStyles}>Email</FormLabel>
                   <Input
+                    id="email"
+                    onChange={handleInputChange}
                     placeholder="name@organization.com"
+                    required
                     sx={inputStyles}
                     type="email"
+                    value={inputs.email}
                   />
                 </FormControl>
                 <FormControl>
@@ -322,60 +479,72 @@ const TechBrief = () => {
                     Organization / Investor Type
                   </FormLabel>
                   <Input
+                    id="organization"
+                    onChange={handleInputChange}
                     placeholder="Organization or investor type"
                     sx={inputStyles}
+                    value={inputs.organization}
                   />
                 </FormControl>
                 <FormControl>
                   <FormLabel sx={labelStyles}>
                     Investment Interest Range
                   </FormLabel>
-                  <Input placeholder="Example: $250k - $1M" sx={inputStyles} />
+                  <Input
+                    id="investmentRange"
+                    onChange={handleInputChange}
+                    placeholder="$"
+                    sx={inputStyles}
+                    value={inputs.investmentRange}
+                  />
                 </FormControl>
               </SimpleGrid>
-
-              <Box mt={8}>
-                <Text color="white" fontSize="16px" fontWeight={700}>
-                  Optional:
-                </Text>
-                <SimpleGrid columns={{ base: 1, sm: 2 }} gap={4} mt={4}>
-                  {investorTypeOptions.map((option) => (
-                    <Checkbox
-                      key={option}
-                      color="white"
-                      colorScheme="cyan"
-                      size="md"
-                      sx={{
-                        ".chakra-checkbox__label": {
-                          fontSize: "16px",
-                        },
-                      }}
-                    >
-                      {option}
-                    </Checkbox>
-                  ))}
-                </SimpleGrid>
-              </Box>
 
               <FormControl mt={8}>
                 <FormLabel sx={labelStyles}>
                   Tell us about your interest
                 </FormLabel>
                 <Textarea
+                  id="message"
+                  onChange={handleInputChange}
                   placeholder="Tell us about your interest"
                   resize="vertical"
                   sx={textareaStyles}
+                  value={inputs.message}
                 />
               </FormControl>
 
-              <Flex justify="flex-end" mt={8}>
+              <Flex
+                align={{ base: "flex-start", md: "center" }}
+                direction={{ base: "column", md: "row" }}
+                gap={6}
+                justify="space-between"
+                mt={8}
+              >
+                <Box>
+                  <ReCAPTCHA
+                    key={recaptchaKey}
+                    size="compact"
+                    sitekey={process.env.RECAPTCHA_API_KEY}
+                    onChange={(token) => setRecaptchaToken(token)}
+                  />
+                </Box>
                 <HomeButton
-                  disabled
+                  disabled={status.submitting || !recaptchaToken}
+                  type="submit"
                   style={{
                     minWidth: "200px",
                   }}
                 >
-                  Submit Interest
+                  {!status.submitting ? (
+                    !status.submitted ? (
+                      "Submit Interest"
+                    ) : (
+                      "Submitted"
+                    )
+                  ) : (
+                    <Spinner color={colors.grey} />
+                  )}
                 </HomeButton>
               </Flex>
             </Box>
@@ -401,7 +570,9 @@ const TechBrief = () => {
                 investors where applicable.
               </Text>
               <HomeButton
-                disabled
+                as="a"
+                download="Accipiter-Systems-Investor-Executive-Summary.pdf"
+                href="/tech-brief-investor-executive-summary.pdf"
                 style={{
                   background: "#F4FBFD",
                   border: `2px solid ${colors.blue}`,
@@ -859,9 +1030,7 @@ const TechBrief = () => {
                     </Text>
                     <VStack align="stretch" mt={4} spacing={2}>
                       {item.bullets.map((bullet) => (
-                        <Text key={bullet} color="grey.800" {...bodyTextProps}>
-                          - {bullet}
-                        </Text>
+                        <AccentBulletItem key={bullet}>{bullet}</AccentBulletItem>
                       ))}
                     </VStack>
                     <Text color="grey.800" mt={4} {...bodyTextProps}>
@@ -1147,7 +1316,10 @@ const TechBrief = () => {
           </Box>
         </Container>
 
-        <Box background="grey.100" py={{ base: 14, md: 20 }}>
+        <Box
+          background="linear-gradient(180deg, #EEF3F6 0%, #F8FAFC 100%)"
+          py={{ base: 14, md: 20 }}
+        >
           <Container>
             <Text
               color="electric.400"
@@ -1487,11 +1659,23 @@ const TechBrief = () => {
             <Text color="grey.800" mt={5} {...bodyTextProps}>
               {benefitsSection.intro}
             </Text>
-            <Flex gap={8} justify="center" mt={12} wrap="wrap">
+            <VStack
+              align="stretch"
+              mt={12}
+              mx="auto"
+              spacing={8}
+              w="100%"
+              maxW={{
+                base: "100%",
+                lg: "64%",
+              }}
+            >
               {benefitsSection.items.map((item, index) => (
                 <BenefitsCard
                   key={item.title}
                   number={index + 1}
+                  numberPosition="center"
+                  width="100%"
                   text={
                     <>
                       <Text as="span" fontWeight={700}>
@@ -1502,11 +1686,14 @@ const TechBrief = () => {
                   }
                 />
               ))}
-            </Flex>
+            </VStack>
           </Box>
         </Container>
 
-        <Box background="grey.100" py={{ base: 14, md: 20 }}>
+        <Box
+          background="linear-gradient(180deg, #EEF3F6 0%, #F8FAFC 100%)"
+          py={{ base: 14, md: 20 }}
+        >
           <Container>
             <VStack align="flex-start" spacing={8}>
               <VStack align="flex-start" maxW="720px" spacing={5}>
@@ -1535,8 +1722,12 @@ const TechBrief = () => {
                   <VStack align="stretch" spacing={5}>
                     <Box
                       background="white"
+                      border="1px solid"
                       borderRadius="22px"
-                      boxShadow="0 10px 28px rgba(42, 62, 81, 0.04)"
+                      borderColor="grey.100"
+                      borderLeft="4px solid"
+                      borderLeftColor="electric.400"
+                      boxShadow="0 16px 40px rgba(0, 0, 0, 0.05)"
                       p={{ base: 5, md: 6 }}
                       w="100%"
                     >
@@ -1551,9 +1742,9 @@ const TechBrief = () => {
                     <Box
                       background="white"
                       border="1px solid"
-                      borderColor="whiteAlpha.900"
+                      borderColor="white"
                       borderRadius="28px"
-                      boxShadow="0 18px 44px rgba(42, 62, 81, 0.06)"
+                      boxShadow="0 18px 44px rgba(42, 62, 81, 0.08)"
                       overflow="hidden"
                       p={{ base: 4, md: 5 }}
                       w="100%"
@@ -1574,8 +1765,10 @@ const TechBrief = () => {
                   <VStack align="stretch" spacing={5}>
                     <Box
                       background="white"
+                      border="1px solid"
                       borderRadius="22px"
-                      boxShadow="0 10px 28px rgba(42, 62, 81, 0.04)"
+                      borderColor="grey.100"
+                      boxShadow="0 16px 40px rgba(0, 0, 0, 0.05)"
                       p={{ base: 5, md: 6 }}
                       w="100%"
                     >
@@ -1588,13 +1781,7 @@ const TechBrief = () => {
                       <VStack align="stretch" mt={4} spacing={2}>
                         {emergingArchitectureSection.outsideRackItems.map(
                           (item) => (
-                            <Text
-                              key={item}
-                              color="grey.800"
-                              {...bodyTextProps}
-                            >
-                              - {item}
-                            </Text>
+                            <AccentBulletItem key={item}>{item}</AccentBulletItem>
                           ),
                         )}
                       </VStack>
@@ -1602,18 +1789,22 @@ const TechBrief = () => {
 
                     <Box
                       background="white"
+                      border="1px solid"
+                      borderColor="grey.100"
                       borderRadius="22px"
-                      boxShadow="0 10px 28px rgba(42, 62, 81, 0.04)"
+                      boxShadow="0 12px 32px rgba(42, 62, 81, 0.05)"
                       p={{ base: 5, md: 6 }}
                       w="100%"
                     >
-                      <Text
-                        color="grey.800"
-                        fontWeight={600}
-                        {...bodyTextProps}
-                      >
-                        {emergingArchitectureSection.closing}
-                      </Text>
+                      <Box borderLeft="4px solid" borderColor="electric.400" pl={5}>
+                        <Text
+                          color="grey.800"
+                          fontWeight={600}
+                          {...bodyTextProps}
+                        >
+                          {emergingArchitectureSection.closing}
+                        </Text>
+                      </Box>
                     </Box>
                   </VStack>
                 </GridItem>
@@ -1624,7 +1815,7 @@ const TechBrief = () => {
 
         <Box background="electric.900" py={{ base: 14, md: 20 }}>
           <Container>
-            <VStack align="flex-start" spacing={5}>
+            <VStack align="flex-start" spacing={8}>
               <Text
                 color="white"
                 fontSize={{
@@ -1635,21 +1826,89 @@ const TechBrief = () => {
               >
                 {conclusionSection.heading}
               </Text>
-              {conclusionSection.richParagraphs.map(
-                (paragraph, paragraphIndex) => (
-                  <Text
-                    key={paragraphIndex}
-                    color="whiteAlpha.900"
-                    {...bodyTextProps}
+
+              <SimpleGrid
+                alignItems="start"
+                columns={{ base: 1, xl: 12 }}
+                gap={{ base: 8, xl: 10 }}
+                w="100%"
+              >
+                <GridItem colSpan={{ base: 1, xl: 7 }}>
+                  <VStack align="stretch" spacing={5}>
+                    {conclusionLeadParagraphs.map((paragraph, paragraphIndex) => (
+                      <Text
+                        key={paragraphIndex}
+                        color="whiteAlpha.900"
+                        maxW="960px"
+                        {...bodyTextProps}
+                      >
+                        {renderInlineSegments(paragraph)}
+                      </Text>
+                    ))}
+                  </VStack>
+                </GridItem>
+
+                <GridItem colSpan={{ base: 1, xl: 5 }}>
+                  <Box
+                    background="rgba(255, 255, 255, 0.08)"
+                    border="1px solid"
+                    borderColor="rgba(22, 180, 220, 0.24)"
+                    borderRadius="28px"
+                    boxShadow="0 18px 44px rgba(10, 18, 28, 0.18)"
+                    p={{ base: 6, md: 8 }}
                   >
-                    {renderInlineSegments(paragraph)}
-                  </Text>
-                ),
-              )}
+                    <Box borderLeft="4px solid" borderColor="electric.400" pl={5}>
+                      <Text
+                        color="white"
+                        fontSize={{
+                          base: "20px",
+                          md: "24px",
+                        }}
+                        fontWeight={600}
+                        lineHeight={{
+                          base: "34px",
+                          md: "40px",
+                        }}
+                      >
+                        {renderInlineSegments(conclusionCalloutParagraph)}
+                      </Text>
+                    </Box>
+                  </Box>
+                </GridItem>
+              </SimpleGrid>
+
+              <Box borderTop="1px solid" borderColor="whiteAlpha.200" pt={8} w="100%">
+                <VStack spacing={4} w="100%">
+                  <HomeButton
+                    as="a"
+                    download="Accipiter-Systems-Technical-Brief.pdf"
+                    href="/accipiter-technical-brief.pdf"
+                    style={{
+                      background: "#F4FBFD",
+                      border: `2px solid ${colors.blue}`,
+                      boxShadow: "none",
+                      color: colors.blue,
+                      maxWidth: "100%",
+                      minWidth: "0",
+                      opacity: 1,
+                      padding: "14px 28px",
+                    }}
+                  >
+                    Download Technical Brief
+                  </HomeButton>
+                </VStack>
+              </Box>
             </VStack>
           </Container>
         </Box>
       </article>
+      {snackbar && (
+        <Snackbar
+          message={status.info.msg}
+          success={!status.info.error}
+          onCloseSnackbar={onCloseSnackbar}
+        />
+      )}
     </>
   );
 };

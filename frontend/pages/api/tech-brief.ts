@@ -1,6 +1,16 @@
-const sgMail = require("@sendgrid/mail");
+import type { NextApiRequest, NextApiResponse } from "next";
+import sgMail from "@sendgrid/mail";
 
-const getSafeValue = (value) => {
+type TechBriefRequestBody = {
+  email: string;
+  investmentRange?: string;
+  message?: string;
+  name: string;
+  organization?: string;
+  recaptchaToken: string;
+};
+
+const getSafeValue = (value: unknown): string => {
   if (typeof value !== "string") {
     return "Not provided";
   }
@@ -9,7 +19,10 @@ const getSafeValue = (value) => {
   return trimmedValue || "Not provided";
 };
 
-export default async function handler(req, res) {
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse<string>,
+) {
   if (req.method !== "POST") {
     return res.status(405).send("Method not allowed.");
   }
@@ -23,7 +36,7 @@ export default async function handler(req, res) {
     investmentRange,
     message,
     recaptchaToken,
-  } = req.body;
+  } = req.body as TechBriefRequestBody;
 
   const normalizedName = typeof name === "string" ? name.trim() : "";
   const normalizedEmail = typeof email === "string" ? email.trim() : "";
@@ -37,6 +50,11 @@ export default async function handler(req, res) {
   }
 
   try {
+    const recaptchaBody = new URLSearchParams({
+      response: recaptchaToken,
+      secret: process.env.RECAPTCHA_SECRET_KEY || "",
+    }).toString();
+
     const recaptchaResponse = await fetch(
       "https://www.google.com/recaptcha/api/siteverify",
       {
@@ -44,7 +62,7 @@ export default async function handler(req, res) {
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",
         },
-        body: `secret=${process.env.RECAPTCHA_SECRET_KEY}&response=${recaptchaToken}`,
+        body: recaptchaBody,
       },
     );
 
@@ -79,6 +97,6 @@ export default async function handler(req, res) {
     return res.status(200).send("Interest submitted successfully.");
   } catch (error) {
     console.log("ERROR", error);
-    return res.status(400).send("Message not sent.");
+    return res.status(500).send("Message not sent.");
   }
 }

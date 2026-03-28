@@ -1,5 +1,6 @@
 import Head from "next/head";
 import { Box, VStack, Flex, Text, Image } from "@chakra-ui/react";
+import type { FlexProps } from "@chakra-ui/react";
 
 type SummaryCard1Props = {
   number: number;
@@ -47,7 +48,7 @@ type BenefitsCardProps = {
   number: number;
   numberPosition?: "center" | "top";
   text: React.ReactNode;
-  width?: any;
+  width?: FlexProps["w"];
 };
 
 export const BenefitsCard: React.FC<BenefitsCardProps> = ({

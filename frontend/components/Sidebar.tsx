@@ -1,3 +1,4 @@
+import React from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import styled, { css } from "styled-components";
@@ -11,6 +12,26 @@ import { P2 } from "./Typography";
 
 const Sidebar = ({ sidebar, setSidebar }): JSX.Element => {
   const router = useRouter();
+  const interestLinks = [
+    {
+      href: "/careers",
+      label: "Careers",
+    },
+    {
+      href: "/investors",
+      label: "Investors",
+    },
+  ];
+  const isInterestActive = interestLinks.some(({ href }) =>
+    router.pathname.startsWith(href),
+  );
+  const [interestOpen, setInterestOpen] = React.useState(isInterestActive);
+
+  React.useEffect(() => {
+    if (sidebar) {
+      setInterestOpen(isInterestActive);
+    }
+  }, [isInterestActive, sidebar]);
 
   return (
     <StyledSidebarContainer open={sidebar}>
@@ -80,22 +101,43 @@ const Sidebar = ({ sidebar, setSidebar }): JSX.Element => {
           </Flex>
         </StyledSidebarOption>
       </Link>
-      <Link href="/careers">
-        <StyledSidebarOption
-          onClick={() => setSidebar(false)}
-          active={router.pathname.includes("/careers") ? true : false}
+      <StyledSidebarAccordionOption
+        active={isInterestActive || interestOpen}
+        aria-expanded={interestOpen}
+        onClick={() => setInterestOpen((currentOpen) => !currentOpen)}
+        type="button"
+      >
+        <Flex
+          justify={"space-between"}
+          align={"center"}
+          style={{ height: "100%", width: "100%" }}
         >
-          <Flex
-            justify={"flex-start"}
-            align={"center"}
-            style={{ height: "100%" }}
-          >
-            <P2 style={{ marginLeft: "2rem" }} color={colors.black}>
-              Careers
-            </P2>
-          </Flex>
-        </StyledSidebarOption>
-      </Link>
+          <P2 style={{ marginLeft: "2rem" }} color={colors.black}>
+            Interest
+          </P2>
+          <StyledAccordionIcon open={interestOpen} />
+        </Flex>
+      </StyledSidebarAccordionOption>
+      <StyledSidebarSubmenu open={interestOpen}>
+        {interestLinks.map(({ href, label }) => (
+          <Link href={href} key={href}>
+            <StyledSidebarSubOption
+              onClick={() => setSidebar(false)}
+              active={router.pathname.startsWith(href)}
+            >
+              <Flex
+                justify={"flex-start"}
+                align={"center"}
+                style={{ height: "100%" }}
+              >
+                <P2 style={{ marginLeft: "4rem" }} color={colors.black}>
+                  {label}
+                </P2>
+              </Flex>
+            </StyledSidebarSubOption>
+          </Link>
+        ))}
+      </StyledSidebarSubmenu>
       <Link href="/login">
         <StyledSidebarOption
           onClick={() => setSidebar(false)}
@@ -238,6 +280,94 @@ const StyledSidebarOption = styled.div<IStyledSidebarOption>`
       border-right: 5px solid ${colors.blue};
       background: #efefef;
     `}
+`;
+
+const StyledSidebarAccordionOption = styled.button<IStyledSidebarOption>`
+  background: ${colors.white};
+  border: none;
+  border-bottom: solid 1px rgba(117, 117, 117, 0.2);
+  border-right: 5px solid transparent;
+  height: ${GU * 15}px;
+  padding: 0;
+  transition: all 0.3s ease;
+  width: 100%;
+
+  ${media.md`
+    height: ${GU * 18}px;
+  `}
+
+  ${media.xl`
+    height: ${GU * 19}px;
+  `}
+
+  &:hover {
+    background: #efefef;
+    cursor: pointer;
+  }
+
+  ${(props) =>
+    props.active &&
+    css`
+      border-right: 5px solid ${colors.blue};
+      background: #efefef;
+    `}
+`;
+
+interface IStyledSidebarSubmenu {
+  open: boolean;
+}
+
+const StyledSidebarSubmenu = styled.div<IStyledSidebarSubmenu>`
+  background: #fafafa;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+
+  ${(props) =>
+    props.open &&
+    css`
+      max-height: ${GU * 36}px;
+    `}
+`;
+
+const StyledSidebarSubOption = styled.div<IStyledSidebarOption>`
+  background: transparent;
+  border-bottom: solid 1px rgba(117, 117, 117, 0.14);
+  border-right: 5px solid transparent;
+  height: ${GU * 12}px;
+  transition: all 0.3s ease;
+
+  ${media.md`
+    height: ${GU * 14}px;
+  `}
+
+  &:hover {
+    background: #f2f2f2;
+    cursor: pointer;
+  }
+
+  ${(props) =>
+    props.active &&
+    css`
+      border-right: 5px solid ${colors.blue};
+      background: #f2f2f2;
+    `}
+`;
+
+interface IStyledAccordionIcon {
+  open: boolean;
+}
+
+const StyledAccordionIcon = styled.span<IStyledAccordionIcon>`
+  border-bottom: 1.5px solid ${colors.grey};
+  border-right: 1.5px solid ${colors.grey};
+  display: inline-block;
+  height: 7px;
+  line-height: 1;
+  margin-right: ${GU * 5}px;
+  transform: rotate(${(props) => (props.open ? -135 : 45)}deg);
+  transition: transform 0.3s ease, border-color 0.3s ease;
+  width: 7px;
 `;
 
 const StyledLogo = styled.img`

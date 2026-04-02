@@ -19,6 +19,12 @@ const getSafeValue = (value: unknown): string => {
   return trimmedValue || "Not provided";
 };
 
+const getNotificationRecipients = (): string[] =>
+  (process.env.TECH_BRIEF_NOTIFICATION_RECIPIENTS || "")
+    .split(",")
+    .map((recipient) => recipient.trim())
+    .filter(Boolean);
+
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<string>,
@@ -47,6 +53,14 @@ export default async function handler(
 
   if (!recaptchaToken) {
     return res.status(400).send("reCAPTCHA token is missing.");
+  }
+
+  const notificationRecipients = getNotificationRecipients();
+
+  if (!notificationRecipients.length) {
+    return res
+      .status(500)
+      .send("Notification recipients are not configured.");
   }
 
   try {
@@ -78,11 +92,11 @@ export default async function handler(
   }
 
   const notificationEmail = {
-    to: "elliott@coopallc.com",
+    to: notificationRecipients,
     from: "info@accipitersystems.com",
-    subject: `New Tech Brief Interest Submission - ${normalizedEmail}`,
+    subject: `New Investor Interest Submission - ${normalizedEmail}`,
     html: `
-      <p>New Tech Brief investor interest submission received.</p>
+      <p>New investor interest submission received.</p>
       <br/>
       <p><strong>Name:</strong> ${normalizedName}</p>
       <p><strong>Email:</strong> ${normalizedEmail}</p>

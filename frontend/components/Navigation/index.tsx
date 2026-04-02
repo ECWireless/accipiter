@@ -13,6 +13,19 @@ export default function Navigation({ setSidebar }) {
   const { user } = useAuth();
   const [background, setBackground] = React.useState(false);
   const router = useRouter();
+  const interestLinks = [
+    {
+      href: "/careers",
+      label: "Careers",
+    },
+    {
+      href: "/investors",
+      label: "Investors",
+    },
+  ];
+  const isInterestActive = interestLinks.some(({ href }) =>
+    router.pathname.startsWith(href),
+  );
 
   React.useEffect(() => {
     window.addEventListener("scroll", function () {
@@ -84,13 +97,23 @@ export default function Navigation({ setSidebar }) {
               <StyledNavButton>Tech Brief</StyledNavButton>
             )}
           </Link>
-          <Link href="/careers">
-            {router.pathname.includes("/careers") ? (
-              <StyledNavButtonActive>Careers</StyledNavButtonActive>
-            ) : (
-              <StyledNavButton>Careers</StyledNavButton>
-            )}
-          </Link>
+          <StyledNavGroup>
+            <StyledNavGroupButton active={isInterestActive} type="button">
+              Interest
+              <StyledNavCaret active={isInterestActive} />
+            </StyledNavGroupButton>
+            <StyledNavDropdown>
+              {interestLinks.map(({ href, label }) => (
+                <Link href={href} key={href}>
+                  {router.pathname.startsWith(href) ? (
+                    <StyledDropdownItemActive>{label}</StyledDropdownItemActive>
+                  ) : (
+                    <StyledDropdownItem>{label}</StyledDropdownItem>
+                  )}
+                </Link>
+              ))}
+            </StyledNavDropdown>
+          </StyledNavGroup>
         </StyledNav>
       </div>
     </StyledHeader>
@@ -237,6 +260,113 @@ const StyledNavButtonActive = styled.button`
   &:hover {
     cursor: pointer;
   }
+`;
+
+const StyledNavGroup = styled.div`
+  align-items: center;
+  display: flex;
+  height: 100%;
+  position: relative;
+
+  &:hover > button,
+  &:focus-within > button {
+    color: ${colors.blue};
+  }
+
+  &:hover > div,
+  &:focus-within > div {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translate(-50%, 0);
+  }
+`;
+
+interface IStyledNavGroupButton {
+  active: boolean;
+}
+
+const StyledNavGroupButton = styled.button<IStyledNavGroupButton>`
+  align-items: center;
+  background: transparent;
+  border: none;
+  color: ${(props) => (props.active ? colors.blue : colors.white)};
+  display: flex;
+  font-size: 1.6rem;
+  gap: ${GU * 1.5}px;
+  height: 100%;
+  outline: none;
+  padding: 0 ${GU * 3}px;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  z-index: 102;
+
+  &:hover {
+    cursor: pointer;
+  }
+`;
+
+interface IStyledNavCaret {
+  active: boolean;
+}
+
+const StyledNavCaret = styled.span<IStyledNavCaret>`
+  border-bottom: 1.5px solid
+    ${(props) => (props.active ? colors.blue : "currentColor")};
+  border-right: 1.5px solid
+    ${(props) => (props.active ? colors.blue : "currentColor")};
+  display: inline-block;
+  flex-shrink: 0;
+  height: 6px;
+  margin-top: -1px;
+  opacity: 0.95;
+  transform: rotate(45deg);
+  transition: border-color 0.3s ease, transform 0.3s ease;
+  width: 6px;
+`;
+
+const StyledNavDropdown = styled.div`
+  background: rgba(30, 30, 30, 0.98);
+  border: 1px solid rgba(22, 180, 220, 0.2);
+  border-radius: 16px;
+  box-shadow: 0 18px 36px rgba(0, 0, 0, 0.28);
+  display: flex;
+  flex-direction: column;
+  gap: ${GU * 1}px;
+  left: 50%;
+  min-width: ${GU * 46}px;
+  opacity: 0;
+  padding: ${GU * 2}px;
+  pointer-events: none;
+  position: absolute;
+  top: calc(100% - ${GU * 1}px);
+  transform: translate(-50%, ${GU * 2}px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  z-index: 104;
+`;
+
+const StyledDropdownItem = styled.button`
+  background: transparent;
+  border: none;
+  border-radius: 12px;
+  color: ${colors.white};
+  font-size: 1.4rem;
+  outline: none;
+  padding: ${GU * 3}px ${GU * 4}px;
+  text-align: left;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  width: 100%;
+
+  &:hover {
+    background: rgba(22, 180, 220, 0.12);
+    color: ${colors.blue};
+    cursor: pointer;
+  }
+`;
+
+const StyledDropdownItemActive = styled(StyledDropdownItem)`
+  background: rgba(22, 180, 220, 0.14);
+  color: ${colors.blue};
 `;
 
 const StyledLogin = styled.button`

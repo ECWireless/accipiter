@@ -16,6 +16,8 @@ import {
   Tbody,
   Td,
   Text,
+  Th,
+  Thead,
   Tr,
   VStack,
 } from "@chakra-ui/react";
@@ -30,12 +32,15 @@ import {
   bandwidthSection,
   benefitsSection,
   conclusionSection,
+  deepMemorySection,
   emergingArchitectureSection,
   limitationsSection,
   longReachSection,
+  opticalProcessingSection,
   overviewSection,
   pcieSection,
   pcieWhyNowSection,
+  securitySection,
   shiftSection,
   technicalBriefTitle,
 } from "data/techBriefContent";
@@ -85,6 +90,89 @@ const AccentBulletItem = ({ children }: { children: ReactNode }) => (
       {children}
     </Text>
   </Flex>
+);
+
+const SectionHeading = ({ children }: { children: ReactNode }) => (
+  <Text
+    color="electric.400"
+    fontSize={{
+      base: "26px",
+      md: "32px",
+    }}
+    fontWeight={600}
+  >
+    {children}
+  </Text>
+);
+
+const RichParagraphs = ({
+  paragraphs,
+}: {
+  paragraphs: RichTextSegment[][];
+}) => (
+  <VStack align="stretch" spacing={5}>
+    {paragraphs.map((paragraph, paragraphIndex) => (
+      <Text key={paragraphIndex} color="grey.800" {...bodyTextProps}>
+        {renderInlineSegments(paragraph)}
+      </Text>
+    ))}
+  </VStack>
+);
+
+const ImageCard = ({
+  alt,
+  src,
+  title,
+}: {
+  alt: string;
+  src: string;
+  title?: string;
+}) => (
+  <Box
+    background="white"
+    border="1px solid"
+    borderColor="grey.100"
+    borderRadius="28px"
+    boxShadow="0 18px 44px rgba(42, 62, 81, 0.08)"
+    overflow="hidden"
+    p={{
+      base: 4,
+      md: 5,
+    }}
+    w="100%"
+  >
+    {title ? (
+      <Text color="grey.800" fontWeight={700} mb={4} {...bodyTextProps}>
+        {title}
+      </Text>
+    ) : null}
+    <Box borderRadius="24px" overflow="hidden">
+      <Image alt={alt} display="block" src={src} w="100%" />
+    </Box>
+  </Box>
+);
+
+const PlainFeatureCard = ({
+  children,
+  title,
+}: {
+  children: ReactNode;
+  title: string;
+}) => (
+  <Box
+    background="white"
+    border="1px solid"
+    borderColor="grey.100"
+    borderRadius="22px"
+    boxShadow="0 12px 32px rgba(42, 62, 81, 0.05)"
+    h="100%"
+    p={{ base: 5, md: 6 }}
+  >
+    <Text color="grey.800" fontWeight={700} {...bodyTextProps}>
+      {title}
+    </Text>
+    <Box mt={4}>{children}</Box>
+  </Box>
 );
 
 const TechBrief = () => {
@@ -1229,6 +1317,495 @@ const TechBrief = () => {
             </VStack>
           </Box>
         </Container>
+
+        <Box background="grey.100" py={{ base: 14, md: 20 }}>
+          <Container>
+            <SimpleGrid
+              alignItems="start"
+              columns={{ base: 1, xl: 12 }}
+              gap={{ base: 10, xl: 10 }}
+            >
+              <GridItem colSpan={{ base: 1, xl: 5 }}>
+                <VStack align="stretch" spacing={5}>
+                  <SectionHeading>{securitySection.heading}</SectionHeading>
+                  <RichParagraphs paragraphs={securitySection.richParagraphs} />
+                </VStack>
+              </GridItem>
+
+              <GridItem colSpan={{ base: 1, xl: 7 }}>
+                <ImageCard
+                  alt="Why Long-Reach PCIe reduces exposure to zero-day attacks"
+                  src="/images/tech-brief/zero-day-attack-surface.png"
+                />
+              </GridItem>
+            </SimpleGrid>
+
+            <SimpleGrid
+              alignItems="stretch"
+              columns={{ base: 1, lg: 2 }}
+              gap={5}
+              mt={10}
+            >
+              {securitySection.items.map((item, index) => {
+                const isLastOddItem =
+                  securitySection.items.length % 2 === 1 &&
+                  index === securitySection.items.length - 1;
+
+                return (
+                  <GridItem
+                    colSpan={{
+                      base: 1,
+                      lg: isLastOddItem ? 2 : 1,
+                    }}
+                    h="100%"
+                    key={item.title}
+                  >
+                    <PlainFeatureCard title={item.title}>
+                      <VStack align="stretch" spacing={4}>
+                        {item.paragraphs.map((paragraph, paragraphIndex) => (
+                          <Text
+                            key={`${item.title}-paragraph-${paragraphIndex}`}
+                            color="grey.800"
+                            {...bodyTextProps}
+                          >
+                            {renderInlineSegments(paragraph)}
+                          </Text>
+                        ))}
+                        <VStack align="stretch" spacing={2}>
+                          {item.bullets.map((bullet) => (
+                            <AccentBulletItem key={bullet}>
+                              {bullet}
+                            </AccentBulletItem>
+                          ))}
+                        </VStack>
+                        {item.secondaryIntro ? (
+                          <Text color="grey.800" {...bodyTextProps}>
+                            {item.secondaryIntro}
+                          </Text>
+                        ) : null}
+                        {item.secondaryBullets ? (
+                          <VStack align="stretch" spacing={2}>
+                            {item.secondaryBullets.map((bullet) => (
+                              <AccentBulletItem key={bullet}>
+                                {bullet}
+                              </AccentBulletItem>
+                            ))}
+                          </VStack>
+                        ) : null}
+                        {item.closingParagraphs?.map(
+                          (paragraph, paragraphIndex) => (
+                            <Text
+                              key={`${item.title}-closing-${paragraphIndex}`}
+                              color="grey.800"
+                              {...bodyTextProps}
+                            >
+                              {renderInlineSegments(paragraph)}
+                            </Text>
+                          ),
+                        )}
+                      </VStack>
+                    </PlainFeatureCard>
+                  </GridItem>
+                );
+              })}
+            </SimpleGrid>
+
+            <Box
+              background="white"
+              border="1px solid"
+              borderColor="grey.100"
+              borderRadius="24px"
+              boxShadow="0 16px 40px rgba(0, 0, 0, 0.05)"
+              mt={10}
+              overflow="hidden"
+              p={{ base: 4, md: 5 }}
+            >
+              <Text
+                as="h3"
+                color="grey.800"
+                fontSize={{ base: "18px", md: "22px" }}
+                fontWeight={700}
+                lineHeight={{ base: "26px", md: "30px" }}
+                mb={4}
+              >
+                {securitySection.comparisonTitle}
+              </Text>
+              <TableContainer overflowX="auto">
+                <Table minW="760px" variant="unstyled">
+                  <Thead>
+                    <Tr>
+                      <Th
+                        background="#DCE8F4"
+                        border="2px solid"
+                        borderColor="#111111"
+                        color="#111111"
+                        fontSize={{
+                          base: "18px",
+                          md: "22px",
+                        }}
+                        fontWeight={700}
+                        lineHeight="1.1"
+                        p={2.5}
+                        scope="col"
+                        textTransform="none"
+                        w="42%"
+                      >
+                        Capability
+                      </Th>
+                      <Th
+                        background="#DCE8F4"
+                        border="2px solid"
+                        borderColor="#111111"
+                        color="#111111"
+                        fontSize={{
+                          base: "18px",
+                          md: "22px",
+                        }}
+                        fontWeight={700}
+                        lineHeight="1.1"
+                        p={2.5}
+                        scope="col"
+                        textAlign="center"
+                        textTransform="none"
+                        whiteSpace="nowrap"
+                      >
+                        Traditional LAN
+                      </Th>
+                      <Th
+                        background="#DCE8F4"
+                        border="2px solid"
+                        borderColor="#111111"
+                        color="#111111"
+                        fontSize={{
+                          base: "18px",
+                          md: "22px",
+                        }}
+                        fontWeight={700}
+                        lineHeight="1.1"
+                        p={2.5}
+                        scope="col"
+                        textAlign="center"
+                        textTransform="none"
+                        whiteSpace="nowrap"
+                      >
+                        Long-Reach PCIe
+                      </Th>
+                    </Tr>
+                  </Thead>
+                  <Tbody>
+                    {securitySection.comparisonRows.map((row) => (
+                      <Tr key={row.capability}>
+                        <Td
+                          border="2px solid"
+                          borderColor="#111111"
+                          color="#111111"
+                          fontSize={{
+                            base: "17px",
+                            md: "20px",
+                          }}
+                          fontWeight={700}
+                          lineHeight="1.1"
+                          p={2.5}
+                        >
+                          {row.capability}
+                        </Td>
+                        <Td
+                          border="2px solid"
+                          borderColor="#111111"
+                          color="#111111"
+                          fontSize={{
+                            base: "17px",
+                            md: "20px",
+                          }}
+                          fontWeight={400}
+                          lineHeight="1.1"
+                          p={2.5}
+                          textAlign="center"
+                        >
+                          {row.traditionalLan}
+                        </Td>
+                        <Td
+                          border="2px solid"
+                          borderColor="#111111"
+                          color="#111111"
+                          fontSize={{
+                            base: "17px",
+                            md: "20px",
+                          }}
+                          fontWeight={400}
+                          lineHeight="1.1"
+                          p={2.5}
+                          textAlign="center"
+                        >
+                          {row.longReachPcie}
+                        </Td>
+                      </Tr>
+                    ))}
+                  </Tbody>
+                </Table>
+              </TableContainer>
+            </Box>
+
+            <SimpleGrid columns={{ base: 1, xl: 12 }} gap={8} mt={10}>
+              <GridItem colSpan={{ base: 1, xl: 12 }}>
+                <PlainFeatureCard title={securitySection.implications.title}>
+                  <VStack align="stretch" spacing={4}>
+                    {securitySection.implications.paragraphs.map(
+                      (paragraph, paragraphIndex) => (
+                        <Text
+                          key={`implications-${paragraphIndex}`}
+                          color="grey.800"
+                          {...bodyTextProps}
+                        >
+                          {renderInlineSegments(paragraph)}
+                        </Text>
+                      ),
+                    )}
+                    <VStack align="stretch" spacing={2}>
+                      {securitySection.implications.bullets.map((bullet) => (
+                        <AccentBulletItem key={bullet}>{bullet}</AccentBulletItem>
+                      ))}
+                    </VStack>
+                    <Text color="grey.800" {...bodyTextProps}>
+                      {renderInlineSegments(
+                        securitySection.implications.closingSegments,
+                      )}
+                    </Text>
+                    <VStack align="stretch" spacing={2}>
+                      {securitySection.implications.closingBullets.map(
+                        (bullet) => (
+                          <AccentBulletItem key={bullet}>
+                            {bullet}
+                          </AccentBulletItem>
+                        ),
+                      )}
+                    </VStack>
+                  </VStack>
+                </PlainFeatureCard>
+              </GridItem>
+            </SimpleGrid>
+          </Container>
+        </Box>
+
+        <Container>
+          <Box py={{ base: 14, md: 20 }}>
+            <SimpleGrid
+              alignItems="start"
+              columns={{ base: 1, xl: 12 }}
+              gap={{ base: 10, xl: 10 }}
+            >
+              <GridItem colSpan={{ base: 1, xl: 6 }}>
+                <VStack align="stretch" spacing={5}>
+                  <SectionHeading>{deepMemorySection.heading}</SectionHeading>
+                  <Text color="grey.800" {...bodyTextProps}>
+                    {deepMemorySection.intro}
+                  </Text>
+                  <VStack align="stretch" spacing={2}>
+                    {deepMemorySection.examples.map((example) => (
+                      <AccentBulletItem key={example}>{example}</AccentBulletItem>
+                    ))}
+                  </VStack>
+                  <Text color="grey.800" {...bodyTextProps}>
+                    {renderInlineSegments(deepMemorySection.demandSegments)}
+                  </Text>
+                </VStack>
+              </GridItem>
+
+              <GridItem colSpan={{ base: 1, xl: 6 }}>
+                <ImageCard
+                  alt="Deep Memory Recording Ethernet versus PCIe Fabric"
+                  src="/images/tech-brief/deep-memory-recording.png"
+                  title={deepMemorySection.imageTitle}
+                />
+              </GridItem>
+            </SimpleGrid>
+
+            <SimpleGrid columns={{ base: 1, xl: 2 }} gap={6} mt={10}>
+              <PlainFeatureCard title={deepMemorySection.limitations.title}>
+                <VStack align="stretch" spacing={4}>
+                  <Text color="grey.800" {...bodyTextProps}>
+                    {deepMemorySection.limitations.intro}
+                  </Text>
+                  <VStack align="stretch" spacing={2}>
+                    {deepMemorySection.limitations.bullets.map((bullet) => (
+                      <AccentBulletItem key={bullet}>{bullet}</AccentBulletItem>
+                    ))}
+                  </VStack>
+                  <Text color="grey.800" {...bodyTextProps}>
+                    {deepMemorySection.limitations.constraintsIntro}
+                  </Text>
+                  <VStack align="stretch" spacing={2}>
+                    {deepMemorySection.limitations.constraints.map((bullet) => (
+                      <AccentBulletItem key={bullet}>
+                        <Text as="span" display="inline" fontWeight={700}>
+                          {bullet}
+                        </Text>
+                      </AccentBulletItem>
+                    ))}
+                  </VStack>
+                  <Text color="grey.800" {...bodyTextProps}>
+                    {deepMemorySection.limitations.closing}
+                  </Text>
+                </VStack>
+              </PlainFeatureCard>
+
+              <PlainFeatureCard title={deepMemorySection.pcieBased.title}>
+                <VStack align="stretch" spacing={4}>
+                  {deepMemorySection.pcieBased.paragraphs.map((paragraph) => (
+                    <Text key={paragraph} color="grey.800" {...bodyTextProps}>
+                      {paragraph}
+                    </Text>
+                  ))}
+                  <VStack align="stretch" spacing={2}>
+                    {deepMemorySection.pcieBased.bullets.map((bullet, index) => (
+                      <AccentBulletItem key={index}>
+                        {renderInlineSegments(bullet)}
+                      </AccentBulletItem>
+                    ))}
+                  </VStack>
+                  <Text color="grey.800" {...bodyTextProps}>
+                    {deepMemorySection.pcieBased.closing}
+                  </Text>
+                </VStack>
+              </PlainFeatureCard>
+            </SimpleGrid>
+
+            <Text color="grey.800" fontWeight={700} mt={10} {...bodyTextProps}>
+              {deepMemorySection.advantagesHeading}
+            </Text>
+            <SimpleGrid columns={{ base: 1, md: 2, xl: 3 }} gap={5} mt={5}>
+              {deepMemorySection.advantages.map((advantage) => (
+                <PlainFeatureCard key={advantage.title} title={advantage.title}>
+                  <Text color="grey.800" {...bodyTextProps}>
+                    {advantage.body}
+                  </Text>
+                </PlainFeatureCard>
+              ))}
+            </SimpleGrid>
+          </Box>
+        </Container>
+
+        <Box background="grey.100" py={{ base: 14, md: 20 }}>
+          <Container>
+            <VStack align="stretch" spacing={10}>
+              <SimpleGrid
+                alignItems="start"
+                columns={{ base: 1, xl: 12 }}
+                gap={{ base: 10, xl: 10 }}
+              >
+                <GridItem colSpan={{ base: 1, xl: 6 }}>
+                  <VStack align="stretch" spacing={5}>
+                    <SectionHeading>
+                      {opticalProcessingSection.heading}
+                    </SectionHeading>
+                    <Text color="grey.800" {...bodyTextProps}>
+                      {renderInlineSegments(
+                        opticalProcessingSection.introSegments,
+                      )}
+                    </Text>
+                    <Text color="grey.800" fontWeight={600} {...bodyTextProps}>
+                      {opticalProcessingSection.examplesIntro}
+                    </Text>
+                    <VStack align="stretch" spacing={2}>
+                      {opticalProcessingSection.examples.map((example) => (
+                        <AccentBulletItem key={example}>
+                          {example}
+                        </AccentBulletItem>
+                      ))}
+                    </VStack>
+                  </VStack>
+                </GridItem>
+
+                <GridItem colSpan={{ base: 1, xl: 6 }}>
+                  <ImageCard
+                    alt="Optical Processing Pipeline LAN versus PCIe Fabric"
+                    src="/images/tech-brief/optical-processing-pipeline.png"
+                    title={opticalProcessingSection.imageTitle}
+                  />
+                </GridItem>
+              </SimpleGrid>
+
+              <SimpleGrid columns={{ base: 1, xl: 2 }} gap={6}>
+                <PlainFeatureCard title={opticalProcessingSection.challenges.title}>
+                  <VStack align="stretch" spacing={4}>
+                    <Text color="grey.800" {...bodyTextProps}>
+                      {opticalProcessingSection.challenges.intro}
+                    </Text>
+                    <VStack align="stretch" spacing={2}>
+                      {opticalProcessingSection.challenges.bullets.map(
+                        (bullet) => (
+                          <AccentBulletItem key={bullet}>
+                            {bullet}
+                          </AccentBulletItem>
+                        ),
+                      )}
+                    </VStack>
+                    <Text color="grey.800" {...bodyTextProps}>
+                      {renderInlineSegments(
+                        opticalProcessingSection.challenges.closingSegments,
+                      )}
+                    </Text>
+                  </VStack>
+                </PlainFeatureCard>
+
+                <PlainFeatureCard title={opticalProcessingSection.pcieBackbone.title}>
+                  <VStack align="stretch" spacing={4}>
+                    {opticalProcessingSection.pcieBackbone.paragraphs.map(
+                      (paragraph) => (
+                        <Text key={paragraph} color="grey.800" {...bodyTextProps}>
+                          {paragraph}
+                        </Text>
+                      ),
+                    )}
+                    <VStack align="stretch" spacing={2}>
+                      {opticalProcessingSection.pcieBackbone.bullets.map(
+                        (bullet) => (
+                          <AccentBulletItem key={bullet}>
+                            {bullet}
+                          </AccentBulletItem>
+                        ),
+                      )}
+                    </VStack>
+                    <Text color="grey.800" {...bodyTextProps}>
+                      {opticalProcessingSection.pcieBackbone.closing}
+                    </Text>
+                  </VStack>
+                </PlainFeatureCard>
+              </SimpleGrid>
+
+              <Box>
+                <Text color="grey.800" fontWeight={700} {...bodyTextProps}>
+                  {opticalProcessingSection.advantagesHeading}
+                </Text>
+                <SimpleGrid columns={{ base: 1, md: 2, xl: 3 }} gap={5} mt={5}>
+                  {opticalProcessingSection.advantages.map((advantage) => (
+                    <PlainFeatureCard
+                      key={advantage.title}
+                      title={advantage.title}
+                    >
+                      <Text color="grey.800" {...bodyTextProps}>
+                        {advantage.body}
+                      </Text>
+                    </PlainFeatureCard>
+                  ))}
+                </SimpleGrid>
+              </Box>
+
+              <Box
+                background="white"
+                borderLeft="4px solid"
+                borderColor="electric.400"
+                borderRadius="22px"
+                boxShadow="0 12px 32px rgba(42, 62, 81, 0.05)"
+                p={{ base: 5, md: 6 }}
+              >
+                <Text color="grey.800" fontWeight={600} {...bodyTextProps}>
+                  {renderInlineSegments(opticalProcessingSection.closingSegments)}
+                </Text>
+              </Box>
+            </VStack>
+          </Container>
+        </Box>
 
         <Box
           background="linear-gradient(180deg, #EEF3F6 0%, #F8FAFC 100%)"

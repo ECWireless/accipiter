@@ -294,6 +294,7 @@ export const pcieSection = {
     "Peer-to-peer communication",
     "High bandwidth density",
     "Deterministic performance behavior",
+    "Minimal attack surface due to absence of routable protocols and reduced software stack",
   ],
   closing:
     "PCIe is governed by the PCI-SIG industry consortium, ensuring interoperability across thousands of vendors and products.",
@@ -443,7 +444,7 @@ export const longReachSection = {
 };
 
 export const benefitsSection = {
-  heading: "Architectural Benefits",
+  heading: "Long-Reach PCIe Architectural Benefits",
   intro:
     "Long-reach PCIe architectures offer several important advantages over traditional LAN-based systems.",
   items: [
@@ -475,13 +476,446 @@ export const benefitsSection = {
   ],
 };
 
+export const securitySection = {
+  heading:
+    "Security Implications: Long-Reach PCIe Reduces Exposure to Zero-Day Attacks",
+  richParagraphs: [
+    [
+      {
+        text: "Traditional LAN-based architectures introduce a broad and dynamic attack surface due to their reliance on standardized networking protocols, routable packet flows, and software-defined control planes. These characteristics make them inherently vulnerable to both known exploits and zero-day attacks.",
+      },
+    ],
+    [
+      {
+        text: "In contrast, long-reach PCIe fabrics fundamentally reduce attack exposure by eliminating many of the mechanisms that attackers rely on.",
+      },
+    ],
+  ],
+  items: [
+    {
+      title: "Reduced Attack Surface",
+      paragraphs: [
+        [
+          {
+            text: "Ethernet-based systems depend on multiple layers of software and protocol processing, including:",
+          },
+        ],
+      ],
+      bullets: [
+        "TCP/IP stacks",
+        "Network interface firmware",
+        "Switch operating systems",
+        "Routing and control-plane logic",
+      ],
+      closingParagraphs: [
+        [
+          {
+            text: "Each layer represents a potential vulnerability, particularly for zero-day exploits.",
+          },
+        ],
+        [
+          {
+            text: "Long-reach PCIe eliminates these layers, replacing them with a hardware-centric, memory-mapped communication model. Fewer abstraction layers directly translate to fewer exploitable entry points.",
+          },
+        ],
+      ],
+    },
+    {
+      title: "Elimination of Routable Interfaces",
+      paragraphs: [
+        [
+          {
+            text: "Traditional LAN-connected systems expose IP addresses and open ports, making them discoverable and targetable across networks.",
+          },
+        ],
+        [
+          {
+            text: "PCIe fabrics:",
+          },
+        ],
+      ],
+      bullets: [
+        "Do not use IP addressing",
+        "Do not expose services via open ports",
+        "Are not routable using standard networking tools",
+      ],
+      secondaryIntro:
+        "This effectively removes entire classes of remote attack vectors, including:",
+      secondaryBullets: [
+        "Network scanning",
+        "Port-based exploitation",
+        "Remote service attacks",
+      ],
+    },
+    {
+      title: "No Packet Injection or Man-in-the-Middle Opportunities",
+      paragraphs: [
+        [
+          {
+            text: "Ethernet architectures rely on packetized communication, which enables:",
+          },
+        ],
+      ],
+      bullets: [
+        "Packet interception",
+        "Injection attacks",
+        "Replay attacks",
+        "Protocol manipulation",
+      ],
+      secondaryIntro:
+        "PCIe operates as a point-to-point, transaction-based fabric with no concept of packets traversing shared networks. As a result:",
+      secondaryBullets: [
+        "There is no opportunity for packet interception or injection",
+        "Man-in-the-middle attacks are structurally eliminated",
+      ],
+    },
+    {
+      title: "Deterministic Behavior Enables Anomaly Detection",
+      paragraphs: [
+        [
+          {
+            text: "LAN-based systems exhibit variable latency and jitter, making it difficult to distinguish between normal behavior and malicious interference.",
+          },
+        ],
+        [
+          {
+            text: "PCIe fabrics provide deterministic, predictable timing. This enables:",
+          },
+        ],
+      ],
+      bullets: [
+        "Easier detection of anomalous behavior",
+        "Faster identification of compromised components",
+        "Reduced dwell time for zero-day exploits",
+      ],
+    },
+    {
+      title: "Hardware-Centric Trust Model",
+      paragraphs: [
+        [
+          {
+            text: "Because PCIe communication is tightly coupled to hardware and memory access:",
+          },
+        ],
+      ],
+      bullets: [
+        "Access paths are explicit and controlled",
+        "Devices must be enumerated and authorized",
+        "Communication is not dynamically exposed like network services",
+      ],
+      closingParagraphs: [
+        [
+          {
+            text: "This aligns well with zero-trust architectures by enforcing strict boundaries at the hardware level.",
+          },
+        ],
+      ],
+    },
+  ],
+  comparisonTitle: "Security Comparison: Traditional LAN vs Long-Reach PCIe",
+  comparisonRows: [
+    {
+      capability: "Routable (IP-based)",
+      traditionalLan: "Yes",
+      longReachPcie: "No",
+    },
+    {
+      capability: "Exposed ports/services",
+      traditionalLan: "Yes",
+      longReachPcie: "No",
+    },
+    {
+      capability: "Packet injection risk",
+      traditionalLan: "Yes",
+      longReachPcie: "No",
+    },
+    {
+      capability: "Protocol attack surface",
+      traditionalLan: "High",
+      longReachPcie: "Minimal",
+    },
+    {
+      capability: "Software stack dependency",
+      traditionalLan: "High",
+      longReachPcie: "Low",
+    },
+    {
+      capability: "Deterministic behavior",
+      traditionalLan: "No",
+      longReachPcie: "Yes",
+    },
+    {
+      capability: "Zero-day exposure",
+      traditionalLan: "Broad",
+      longReachPcie: "Constrained",
+    },
+  ],
+  implications: {
+    title: "Implications for Defense and Mission-Critical Systems",
+    paragraphs: [
+      [
+        {
+          text: "For environments where adversaries actively develop zero-day capabilities, reducing attack surface is often more effective than attempting to detect every possible exploit.",
+        },
+      ],
+      [
+        {
+          text: "Long-reach PCIe enables:",
+        },
+      ],
+    ],
+    bullets: [
+      "Physically constrained communication paths",
+      "Elimination of network-based intrusion vectors",
+      "Greater system survivability under active cyber attack",
+    ],
+    closingSegments: [
+      {
+        text: "As ",
+      },
+      {
+        bold: true,
+        text: "Long-Reach PCIe is structurally more secure by design",
+      },
+      {
+        text: ", it is better suited for",
+      },
+    ],
+    closingBullets: [
+      "Zero-day resilience",
+      "Electronic Warfare (EW) and congested environments",
+      "Air-gapped or hardened systems",
+    ],
+  },
+};
+
+export const deepMemorySection = {
+  heading: "Deep Memory Recording: High-Speed, Multi-Source Data Capture at Scale",
+  intro:
+    "Modern real-time systems increasingly require the ability to capture, store, and analyze massive volumes of data across distributed sensors and compute elements. Examples include:",
+  examples: [
+    "Defense sensor fusion and electronic warfare",
+    "High-speed RF signal capture",
+    "Autonomous system telemetry",
+    "AI training data collection in live environments",
+  ],
+  demandSegments: [
+    {
+      text: "These applications demand ",
+    },
+    {
+      bold: true,
+      text: "deep memory recording",
+    },
+    {
+      text: "--the ability to ingest and store large amounts of data continuously, at high speed, and from multiple sources simultaneously.",
+    },
+  ],
+  limitations: {
+    title: "Limitations of Traditional LAN-Based Recording",
+    intro:
+      "In Ethernet-based architectures, writing data to centralized storage requires:",
+    bullets: [
+      "Packetization of data streams",
+      "Traversal through network switches",
+      "Processing through TCP/IP or RDMA stacks",
+      "Coordination across independent nodes",
+    ],
+    constraintsIntro:
+      "Even with technologies such as RDMA, these systems face key constraints:",
+    constraints: [
+      "Contention for shared network bandwidth",
+      "Unpredictable latency under load",
+      "Limited scalability for simultaneous writers",
+      "Complex software coordination for synchronization",
+    ],
+    closing:
+      "As the number of data sources increases, performance degrades and data loss risk increases.",
+  },
+  pcieBased: {
+    title: "PCIe-Based Deep Memory Recording",
+    paragraphs: [
+      "Long-reach PCIe enables a fundamentally different approach by extending the native memory and I/O fabric across systems.",
+      "Multiple devices--including CPUs, GPUs, FPGAs, and high-speed digitizers--can:",
+    ],
+    bullets: [
+      [
+        {
+          text: "Write directly into shared memory or storage resources",
+        },
+      ],
+      [
+        {
+          text: "Perform ",
+        },
+        {
+          bold: true,
+          text: "simultaneous, high-bandwidth writes",
+        },
+      ],
+      [
+        {
+          text: "Bypass network stacks entirely",
+        },
+      ],
+      [
+        {
+          text: "Operate with deterministic timing",
+        },
+      ],
+    ],
+    closing:
+      "This model is conceptually similar to emerging memory-centric architectures such as CXL, but leverages the maturity, ecosystem, and deterministic behavior of PCIe today.",
+  },
+  advantagesHeading: "Key Advantages",
+  advantages: [
+    {
+      title: "True Multi-Writer Architecture",
+      body:
+        "Multiple devices can write concurrently into the same memory space without packet arbitration or network contention.",
+    },
+    {
+      title: "Line-Rate Data Ingestion",
+      body:
+        "Devices can sustain full interface bandwidth without being limited by network bottlenecks.",
+    },
+    {
+      title: "Deterministic Recording",
+      body:
+        "Consistent latency ensures time-aligned data capture across all sources--critical for sensor fusion and post-event analysis.",
+    },
+    {
+      title: "Reduced Data Loss Risk",
+      body:
+        "Elimination of packet drops, congestion, and retransmissions improves reliability under peak load.",
+    },
+    {
+      title: "Simplified Software Stack",
+      body:
+        "Direct memory access reduces the need for complex buffering, queuing, and synchronization logic.",
+    },
+  ],
+  imageTitle: "Deep Memory Recording: Ethernet vs. PCIe Fabric",
+};
+
+export const opticalProcessingSection = {
+  heading:
+    "Optical Processing and PCIe: Electrifying Next Generation Sensor and Compute Architecture",
+  introSegments: [
+    {
+      text: "The increasing importance of high-bandwidth sensing--particularly in RF, photonics, and optical domains--is driving a shift ",
+    },
+    {
+      bold: true,
+      text: "toward optical processing architectures",
+    },
+    {
+      text: ". These systems generate and process vast amounts of data at speeds that challenge traditional electrical and network-based interconnects.",
+    },
+  ],
+  examplesIntro: "Examples include:",
+  examples: [
+    "Photonic signal processing systems",
+    "Optical RF front ends",
+    "LIDAR and imaging pipelines",
+    "Free-space optical communications",
+    "Advanced electronic warfare platforms",
+  ],
+  challenges: {
+    title: "Challenges with LAN-Based Architectures",
+    intro:
+      "Traditional Ethernet-based systems introduce several inefficiencies when interfacing with optical processing pipelines:",
+    bullets: [
+      "Data must be converted, packetized, and transmitted through network stacks",
+      "Latency and jitter disrupt tightly coupled optical processing loops",
+      "Synchronization across devices becomes difficult",
+      "Bandwidth scaling requires increasingly complex networking infrastructure",
+    ],
+    closingSegments: [
+      {
+        text: "These constraints limit the effectiveness of optical systems that depend on ",
+      },
+      {
+        bold: true,
+        text: "continuous, high-speed, and tightly synchronized data flows.",
+      },
+    ],
+  },
+  pcieBackbone: {
+    title: "PCIe as the Electrical Backbone for Optical Systems",
+    paragraphs: [
+      "PCIe provides a direct, high-speed electrical interface between optical processing elements and compute resources.",
+      "With long-reach PCIe:",
+    ],
+    bullets: [
+      "Optical front ends can connect directly into the PCIe fabric",
+      "Data flows as memory transactions rather than packets",
+      "Processing elements can access optical data streams in real time",
+      "Systems maintain deterministic timing across the entire pipeline",
+    ],
+    closing:
+      "This effectively \"electrifies\" optical processing systems--allowing them to behave as tightly integrated extensions of the compute fabric.",
+  },
+  advantagesHeading: "Key Advantages",
+  advantages: [
+    {
+      title: "Elimination of Packetization Overhead",
+      body:
+        "Optical data streams are ingested directly into memory without conversion into network packets.",
+    },
+    {
+      title: "Deterministic Processing Pipelines",
+      body:
+        "Consistent latency enables precise timing alignment across optical and electronic domains.",
+    },
+    {
+      title: "Higher Effective Bandwidth Utilization",
+      body: "Bandwidth is used for payload data rather than protocol overhead.",
+    },
+    {
+      title: "Direct Accelerator Integration",
+      body:
+        "GPUs, FPGAs, and AI accelerators can directly consume optical data streams via PCIe.",
+    },
+    {
+      title: "Improved System Synchronization",
+      body: "All components operate within a unified timing and memory model.",
+    },
+    {
+      title: "Reduced System Complexity",
+      body:
+        "Fewer intermediate components (NICs, switches, protocol stacks) simplify system design.",
+    },
+  ],
+  imageTitle: "Optical Processing Pipeline: LAN vs. PCIe Fabric",
+  closingSegments: [
+    {
+      text: "As optical and photonic technologies continue to advance",
+    },
+    {
+      bold: true,
+      text: ", PCIe-based fabrics provide a scalable and deterministic foundation",
+    },
+    {
+      text: " for integrating these systems into next-generation compute architectures ",
+    },
+    {
+      bold: true,
+      text: "without the limitations of traditional networking",
+    },
+    {
+      text: ".",
+    },
+  ],
+};
+
 export const emergingArchitectureSection = {
   heading: "The Emerging Compute Architecture",
   intro:
     "A hybrid architecture is increasingly common in advanced computing environments:",
-  insideRackTitle: "Inside the rack or compute cluster",
+  insideRackTitle: "Inside the rack or compute cluster.",
   insideRackBody:
-    "Long-reach PCIe fabrics connect compute nodes, accelerators, and memory into a unified fabric.",
+    "Long-reach PCIe fabrics connect compute nodes, accelerators, and memory into a unified fabric outside the rack.",
   outsideRackTitle: "Outside the rack",
   outsideRackIntro: "Ethernet remains useful for:",
   outsideRackItems: [
@@ -528,6 +962,18 @@ export const conclusionSection = {
       {
         bold: true,
         text: "long-reach PCIe architectures are emerging as a critical infrastructure technology for next-generation computing systems.",
+      },
+    ],
+    [
+      {
+        text: "Beyond performance, ",
+      },
+      {
+        bold: true,
+        text: "long-reach PCIe significantly reduces system attack surface, offering inherent resilience against zero-day exploits that target traditional network-based infrastructures",
+      },
+      {
+        text: ".",
       },
     ],
   ],

@@ -16,6 +16,8 @@ import {
   Tbody,
   Td,
   Text,
+  Th,
+  Thead,
   Tr,
   VStack,
 } from "@chakra-ui/react";
@@ -1418,11 +1420,21 @@ const TechBrief = () => {
               overflow="hidden"
               p={{ base: 4, md: 5 }}
             >
+              <Text
+                as="h3"
+                color="grey.800"
+                fontSize={{ base: "18px", md: "22px" }}
+                fontWeight={700}
+                lineHeight={{ base: "26px", md: "30px" }}
+                mb={4}
+              >
+                {securitySection.comparisonTitle}
+              </Text>
               <TableContainer overflowX="auto">
                 <Table minW="760px" variant="unstyled">
-                  <Tbody>
+                  <Thead>
                     <Tr>
-                      <Td
+                      <Th
                         background="#DCE8F4"
                         border="2px solid"
                         borderColor="#111111"
@@ -1434,11 +1446,13 @@ const TechBrief = () => {
                         fontWeight={700}
                         lineHeight="1.1"
                         p={2.5}
+                        scope="col"
+                        textTransform="none"
                         w="42%"
                       >
                         Capability
-                      </Td>
-                      <Td
+                      </Th>
+                      <Th
                         background="#DCE8F4"
                         border="2px solid"
                         borderColor="#111111"
@@ -1450,12 +1464,14 @@ const TechBrief = () => {
                         fontWeight={700}
                         lineHeight="1.1"
                         p={2.5}
+                        scope="col"
                         textAlign="center"
+                        textTransform="none"
                         whiteSpace="nowrap"
                       >
                         Traditional LAN
-                      </Td>
-                      <Td
+                      </Th>
+                      <Th
                         background="#DCE8F4"
                         border="2px solid"
                         borderColor="#111111"
@@ -1467,12 +1483,16 @@ const TechBrief = () => {
                         fontWeight={700}
                         lineHeight="1.1"
                         p={2.5}
+                        scope="col"
                         textAlign="center"
+                        textTransform="none"
                         whiteSpace="nowrap"
                       >
                         Long-Reach PCIe
-                      </Td>
+                      </Th>
                     </Tr>
+                  </Thead>
+                  <Tbody>
                     {securitySection.comparisonRows.map((row) => (
                       <Tr key={row.capability}>
                         <Td

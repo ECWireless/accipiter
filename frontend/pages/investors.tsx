@@ -11,6 +11,7 @@ import {
   FormControl,
   FormLabel,
   GridItem,
+  Image,
   Input,
   SimpleGrid,
   Text,
@@ -409,6 +410,16 @@ const Investors = () => {
             {investorIntro.invitation}
           </Text>
 
+          <Image
+            src="/accipiter-one-pager.webp"
+            alt="Accipiter Systems investor overview: USA-built PCIe networking for time-critical commercial and defense applications. Products include reflective-memory NICs, switches, M.2 boards, and expansion systems, serving racing and simulation, finance and data centers, and defense and critical systems. A $5 million Series A offering will fuel growth, expand capability, and scale delivery."
+            htmlWidth={1536}
+            htmlHeight={1024}
+            w="100%"
+            h="auto"
+            mt={{ base: 8, md: 12 }}
+          />
+
           <Box
             background={colors.grey}
             border={`1px solid ${colors.blue}`}
@@ -560,23 +571,6 @@ const Investors = () => {
                 Investment opportunities are available only to accredited
                 investors where applicable.
               </Text>
-              <HomeButton
-                as="a"
-                download="Accipiter-Systems-Investor-Executive-Summary.pdf"
-                href="/tech-brief-investor-executive-summary.pdf"
-                style={{
-                  background: "#F4FBFD",
-                  border: `2px solid ${colors.blue}`,
-                  boxShadow: "none",
-                  color: colors.blue,
-                  maxWidth: "100%",
-                  minWidth: "0",
-                  opacity: 1,
-                  padding: "14px 28px",
-                }}
-              >
-                Download Investor Executive Summary
-              </HomeButton>
             </VStack>
           </Box>
         </Container>
